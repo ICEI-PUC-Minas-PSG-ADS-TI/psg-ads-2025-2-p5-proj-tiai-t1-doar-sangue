@@ -6,7 +6,15 @@
 
 `5º Semestre`
 
-**GiveLife** é uma aplicação web desenvolvida para facilitar a doação de sangue, conectando doadores a bancos de sangue e instituições que necessitam de doações.
+Este projeto visa desenvolver um site de coleta e doação de sangue com o objetivo de
+democratizar e facilitar a comunicação entre doadores e receptores, incluindo pacientes e
+hospitais. O site funcionará como uma ponte digital, oferecendo uma plataforma acessível
+para o agendamento de doações, cadastro de doadores e acompanhamento de estoques de
+sangue em tempo real. Com a crescente necessidade de sangue para tratamentos médicos e
+emergências, o projeto busca aumentar a conscientização e a participação dos cidadãos na
+doação de sangue. Os resultados esperados incluem um aumento no número de doações e um
+melhor gerenciamento dos estoques de sangue, beneficiando diretamente hospitais e pacientes
+que dependem desse recurso vital. 
 
 ODS 3 Saúde e Bem-Estar 
 
