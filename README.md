@@ -1,25 +1,26 @@
 # TÍTULO DO PROJETO
 
-`CURSO`
+`Tecnologia em Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Trabalho Interdisciplinar: Aplicações InovadorasPessoas`
 
-`SEMESTRE`
+`5º Semestre`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+**GiveLife** é uma aplicação web desenvolvida para facilitar a doação de sangue, conectando doadores a bancos de sangue e instituições que necessitam de doações.
 
-ODS Alinhados:
+ODS 3 Saúde e Bem-Estar 
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* Ingrid Mendes Martins Correa  
+* Júlio Navarro de Oliveira
+* Nathanael Victor Souza de Oliveira
+* Samyr Endrigo Póvoa de Souza
+* Tarsis Augustus Simão Conrado
 
 ## Orientador
 
-* Nome completo do professor 1
+* Juliana Padilha
 
 ## Instruções de utilização
 
