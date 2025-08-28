@@ -52,21 +52,34 @@ cadastrados e aumento na quantidade de doações em períodos críticos.
 ---
 
 ## 1.3 Justificativa  
-Explique **por que** vale a pena desenvolver este projeto.  
-- Quais benefícios trará?  
-- Quais dados ou fatos comprovam que o problema existe?  
 
->💡 *Exemplo:*  
-"Segundo dados da FAO, 30% dos alimentos se perdem no transporte e armazenamento. Nosso sistema ajudará a reduzir perdas e desperdícios."
+A redução da oferta de sangue pode levar ao desabastecimento, comprometendo a assistência e colocando em risco a vida de pacientes que necessitam de transfusões para tratamentos, cirurgias e doenças como câncer ou anemias. Atualmente os hemocentros acompanham diariamente os estoques para que, em caso de necessidade, realizar o remanejamento de bolsas entre as unidades para evitar o desabastecimento em regiões críticas. 
+
+Grande parte da baixa adesão está relacionada à falta de informação acessível, à dificuldade em identificar locais de coleta, à ausência de mecanismos de agendamento simplificados e à pouca visibilidade sobre as reais necessidades dos bancos de sangue. Nesse sentido, uma solução digital que concentre e integre essas informações pode representar um avanço significativo no incentivo à doação regular.
+
+Dessa forma, o projeto se justifica não apenas pela inovação tecnológica, mas principalmente pelo caráter humanitário e social, reforçando a responsabilidade coletiva em torno da saúde pública e promovendo maior engajamento da comunidade em práticas solidárias e de cidadania.
+
+---
+
+## 1.4 Público-alvo:
+
+- Doadores de sangue potenciais e regulares, que desejam um processo mais
+conveniente e informativo para realizar suas doações e ter entre 16 e 69 anos, pesar mais de 50 kg, está em bom estado de saúde, portar um documento com foto e cumprir os critérios de restrição temporária e definitiva do hemocentro.
+
+- Instituições de saúde, hemocentros, hospitais, clínicas e bancos de sangue que necessitam melhorar a gestão de seus estoques. 
+
+- Profissionais responsáveis pela logística de campanhas de doação, que poderão divulgar necessidades específicas de tipos sanguíneos.
+
+- Organizações governamentais e não governamentais que promovem campanhas de conscientização sobre a importância da doação de sangue.
+
+- Pacientes que dependem de transfusões regulares ou emergenciais,
+beneficiando-se de uma maior disponibilidade de sangue. 
 
 ---
 
-## 1.4 Público-Alvo  
-Descreva quem vai usar a solução.  
-- Perfil: idade, profissão, familiaridade com tecnologia.  
-- Contexto: onde e como vai usar.
+Referências:
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwi89q7Lz66PAxVPqZUCHe5mBZ0Q-tANegQIAhAp&url=https%3A%2F%2Fwww.gov.br%2Fsaude%2Fpt-br%2Fassuntos%2Fnoticias-para-os-estados%2Fpara%2F2025%2Fjunho%2Fmais-de-106-mil-bolsas-de-sangue-foram-coletadas-no-para-em-2024&usg=AOvVaw2I48T8P00oKG391wGouQ58&opi=89978449
 
->💡 *Exemplo:*  
-"Pequenos comerciantes de hortifrutis, com conhecimentos básicos de informática, que precisam de uma ferramenta simples e rápida para controle de estoque."
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiJiKv-z66PAxX6lJUCHa1pC0IQ-tANegQICRAV&url=https%3A%2F%2Fwww.hemocentro.fmrp.usp.br%2Fdoacoes-de-bolsas-de-sangue-tem-leve-queda-em-2024-na-rede-hemocentro%2F%23%3A~%3Atext%3DDoa%25C3%25A7%25C3%25B5es%2520de%2520bolsas%2520de%2520sangue%2520tem%2520leve%2520queda%2520em%25202024%2520na%2520rede%2520Hemocentro%2C-27%2520de%2520agosto%26text%3DEm%25202024%252C%2520as%2520doa%25C3%25A7%25C3%25B5es%2520de%2Cde%2520sangue%2520durante%2520esses%2520anos.&usg=AOvVaw3jw0q0kieq8MgM70JcSegy&opi=89978449
 
----
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjyzvqi1a6PAxW9l5UCHaN-I4MQ-tANegQICRAJ&url=https%3A%2F%2Fwww.prosangue.sp.gov.br%2Fartigos%2Frequisitos_basicos_para_doacao.html%23%3A~%3Atext%3D%25C2%25BB%2520Estar%2520em%2520boas%2520condi%25C3%25A7%25C3%25B5es%2520de%2C%25C2%25BB%2520Pesar%2520no%2520m%25C3%25ADnimo%252050kg.&usg=AOvVaw1WXLw6hiK_TcAYhahUzHYz&opi=89978449
