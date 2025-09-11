@@ -83,49 +83,38 @@ Preencha o Quadro abaixo com os requisitos não funcionais que definem **caracte
 
 ## 3.4 Restrições do Projeto
 
-> Restrições são limitações externas impostas ao projeto que devem ser rigorosamente obedecidas durante o desenvolvimento. Elas podem estar relacionadas a prazos, tecnologias obrigatórias ou proibidas, ambiente de execução, normas legais ou políticas internas da organização. Diferente dos requisitos não funcionais, que indicam características desejadas do sistema, as restrições determinam limites fixos que influenciam as decisões de projeto.
-
-O Quadro abaixo deve ser preenchida com as restrições específicas que **impactam seu projeto**. Caso não haja alguma restrição adicional além das já listadas, mantenha a tabela conforme está.
+> Estas são limitações externas que estão impostas ao projeto obedecidas durante o desenvolvimento. Elas estão relacionadas a prazos, tecnologias obrigatórias ou proibidas, ambiente de execução, normas legais ou políticas internas do projeto.
 
 | ID  | Restrição                                                              |
 |------|-----------------------------------------------------------------------|
 | R-01   | O projeto deverá ser entregue até o final do semestre.              |
-| R-02   | O sistema deve funcionar apenas dentro da rede interna da empresa.  |
-| R-03   | O software deve ser compatível com Windows e Linux.                 |
-| R-04   | *(Descreva aqui a restrição 4 do seu projeto)*                      |
-| R-05   | *(Descreva aqui a restrição 5 do seu projeto)*                      |
-| R-06   | *(Descreva aqui a restrição 6 do seu projeto)*                      |
+| R-02   | A plataforma deve seguir as diretrizes e regulamentações do Ministério da Saúde e da Anvisa referentes à coleta e doação de sangue no Brasil, garantindo a conformidade legal.|
+| R-03   | O sistema deve ser acessível via web, compatível com navegadores modernos (Chrome, Firefox, Safari e Edge) e com interface responsiva para dispositivos móveis.|
+| R-04   | O uso de dados de pacientes, doadores e instituições deve estar em total conformidade com a Lei Geral de Proteção de Dados (LGPD), garantindo a segurança e a privacidade das informações.|
+| R-05   |A plataforma deve integrar-se com sistemas de agendamento de hemocentros parceiros ou hospitais, exigindo a utilização de APIs compatíveis.|
+| R-06   | O sistema deve suportar um volume de usuários e acessos que atenda a demanda em períodos de pico, como em campanhas de doação ou desastres naturais, sem comprometer o desempenho.|
 | R-07   | *(Descreva aqui a restrição 7 do seu projeto)*                      |
 | R-08   | *(Descreva aqui a restrição 8 do seu projeto)*                      |
 
 ---
 ## 3.5 Regras de Negócio
 
-> Regras de Negócio definem as condições e políticas que o sistema deve seguir para garantir o correto funcionamento alinhado ao negócio.  
->  
-> Elas indicam **quando** e **como** certas ações devem ocorrer, usando o padrão:  
->  
-> **Se (condição) for verdadeira, então (ação) deve ser tomada.**  
->  
-> Exemplo:  
-> - "Um usuário só poderá finalizar um cadastro se todos os dados forem inseridos e validados com sucesso."  
->  
-> Também pode ser escrito assim (if/then):  
-> - "Se o usuário tem saldo acima de X, então a opção de empréstimo estará liberada."
+> Estas são as condições e políticas que o sistema deve seguir para garantir o correto funcionamento alinhado ao propósito do projeto e legislação.  
 
 ---
 
- A tabela abaixo deve ser preenchida com as regras de negócio que **impactam seu projeto**. Os textos no quadro são apenas ilustrativos.
+ A tabela abaixo esta preenchida com as regras de negócio que **impactam o projeto**.
 
 |ID    | Regra de Negócio                                                       |
 |-------|-----------------------------------------------------------------------|
-|RN-01 | Usuário só pode cadastrar até 10 tarefas por dia.                      |
-|RN-02 | Apenas administradores podem alterar permissões de usuários.           |
-|RN-03 | Tarefas vencidas devem ser destacadas em vermelho no sistema.          |
-|RN-04 | *(Descreva aqui a restrição 4 do seu projeto)*                         |
-|RN-05 | *(Descreva aqui a restrição 5 do seu projeto)*                         |
-
-💡 **Dica:** Explique sempre o motivo ou impacto da regra no sistema.
+|RN-01 | Se o doador tiver entre 16 e 17 anos, então ele precisará de autorização formal dos responsáveis para se cadastrar e agendar uma doação. Isso garante a conformidade com a legislação de doação de sangue para menores de idade.|
+|RN-02 | Se o doador potencial informar que pesa menos de 50 kg ou não atende aos requisitos básicos de saúde, então a plataforma deve impedi-lo de agendar a doação e exibir uma mensagem informativa sobre os critérios de doação. Isso evita agendamentos inviáveis e direciona o usuário corretamente.|
+|RN-03 | Se o doador tentar agendar uma doação e houver uma restrição temporária (ex: doou há menos de 60 dias para homens ou 90 para mulheres), então o sistema deve bloquear o agendamento e informar a data mínima em que ele poderá doar novamente. Isso é crucial para a saúde do doador e a qualidade da doação.|
+|RN-04 | Se um hemocentro ou hospital parceiro atualizar seus estoques de sangue, então a plataforma deve refletir essa mudança em tempo real para os doadores, destacando os tipos sanguíneos em nível crítico com alertas visuais. Isso serve para direcionar as doações para onde são mais necessárias.|
+|RN-05 | Se a data e horário de agendamento escolhidos por um doador já estiverem lotados no hemocentro, então o sistema deve informar a indisponibilidade e sugerir horários alternativos. Isso otimiza o fluxo de doadores e o atendimento nas unidades de coleta.|
+|RN-06 | Se uma campanha de doação para um tipo sanguíneo específico for lançada por uma instituição, então os doadores cadastrados que possuírem esse tipo sanguíneo devem ser notificados por e-mail ou notificação no aplicativo. Isso aumenta o engajamento e a eficácia das campanhas.|
+|RN-07 | Se um doador potencial concluir o cadastro com todos os dados obrigatórios e cumprir os critérios de doação, então o sistema deve permitir o agendamento da primeira doação.|
+|RN-08 | Se uma instituição de saúde for cadastrada, então a equipe responsável deve ser designada como administrador da conta, com permissão para gerenciar a agenda, o estoque de sangue e as campanhas de doação.|
 
 ---
 > **Links Úteis**:
