@@ -52,13 +52,14 @@ Cada requisito deve representar uma característica única da solução e ser cl
 <div style="border: 2px dashed #999999; padding: 15px; margin: 10px 0;">
   
 <!-- Espaço para escrever o texto -->  
-**[Escreva aqui as histórias do seu projeto]**
-
-- **História 1 (relacionada ao Requisito RF-01):** 
-
-- **História 2 (relacionada ao Requisito RF-02):** 
-
-
+> **História 1 (relacionada ao Requisito RF-001):**  
+Como doador, eu quero me cadastrar na plataforma, para que eu possa agendar e acompanhar minhas doações de sangue.
+>  
+> **História 2 (relacionada ao Requisito RF-002):**  
+Como hospital, eu quero cadastrar minha instituição, para que eu possa divulgar as necessidades de sangue e gerenciar os estoques. 
+>  
+> **História 3 (relacionada ao Requisito RF-003):**  
+Como administrador, eu quero gerenciar os cadastros de usuários e instituições, para que eu mantenha a plataforma segura e confiável.
 
 
 </div>
