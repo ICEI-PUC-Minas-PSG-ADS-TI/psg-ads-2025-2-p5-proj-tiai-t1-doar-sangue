@@ -13,11 +13,13 @@ Preencha o Quadro abaixo com os requisitos funcionais que **detalham as funciona
 Cada requisito deve representar uma característica única da solução e ser claro para orientar o desenvolvimento.
 
 
-|ID     | Descrição do Requisito                                                                                            | Prioridade |
+|ID     | Descrição do Requisito                                                                                          | Prioridade |
 |-------|-----------------------------------------------------------------------------------------------------------------|------------|
-|RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.                | ALTA       | 
-|RF-02  | O sistema deve permitir que os usuários adicionem produtos ao carrinho de compras.                                | MÉDIA      |
-|RF-03  | *(Descreva aqui o requisito funcional 3 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
+|RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.              | ALTA  | 
+|RF-02  |O sistema deve permitir o controle de estoque de sangue, registrando e organizando as unidades de acordo com os 
+          diferentes tipos sanguíneos                                                                                     | MÉDIA |
+|RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde) 
+          possam acessar dados sensíveis.                                                                                 | Alta  |
 |RF-04  | *(Descreva aqui o requisito funcional 4 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
 |RF-05  | *(Descreva aqui o requisito funcional 5 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
 |RF-06  | *(Descreva aqui o requisito funcional 6 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
