@@ -13,11 +13,11 @@ Preencha o Quadro abaixo com os requisitos funcionais que **detalham as funciona
 Cada requisito deve representar uma característica única da solução e ser claro para orientar o desenvolvimento.
 
 
-|ID     | Descrição do Requisito                                                                                            | Prioridade |
+|ID     | Descrição do Requisito                                                                                          | Prioridade |
 |-------|-----------------------------------------------------------------------------------------------------------------|------------|
-|RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.                | ALTA       | 
-|RF-02  | O sistema deve permitir que os usuários adicionem produtos ao carrinho de compras.                                | MÉDIA      |
-|RF-03  | *(Descreva aqui o requisito funcional 3 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
+|RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.              | ALTA  | 
+|RF-02  |O sistema deve permitir o controle de estoque de sangue, registrando e organizando as unidades de acordo com os   diferentes tipos sanguíneos| MÉDIA |
+|RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde)possam acessar dados sensíveis.| Alta  |
 |RF-04  | *(Descreva aqui o requisito funcional 4 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
 |RF-05  | *(Descreva aqui o requisito funcional 5 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
 |RF-06  | *(Descreva aqui o requisito funcional 6 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
@@ -91,10 +91,8 @@ Preencha o Quadro abaixo com os requisitos não funcionais que definem **caracte
 |-------|-----------------------------------------------------------------------------------------------------|-----------|
 |RNF-01 | O sistema deve carregar as páginas em até 3 segundos para garantir uma boa experiência ao usuário.  | MÉDIA     | 
 |RNF-02 | O sistema deve proteger as informações dos clientes por meio de criptografia e medidas de segurança.| ALTA      | 
-|RNF-03 | *(Descreva aqui o requisito não funcional 3 do seu sistema)*                                       | *(Alta/Média/Baixa)*  |
-|RNF-04 | *(Descreva aqui o requisito não funcional 4 do seu sistema)*                                       | *(Alta/Média/Baixa)*  |
-|RNF-05 | *(Descreva aqui o requisito não funcional 5 do seu sistema)*                                       | *(Alta/Média/Baixa)*  |
-|RNF-06 | *(Descreva aqui o requisito não funcional 6 do seu sistema)*                                       | *(Alta/Média/Baixa)*  |
+|RNF-03 | A sistema deve ter uma interface simples e intuitiva adequada a usuários com pouca experiência em tecnologia.  | ALTA  |
+|RNF-04 | O sistema deve ser responsivo se adptando a diferentes tamanhos de tela e dispositivos móveis.   | MÉDIA  |
 
 ---
 
