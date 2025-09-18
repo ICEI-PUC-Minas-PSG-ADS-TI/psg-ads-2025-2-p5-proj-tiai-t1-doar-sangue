@@ -36,12 +36,12 @@ Legenda: 🟢 Concluído | 🟡 Em andamento | 🔴 Não iniciado
 
 ---
 
-## 5.3 Registro Visual das Telas
+### 5.3 Registro Visual das Telas
   ### 5.3.1 Fluxo Desktop
-<img src="./images.img1.png">
-<img src="./images.img2.png">
-  ### 5.3.2 Fluxo Mobile
-<img src="./images.img3.png">
+<img src="/images.img1.png">
+<img src="/images.img2.png">
+ ### 5.3.2 Fluxo Mobile
+<img src="/images.img3.png">
 
 
 > **📢 AVISO IMPORTANTE – ATUALIZAÇÃO DE PROGRESSO**  
