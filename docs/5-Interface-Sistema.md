@@ -43,7 +43,7 @@ Legenda: 🟢 Concluído | 🟡 Em andamento | 🔴 Não iniciado
  ### 5.3.2 Fluxo Mobile
 ![Fluxo2](./images/img3.png)
 
-
+Acesso em: https://www.figma.com/design/6qGqol02EhbiDpV4Oa93nI/WireFrame---GiveLife?node-id=0-1&p=f&t=cjXKp7mjsq27O6Wf-0
 > **📢 AVISO IMPORTANTE – ATUALIZAÇÃO DE PROGRESSO**  
 > *(leia com atenção antes de finalizar a sprint)*  
 >
