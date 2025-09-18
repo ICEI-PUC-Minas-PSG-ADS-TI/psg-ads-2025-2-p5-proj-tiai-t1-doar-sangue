@@ -52,12 +52,29 @@ Cada requisito deve representar uma característica única da solução e ser cl
 <div style="border: 2px dashed #999999; padding: 15px; margin: 10px 0;">
   
 <!-- Espaço para escrever o texto -->  
-**[Escreva aqui as histórias do seu projeto]**
-
-- **História 1 (relacionada ao Requisito RF-01):** 
-
-- **História 2 (relacionada ao Requisito RF-02):** 
-
+> **História 1 (relacionada ao Requisito RF-001):**  
+Como doador de sangue, eu quero criar uma conta informando meu nome, e-mail, senha e endereço, para que eu possa acessar os recursos da plataforma e agendar doações.
+>  
+> **História 2 (relacionada ao Requisito RF-001):**  
+Como administrador, eu quero visualizar e gerenciar os cadastros de doadores, para que eu possa validar as informações e garantir a integridade dos registros.
+>  
+> **História 3 (relacionada ao Requisito RF-002):**  
+Como profissional de saúde, eu quero registrar as unidades de sangue coletadas no sistema, para que eu possa manter o estoque atualizado por tipo sanguíneo.
+>  
+> **História 4 (relacionada ao Requisito RF-002):**  
+Como administrador do banco de sangue, eu quero acompanhar a quantidade disponível de cada tipo sanguíneo em tempo real, para que eu possa identificar rapidamente situações críticas de desabastecimento.
+>  
+> **História 5 (relacionada ao Requisito RF-002):**  
+Como doador, eu quero visualizar os tipos sanguíneos em maior necessidade, para que eu possa direcionar minha doação conforme a urgência dos hospitais.
+>  
+> **História 6 (relacionada ao Requisito RF-003):**  
+Como administrador, eu quero gerenciar as permissões de acesso ao sistema, para que apenas usuários autorizados possam visualizar dados sensíveis.
+>  
+> **História 7 (relacionada ao Requisito RF-003):**  
+Como profissional de saúde, eu quero acessar relatórios com dados confidenciais sobre doadores e estoques, para que eu possa tomar decisões clínicas com segurança.
+>  
+> **História 8 (relacionada ao Requisito RF-003):**  
+Como usuário comum (doador), eu quero ter acesso apenas às minhas informações pessoais, para que meus dados sensíveis fiquem protegidos de acessos indevidos.
 
 
 
