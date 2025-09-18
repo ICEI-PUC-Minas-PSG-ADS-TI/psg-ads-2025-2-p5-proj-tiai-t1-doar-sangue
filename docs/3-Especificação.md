@@ -18,11 +18,12 @@ Cada requisito deve representar uma característica única da solução e ser cl
 |RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.              | ALTA  | 
 |RF-02  |O sistema deve permitir o controle de estoque de sangue, registrando e organizando as unidades de acordo com os   diferentes tipos sanguíneos| MÉDIA |
 |RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde)possam acessar dados sensíveis.| Alta  |
-|RF-04  | *(Descreva aqui o requisito funcional 4 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-05  | *(Descreva aqui o requisito funcional 5 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-06  | *(Descreva aqui o requisito funcional 6 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-07  | *(Descreva aqui o requisito funcional 7 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-08  | *(Descreva aqui o requisito funcional 8 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
+|RF-04  |	O sistema deve gerar relatórios sobre número de doações por 
+período.                                                        | (MÉDIA)  |
+|RF-05  | O sistema deve mostrar informações de contato e horários de funcionamento dos postos.                                                        | (ALTA) |
+|RF-06  | O sistema deve disponibilizar um questionário prévio de triagem para avaliar se o usuário está apto a doar sangue                                                        | *(ALTA)*  |
+|RF-07  | O sistema deve permitir que o doador agende data e hora para realizar a doação.                                                        | (ALTA)  |
+|RF-08  | O usuário deve poder consultar seu histórico de doações.                                                        | (BAIXA)  |
 |RF-09  | *(Descreva aqui o requisito funcional 9 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
 |RF-10  | *(Descreva aqui o requisito funcional 10 do seu sistema)*                                                       | *(Alta/Média/Baixa)*  |
 
