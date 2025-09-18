@@ -36,25 +36,13 @@ Legenda: 🟢 Concluído | 🟡 Em andamento | 🔴 Não iniciado
 
 ---
 
-### 5.3 Registro Visual das Telas
+## 5.3 Registro Visual das Telas
+  ### 5.3.1 Fluxo Desktop
+<img src="./images.img1.png">
+<img src="./images.img2.png">
+  ### 5.3.2 Fluxo Mobile
+<img src="./images.img3.png">
 
-#### 5.3.1 Tela principal do sistema
-**Descrição:** Apresenta visão geral das funcionalidades e acessos principais.  
-[`Tela principal do sistema`](images/)
-
----
-
-#### 5.3.2 Tela de login
-**Descrição:** Permite acesso de usuários registrados.  
-[`Tela de login`](images/)
-
----
-
-#### 5.3.3 Tela de cadastro de produto
-**Descrição:** Formulário para inserir novos produtos no estoque.  
-[`Tela de cadastro`](images/)
-
----
 
 > **📢 AVISO IMPORTANTE – ATUALIZAÇÃO DE PROGRESSO**  
 > *(leia com atenção antes de finalizar a sprint)*  
