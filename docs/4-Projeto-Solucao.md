@@ -182,4 +182,5 @@ Se o projeto adotar NoSQL, a entrega deve incluir:
   "perfil": "admin"
 }
 ```
+
 📌 **Entrega:** Inclua aqui os scripts utilizados para criar coleções e inserir dados.

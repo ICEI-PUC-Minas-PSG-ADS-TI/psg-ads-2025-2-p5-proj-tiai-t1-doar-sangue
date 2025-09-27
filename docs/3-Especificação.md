@@ -17,8 +17,7 @@ O Quadro abaixo contem os requisitos funcionais que **detalham as funcionalidade
 |RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.              | ALTA  | 
 |RF-02  |O sistema deve permitir o controle de estoque de sangue, registrando e organizando as unidades de acordo com os   diferentes tipos sanguíneos| MÉDIA |
 |RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde)possam acessar dados sensíveis.| ALTA  |
-|RF-04  |	O sistema deve gerar relatórios sobre número de doações por 
-período.                                                        | MÉDIA  |
+|RF-04  |	O sistema deve gerar relatórios sobre número de doações por período.                                                        | MÉDIA  |
 |RF-05  | O sistema deve mostrar informações de contato e horários de funcionamento dos postos.                                                        | ALTA |
 |RF-06  | O sistema deve disponibilizar um questionário prévio de triagem para avaliar se o usuário está apto a doar sangue                                                        | ALTA  |
 |RF-07  | O sistema deve permitir que o doador agende data e hora para realizar a doação.                                                        | ALTA  |
