@@ -3,61 +3,56 @@
 
 <span style="color:red">Pré-requisitos: <a href="2-Planejamento-Projeto.md"> Planejamento do Projeto do Software (Cronograma) </a></span>
 
-> Nesta seção, você vai detalhar os requisitos do seu sistema e as restrições do projeto, organizando as funcionalidades e características que a solução deve ter.
+> Nesta seção, estão detalhados os requisitos do seu sistema e as restrições do projeto, organizando as funcionalidades e características que a solução deve ter.
 
 ---
 
 ## 3.1 Requisitos Funcionais
 
-Preencha o Quadro abaixo com os requisitos funcionais que **detalham as funcionalidades que seu sistema deverá oferecer**.  
-Cada requisito deve representar uma característica única da solução e ser claro para orientar o desenvolvimento.
+O Quadro abaixo contem os requisitos funcionais que **detalham as funcionalidades que seu sistema deverá oferecer**.
 
 
 |ID     | Descrição do Requisito                                                                                          | Prioridade |
 |-------|-----------------------------------------------------------------------------------------------------------------|------------|
 |RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.              | ALTA  | 
 |RF-02  |O sistema deve permitir o controle de estoque de sangue, registrando e organizando as unidades de acordo com os   diferentes tipos sanguíneos| MÉDIA |
-|RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde)possam acessar dados sensíveis.| Alta  |
-|RF-04  | *(Descreva aqui o requisito funcional 4 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-05  | *(Descreva aqui o requisito funcional 5 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-06  | *(Descreva aqui o requisito funcional 6 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-07  | *(Descreva aqui o requisito funcional 7 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-08  | *(Descreva aqui o requisito funcional 8 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-09  | *(Descreva aqui o requisito funcional 9 do seu sistema)*                                                        | *(Alta/Média/Baixa)*  |
-|RF-10  | *(Descreva aqui o requisito funcional 10 do seu sistema)*                                                       | *(Alta/Média/Baixa)*  |
+|RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde)possam acessar dados sensíveis.| ALTA  |
+|RF-04  |	O sistema deve gerar relatórios sobre número de doações por período.                                                        | MÉDIA  |
+|RF-05  | O sistema deve mostrar informações de contato e horários de funcionamento dos postos.                                                        | ALTA |
+|RF-06  | O sistema deve disponibilizar um questionário prévio de triagem para avaliar se o usuário está apto a doar sangue                                                        | ALTA  |
+|RF-07  | O sistema deve permitir que o doador agende data e hora para realizar a doação.                                                        | ALTA  |
+|RF-08  | O usuário deve poder consultar seu histórico de doações.                                                        | BAIXA  |
 
 ---
 
 ## 3.2 Histórias de Usuário
 
-> Cada história de usuário deve ser escrita no formato:  
->  
-> **Como [persona], eu quero [funcionalidade], para que [benefício/motivo].**  seguindo o modelo e conceitos ensinados na disciplina de       
-> Engenharia de Requisitos.   
----
-⚠️ **ATENÇÃO:** Escreva de forma que cada história de usuário esteja associada a um requisito funcional específico para facilitar o acompanhamento e validação. Por exemplo:
-
-> **História 1 (relacionada ao Requisito RF-001):**  
-> Como usuário, quero registrar minhas tarefas para não esquecer de fazê-las.  
->  
-> **História 2 (relacionada ao Requisito RF-002):**  
-> Como administrador, quero alterar permissões para controlar o acesso ao sistema.  
->  
-> Para melhor organização, as histórias podem ser agrupadas por contexto ou módulo funcional.
-
----
-
-### ✏️ Escreva aqui as histórias de usuário do seu projeto:
-
 <div style="border: 2px dashed #999999; padding: 15px; margin: 10px 0;">
   
 <!-- Espaço para escrever o texto -->  
-**[Escreva aqui as histórias do seu projeto]**
-
-- **História 1 (relacionada ao Requisito RF-01):** 
-
-- **História 2 (relacionada ao Requisito RF-02):** 
-
+> **História 1 (relacionada ao Requisito RF-001):**  
+Como doador de sangue, eu quero criar uma conta informando meu nome, e-mail, senha e endereço, para que eu possa acessar os recursos da plataforma e agendar doações.
+>  
+> **História 2 (relacionada ao Requisito RF-001):**  
+Como administrador, eu quero visualizar e gerenciar os cadastros de doadores, para que eu possa validar as informações e garantir a integridade dos registros.
+>  
+> **História 3 (relacionada ao Requisito RF-002):**  
+Como profissional de saúde, eu quero registrar as unidades de sangue coletadas no sistema, para que eu possa manter o estoque atualizado por tipo sanguíneo.
+>  
+> **História 4 (relacionada ao Requisito RF-002):**  
+Como administrador do banco de sangue, eu quero acompanhar a quantidade disponível de cada tipo sanguíneo em tempo real, para que eu possa identificar rapidamente situações críticas de desabastecimento.
+>  
+> **História 5 (relacionada ao Requisito RF-002):**  
+Como doador, eu quero visualizar os tipos sanguíneos em maior necessidade, para que eu possa direcionar minha doação conforme a urgência dos hospitais.
+>  
+> **História 6 (relacionada ao Requisito RF-003):**  
+Como administrador, eu quero gerenciar as permissões de acesso ao sistema, para que apenas usuários autorizados possam visualizar dados sensíveis.
+>  
+> **História 7 (relacionada ao Requisito RF-003):**  
+Como profissional de saúde, eu quero acessar relatórios com dados confidenciais sobre doadores e estoques, para que eu possa tomar decisões clínicas com segurança.
+>  
+> **História 8 (relacionada ao Requisito RF-003):**  
+Como usuário comum (doador), eu quero ter acesso apenas às minhas informações pessoais, para que meus dados sensíveis fiquem protegidos de acessos indevidos.
 
 
 
@@ -67,8 +62,7 @@ Cada requisito deve representar uma característica única da solução e ser cl
 
 ## 3.3 Requisitos Não Funcionais
 
-Preencha o Quadro abaixo com os requisitos não funcionais que definem **características desejadas para o sistema que irão desenvolver**, como desempenho, segurança, usabilidade, etc.  
-> Lembre-se que esses requisitos são importantes para garantir a qualidade da solução.
+Preencha o Quadro abaixo com os requisitos não funcionais que definem **características desejadas para o sistema que irão desenvolver**, como desempenho, segurança, usabilidade, etc.
 
 |ID     | Descrição do Requisito                                                                              |Prioridade |
 |-------|-----------------------------------------------------------------------------------------------------|-----------|
@@ -91,8 +85,6 @@ Preencha o Quadro abaixo com os requisitos não funcionais que definem **caracte
 | R-04   | O uso de dados de pacientes, doadores e instituições deve estar em total conformidade com a Lei Geral de Proteção de Dados (LGPD), garantindo a segurança e a privacidade das informações.|
 | R-05   |A plataforma deve integrar-se com sistemas de agendamento de hemocentros parceiros ou hospitais, exigindo a utilização de APIs compatíveis.|
 | R-06   | O sistema deve suportar um volume de usuários e acessos que atenda a demanda em períodos de pico, como em campanhas de doação ou desastres naturais, sem comprometer o desempenho.|
-| R-07   | *(Descreva aqui a restrição 7 do seu projeto)*                      |
-| R-08   | *(Descreva aqui a restrição 8 do seu projeto)*                      |
 
 ---
 ## 3.5 Regras de Negócio

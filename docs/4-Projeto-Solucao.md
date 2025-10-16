@@ -16,9 +16,46 @@ Inclua um **diagrama de arquitetura** mostrando módulos, camadas e tecnologias 
 
 **Exemplo de diagrama:**
  
- ![Exemplo de Arquitetura](./images/arquitetura-exemplo.png)
+ ![Exemplo de Arquitetura](./images/DIAGRAMA_C2.jpeg)
 
- 📌 **Entrega:** inserir o diagrama e a descrição detalhada de cada parte.
+O diagrama apresenta a arquitetura do sistema Give Life, desenvolvido para gerenciar doações e campanhas beneficentes. Ele ilustra os principais tipos de usuários, os módulos internos do sistema e a relação com serviços externos de hospedagem.
+
+1. Usuários
+
+Admin: responsável por gerenciar usuários, instituições e doações.
+
+Instituições: organizações que criam campanhas e recebem doações.
+
+Doadores: usuários que realizam doações e acompanham campanhas.
+
+Esses perfis acessam o sistema por meio do site (frontend web) ou do aplicativo móvel.
+
+2. Componentes Internos do Sistema
+
+Frontend Web (React / HTML / CSS / JS):
+Interface acessada via navegador, que permite interação de doadores e instituições. Conecta-se ao backend para envio e recebimento de dados via requisições HTTP/JSON.
+
+Aplicativo Mobile (React Native / Expo):
+Interface voltada a dispositivos móveis, com funcionalidades de acesso a campanhas e realização de doações. Comunica-se com o backend de forma semelhante ao frontend web.
+
+Supabase Backend (PostgreSQL, Auth, Storage, Edge Functions):
+Responsável pela lógica central do sistema, autenticação de usuários, processamento de dados e disponibilização de APIs REST. Atua como intermediário entre o frontend, o aplicativo móvel e o banco de dados.
+
+Database (PostgreSQL / Supabase):
+Armazena informações de usuários, instituições, campanhas e doações.
+É considerado um componente interno do sistema, embora esteja hospedado em infraestrutura externa (nuvem) por meio da plataforma Supabase.
+
+3. Serviço Externo
+
+Locaweb:
+Plataforma de hospedagem utilizada para disponibilizar o site e o backend na web.
+Apesar de fornecer a infraestrutura, não faz parte do sistema Give Life, sendo classificada como um sistema externo.
+
+4. Fluxo de Comunicação
+
+Os usuários interagem com o Frontend Web ou o Aplicativo Mobile, que se comunicam com o Supabase Backend para envio e recebimento de dados.
+O backend processa as solicitações, realiza autenticações e acessa o Database Supabase para armazenar ou consultar informações.
+Toda a solução é disponibilizada na internet por meio da infraestrutura da Locaweb.
  
 ---
 **MODELAGEM VISUAL DAS TELAS**
@@ -44,11 +81,19 @@ Eles ajudam a planejar, comunicar ideias e validar a interface com antecedência
 📌 **Entrega:** incluir imagens ou links para os wireframes/mockups.
 
 **Wireframe 1 — Tela Principal**  
-*(inserir imagem ou diagrama)*
+![alt text](./images/Home_Desktop.png)
+.![alt text](./images/tela%20inicial%20do%20usuario.jpeg)
+
 
 **Wireframe 2 — Tela de Login**  
-*(inserir imagem ou diagrama)*
 
+
+![alt text](./images/Inicio_Desktop.png)
+
+
+**Wireframe 2 — Tela de Campanha**  
+
+![alt text](./images/Campanhas_Desktop.png)
 
 ---
 **UML**
@@ -174,4 +219,5 @@ Se o projeto adotar NoSQL, a entrega deve incluir:
   "perfil": "admin"
 }
 ```
+
 📌 **Entrega:** Inclua aqui os scripts utilizados para criar coleções e inserir dados.
