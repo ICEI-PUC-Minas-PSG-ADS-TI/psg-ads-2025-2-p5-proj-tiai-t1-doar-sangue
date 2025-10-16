@@ -127,7 +127,7 @@ O **Diagrama Entidade-Relacionamento (DER)** descreve as entidades, atributos e 
 
 O **Esquema Relacional** converte o Modelo ER para tabelas relacionais, incluindo chaves primárias, estrangeiras e restrições de integridade.  
 
-![Esquema Relacional](./images/IMG-20251016-WA0040.png)
+![Esquema Relacional](./images/ModeloLogico.png)
 
 ---
 
