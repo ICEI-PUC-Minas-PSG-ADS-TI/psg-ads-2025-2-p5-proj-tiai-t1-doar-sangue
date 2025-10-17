@@ -326,4 +326,3 @@ ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_2
     REFERENCES Usuario (id)
     ON DELETE SET NULL;
 ```
-## 📌ATENÇÃO: salvar como banco.sql na pasta src/bd
