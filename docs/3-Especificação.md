@@ -37,10 +37,10 @@ Como doador de sangue, eu quero criar uma conta informando meu nome, e-mail, sen
 Como administrador, eu quero visualizar e gerenciar os cadastros de doadores, para que eu possa validar as informações e garantir a integridade dos registros.
 >  
 > **História 3 (relacionada ao Requisito RF-002):**  
-Como profissional de saúde, eu quero registrar as unidades de sangue coletadas no sistema, para que eu possa manter o estoque atualizado por tipo sanguíneo.
+Como profissional de saúde, quero registrar novas unidades de sangue para manter o estoque atualizado.
 >  
 > **História 4 (relacionada ao Requisito RF-002):**  
-Como administrador do banco de sangue, eu quero acompanhar a quantidade disponível de cada tipo sanguíneo em tempo real, para que eu possa identificar rapidamente situações críticas de desabastecimento.
+Como profissional de saúde, quero atualizar unidades existentes para corrigir informações ou refletir alterações.
 >  
 > **História 5 (relacionada ao Requisito RF-002):**  
 Como doador, eu quero visualizar os tipos sanguíneos em maior necessidade, para que eu possa direcionar minha doação conforme a urgência dos hospitais.
@@ -53,6 +53,9 @@ Como profissional de saúde, eu quero acessar relatórios com dados confidenciai
 >  
 > **História 8 (relacionada ao Requisito RF-003):**  
 Como usuário comum (doador), eu quero ter acesso apenas às minhas informações pessoais, para que meus dados sensíveis fiquem protegidos de acessos indevidos.
+
+> **História 9 (relacionada ao Requisito RF-002):**  
+Como profissional de saúde, quero remover unidades expiradas ou inválidas para que o estoque seja confiável.
 
 
 

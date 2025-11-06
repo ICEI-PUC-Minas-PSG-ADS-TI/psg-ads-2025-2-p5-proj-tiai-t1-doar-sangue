@@ -6,13 +6,8 @@
 **ARQUITETURA DO SOFTWARE**
 ## 4.1. Arquitetura da Solução
 
-Nesta seção, descreva como os componentes do sistema se organizam e interagem.  
-Inclua um **diagrama de arquitetura** mostrando módulos, camadas e tecnologias utilizadas.
-
-**Orientações:**
-- Indique quais módulos compõem a solução (ex.: frontend, backend, banco de dados, APIs externas).
-- Especifique as tecnologias e frameworks adotados (ex.: React, Node.js, MySQL).
-- Explique como ocorre a comunicação entre os módulos.
+Nesta seção, estam descritos como os componentes do sistema se organizam e interagem.  
+Um **diagrama de arquitetura** mostras módulos, camadas e tecnologias utilizadas.
 
 **Exemplo de diagrama:**
  
@@ -80,20 +75,69 @@ Eles ajudam a planejar, comunicar ideias e validar a interface com antecedência
 
 📌 **Entrega:** incluir imagens ou links para os wireframes/mockups.
 
-**Wireframe 1 — Tela Principal**  
+**Wireframe 1 — Tela de Dados do Doador**
+
 ![alt text](./images/Home_Desktop.png)
+
+
+**Wireframe — Tela Principal Doador** 
+
 .![alt text](./images/tela%20inicial%20do%20usuario.jpeg)
 
 
-**Wireframe 2 — Tela de Login**  
-
+**Wireframe — Tela de Login Doador**  
 
 ![alt text](./images/Inicio_Desktop.png)
 
 
-**Wireframe 2 — Tela de Campanha**  
+**Wireframe — Tela de Campanhas**  
 
 ![alt text](./images/Campanhas_Desktop.png)
+
+
+**Wireframe — Tela de Agendar Doação**  
+
+![alt text](./images/Agendar_Doador_Mobile.png)
+
+
+**Wireframe 2 — Tela de Cadastro Doador Mobile**  
+
+![alt text](./images/Cadastro_Doador_Mobile.png)
+
+
+**Wireframe 2 — Tela de Cadastro Empresas Mobile**  
+
+![alt text](./images/Cadastro_Empresa_Mobile.png)
+
+
+**Wireframe 2 — Tela de Cadastro Empresas Desktop**  
+
+![alt text](./images/Cadastro_Empresa_desktop.png)
+
+
+**Wireframe 2 — Tela de Campanhas Mobile**  
+
+![alt text](./images/Campanhas.png)
+
+
+**Wireframe 2 — Tela de DashBoard Empresas**  
+
+![alt text](./images/Dashboard_Empresa_Desktop.png)
+
+
+**Wireframe 2 — Tela de DeshBoard Empresas Mobile**  
+
+![alt text](./images/Dashboard_Instituicao_Mobile.png)
+
+
+**Wireframe 2 — Tela de Nova Campanha DeskTop**  
+
+![alt text](./images/Nova_Campanha_Desktop.png)
+
+
+**Wireframe 2 — Tela Inicial Mobile**  
+
+![alt text](./images/Inicio_Mobile.png)
 
 ---
 **UML**
@@ -102,10 +146,7 @@ Eles ajudam a planejar, comunicar ideias e validar a interface com antecedência
 
 O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Classes”.
-
-> - [Diagramas de Classes - Documentação da IBM](https://www.ibm.com/docs/pt-br/rational-soft-arch/9.6.1?topic=diagrams-class)
-> - [O que é um diagrama de classe UML? | Lucidchart](https://www.lucidchart.com/pages/pt/o-que-e-diagrama-de-classe-uml)
+![alt text](./images/Diagrama%20de%20Classes%20GiveLife.drawio%20(1).png)
 
 ---
 
