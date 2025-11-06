@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Web",
+    "\\src\\Web\\Web-Api",
+    "\\src\\Web\\Web-Api\\DoarSangue.Api",
+    "\\src\\Web\\Web-Api\\DoarSangue.Api\\Controllers",
+    "\\src\\Web\\Web-Client",
+    "\\src\\Web\\Web-Client\\DoarSangue.Client\\public",
+    "\\src\\Web\\Web-Client\\DoarSangue.Client\\src",
+    "\\src\\Web\\Web-Client\\DoarSangue.Client\\src\\app"
+  ],
+  "SelectedNode": "\\src",
+  "PreviewInSolutionExplorer": false
+}

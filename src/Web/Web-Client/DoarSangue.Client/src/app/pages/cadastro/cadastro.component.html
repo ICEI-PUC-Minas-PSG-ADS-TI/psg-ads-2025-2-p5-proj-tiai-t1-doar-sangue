@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - Give Life</title>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body>
+  <main>
+    <section class="registration-section">
+      <div class="container">
+
+        <!-- LADO ESQUERDO -->
+        <div class="left-section">
+          <img src="assets/images/Logo GiveLife.png" alt="Logo Give Life" class="logo">
+          <h2>Olá de Novo</h2>
+          <p>Para Continuar Conectado Faça seu Login e Veja Seu Perfil</p>
+
+          <a routerLink="/login" class="btn-login">Login</a>
+
+          <p>Quer ser um dos nossos parceiros?</p>
+          <a routerLink="/cadastro-intu" class="btn-partner">Seja Parceiro</a>
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <div class="registration-form">
+          <h2>Crie sua Conta</h2>
+
+          <form (ngSubmit)="cadastrar()">
+
+            <label>Nome</label>
+            <input type="text" [(ngModel)]="usuario.nome" name="nome" placeholder="Digite seu nome" required>
+
+            <label>E-mail</label>
+            <input type="email" [(ngModel)]="usuario.email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label>Telefone</label>
+            <input type="text" [(ngModel)]="usuario.telefone" name="telefone" placeholder="Digite seu telefone" required>
+
+            <label>Tipo Sanguíneo</label>
+            <select [(ngModel)]="usuario.tipoSanguineo" name="tipoSanguineo" required>
+              <option value="" disabled selected>Selecione seu tipo sanguíneo</option>
+              <option *ngFor="let tipo of tiposSangue" [value]="tipo">{{ tipo }}</option>
+            </select>
+
+            <label>Sexo</label>
+            <select [(ngModel)]="usuario.sexo" name="sexo" required>
+              <option value="" disabled selected>Selecione seu sexo</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+            </select>
+
+            <label>Senha</label>
+            <input type="password" [(ngModel)]="usuario.senha" name="senha" required>
+
+            <label>Confirme a Senha</label>
+            <input type="password" [(ngModel)]="usuario.confirmarSenha" name="confirmarSenha" required>
+
+            <button type="submit" class="btn-primary">Cadastrar</button>
+
+            <p>Já tem uma conta? <a routerLink="/login">Entre aqui</a></p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
