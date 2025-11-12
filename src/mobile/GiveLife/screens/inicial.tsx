@@ -6,10 +6,11 @@ import {
   useNavigation,
 } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { RootStackParamList } from "../App"; 
+import type { RootStackParamList } from "../App";
 import Cadastro from "./cadastro";
 export default function Inicial() {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   return (
     <View style={styles.fundo}>
       <View style={styles.container}>
@@ -29,7 +30,12 @@ export default function Inicial() {
           <Text style={styles.textobotao}>Cadastre-se</Text>
         </TouchableOpacity>
         {/* Botão de Login */}
-        <TouchableOpacity style={styles.botaologin}>
+        <TouchableOpacity
+          style={styles.botaologin}
+          onPress={() => {
+            navigation.navigate("Login");
+          }}
+        >
           <Text style={styles.textobotao}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.textopequeno}>
@@ -49,13 +55,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
+    width: 255,
+    height: 670,
   },
   fundo: {
     backgroundColor: "#D62828",
     justifyContent: "center",
-    height: "auto",
-    width: "auto",
+    alignItems: "center",
+    height: "100%",
+    width: "100%",
   },
   logo: {
     width: 118,
@@ -71,8 +80,8 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   botaocadastro: {
-    color: "#003049",
-    borderWidth: 5,
+    backgroundColor: "#003049",
+    borderWidth: 2,
     borderRadius: 20,
     borderColor: "#fff",
     width: 208,
@@ -81,7 +90,7 @@ const styles = StyleSheet.create({
   },
   botaologin: {
     color: "#D62828",
-    borderWidth: 5,
+    borderWidth: 2,
     borderRadius: 20,
     borderColor: "#fff",
     width: 208,

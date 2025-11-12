@@ -5,6 +5,7 @@ import Inicial from "./screens/inicial";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Cadastro from "./screens/cadastro";
+import Login from "./screens/login";
 export type RootStackParamList = {
   Inicial: undefined;
   Cadastro: undefined;
@@ -31,8 +32,10 @@ export default function App() {
           headerShown: false,
         }}
       >
+        {/* DEIXA ESSA TELA PRIMEIRO, ELA TEM QUE CARREGAR PRIMEIRO */}
         <Stack.Screen name="Inicial" component={Inicial} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name="Login" component={Login} />
       </Stack.Navigator>
     </NavigationContainer>
   );

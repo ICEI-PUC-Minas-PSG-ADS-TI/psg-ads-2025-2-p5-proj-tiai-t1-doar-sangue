@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -18,61 +18,46 @@ const SUPABASE_ANON_KEY =
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-export default function Cadastro() {
+export default function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmar, setConfirmar] = useState("");
-  const [nome, setNome] = useState("");
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Atualiza mensagem de erro se as senhas não coincidirem
-  useEffect(() => {
-    if (senha && confirmar && senha !== confirmar) {
-      setErro("As senhas não coincidem!");
-    } else {
-      setErro("");
+  const handleLogin = async () => {
+    if (!email || !senha) {
+      Alert.alert("Erro", "Por favor, preencha E-mail e Senha.");
+      return;
     }
-  }, [senha, confirmar]);
 
-  const handleSignUp = async () => {
-    if (!nome || !email || !senha || !confirmar) {
-      Alert.alert("Erro", "Preencha todos os campos!");
-      return;
-    } else if (erro) {
-      Alert.alert("Erro", erro);
-      return;
-    }
+    setErro("");
+    setLoading(true);
 
     try {
-      setLoading(true);
-
-      const { data, error } = await supabase.auth.signUp({
-        email,
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
         password: senha,
-        options: { data: { nome } },
       });
 
       setLoading(false);
 
       if (error) {
-        Alert.alert("Erro no cadastro", error.message);
+        setErro(error.message);
+        Alert.alert("Erro no Login", error.message);
         return;
-      } else
-        Alert.alert(
-          "Sucesso!",
-          "Cadastro realizado! Verifique seu e-mail para confirmar a conta."
-        );
+      }
 
-      // Limpa os campos
-      setEmail("");
-      setSenha("");
-      setConfirmar("");
-      setNome("");
+      if (data.user) {
+        Alert.alert("Sucesso!", `Bem-vindo(a), ${data.user.email}!`);
+        setEmail("");
+        setSenha("");
+        // Implementar navegação aqui
+      }
     } catch (e) {
       setLoading(false);
       const mensagem =
-        e instanceof Error ? e.message : "Erro inesperado durante o cadastro.";
+        e instanceof Error ? e.message : "Erro inesperado durante o login.";
+      setErro(mensagem);
       Alert.alert("Erro inesperado", mensagem);
     }
   };
@@ -80,29 +65,22 @@ export default function Cadastro() {
   return (
     <View style={styles.fundo}>
       <KeyboardAvoidingView
-        style={styles.container} // Aplica os estilos de flex e alinhamento
-        behavior={Platform.OS === "ios" ? "padding" : "height"} // Comportamento diferente para iOS e Android
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20} // Ajuste opcional para o topo
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
       >
-        <Text style={styles.textogrande}>Crie Sua Conta</Text>
-        <Text style={styles.textopequeno}>
-          Doe sangue, salve vidas. Juntos podemos fazer a diferença.
-        </Text>
+        <Text style={styles.textogrande}>Login</Text>
+        <Text style={styles.textopequeno}>Entre em sua conta</Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nome"
-          onChangeText={setNome}
-          placeholderTextColor="#fff"
-          value={nome}
-        />
         <TextInput
           style={styles.input}
           placeholder="E-mail"
           onChangeText={setEmail}
           placeholderTextColor="#fff"
           value={email}
+          autoCapitalize="none"
         />
+
         <TextInput
           style={styles.input}
           secureTextEntry
@@ -111,24 +89,16 @@ export default function Cadastro() {
           placeholderTextColor="#fff"
           value={senha}
         />
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          placeholder="Confirme a Senha"
-          onChangeText={setConfirmar}
-          placeholderTextColor="#fff"
-          value={confirmar}
-        />
 
         {erro ? <Text style={styles.erro}>{erro}</Text> : null}
 
         <TouchableOpacity
           style={styles.botaoconfirmar}
-          onPress={handleSignUp}
+          onPress={handleLogin}
           disabled={loading}
         >
           <Text style={styles.textobotao}>
-            {loading ? "Enviando..." : "Confirmar"}
+            {loading ? "Entrando..." : "Login"}
           </Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
