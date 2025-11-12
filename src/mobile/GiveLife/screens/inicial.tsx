@@ -1,49 +1,60 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import {
-  createStaticNavigation,
-  useNavigation,
-} from "@react-navigation/native";
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../App";
-import Cadastro from "./cadastro";
+
+const { width } = Dimensions.get("window");
+
 export default function Inicial() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View style={styles.fundo}>
-      <View style={styles.container}>
-        <Image
-          source={require("../assets/logo.png")}
-          style={styles.logo}
-        ></Image>
-        <Text style={styles.textogrande}>Olá!!!</Text>
-        <Text style={styles.textopequeno}>Faça login ou crie sua conta</Text>
-        {/* Botão de Cadastro */}
+      {/* LOGO */}
+      <Image
+        source={require("../assets/logo.png")}
+        style={styles.logo}
+        resizeMode="contain"
+      />
+
+      {/* TÍTULO PRINCIPAL */}
+      <Text style={styles.textogrande}>Olá!</Text>
+      <Text style={styles.textopequeno}>Faça login ou crie sua conta</Text>
+
+      {/* BOTÕES PRINCIPAIS */}
+      <View style={styles.botoesContainer}>
         <TouchableOpacity
           style={styles.botaocadastro}
-          onPress={() => {
-            navigation.navigate("Cadastro");
-          }}
+          onPress={() => navigation.navigate("Cadastro")}
         >
           <Text style={styles.textobotao}>Cadastre-se</Text>
         </TouchableOpacity>
-        {/* Botão de Login */}
+
         <TouchableOpacity
           style={styles.botaologin}
-          onPress={() => {
-            navigation.navigate("Login");
-          }}
+          onPress={() => navigation.navigate("Login")}
         >
           <Text style={styles.textobotao}>Login</Text>
         </TouchableOpacity>
-        <Text style={styles.textopequeno}>
-          Quer ser um dos nossos parceiros?
-        </Text>
-        {/* Botão de Parceiro */}
-        <TouchableOpacity style={styles.botaologin}>
-          <Text style={styles.textobotao}>Seja parceiro</Text>
+      </View>
+
+      {/* SEÇÃO PARCEIRO */}
+      <View style={styles.parceiroContainer}>
+        <Text style={styles.textopequeno}>Quer ser um dos nossos parceiros?</Text>
+        <TouchableOpacity
+          style={styles.botaoparceiro}
+          onPress={() => alert("Em breve!")}
+        >
+          <Text style={styles.textobotao}>Seja Parceiro</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -51,56 +62,75 @@ export default function Inicial() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "space-around",
-    width: 255,
-    height: 670,
-  },
   fundo: {
+    flex: 1,
     backgroundColor: "#D62828",
     justifyContent: "center",
     alignItems: "center",
-    height: "100%",
-    width: "100%",
+    paddingHorizontal: 20,
   },
   logo: {
-    width: 118,
-    height: 140,
+    width: width * 0.5,
+    height: width * 0.5,
+    marginBottom: 10,
   },
   textogrande: {
-    fontSize: 50,
+    fontSize: 48,
     color: "#fff",
     fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 10,
   },
   textopequeno: {
-    fontSize: 30,
+    fontSize: 20,
     color: "#fff",
+    textAlign: "center",
+    marginBottom: 25,
+    lineHeight: 26,
+  },
+  botoesContainer: {
+    width: "100%",
+    alignItems: "center",
   },
   botaocadastro: {
     backgroundColor: "#003049",
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: "#fff",
-    width: 208,
-    height: 53,
+    borderRadius: 30,
+    width: "80%",
+    height: 55,
     alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "#fff",
   },
   botaologin: {
-    color: "#D62828",
-    borderWidth: 2,
-    borderRadius: 20,
-    borderColor: "#fff",
-    width: 208,
-    height: 53,
+    backgroundColor: "transparent",
+    borderRadius: 30,
+    width: "80%",
+    height: 55,
     alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 35,
+    borderWidth: 2,
+    borderColor: "#fff",
+  },
+  botaoparceiro: {
+    backgroundColor: "transparent",
+    borderRadius: 30,
+    width: "80%",
+    height: 55,
+    alignItems: "center",
+    justifyContent: "center",
+    borderWidth: 2,
+    borderColor: "#fff",
+    marginTop: 15,
   },
   textobotao: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: 22,
     fontWeight: "bold",
-    fontFamily: "Inter",
+  },
+  parceiroContainer: {
+    alignItems: "center",
   },
 });
