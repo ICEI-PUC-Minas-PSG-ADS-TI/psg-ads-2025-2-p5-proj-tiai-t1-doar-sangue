@@ -1,0 +1,44 @@
+<div class="dashboard-page">
+  <header class="navbar-dashboard">
+    <div class="logo-area">
+      <img src="assets/logo.png " alt="Logo Give Life" class="logo-nav">
+      <span class="page-title">Tela Inicial Doador - Dashboard</span>
+    </div>
+
+    <nav class="nav-links">
+      <a (click)="agendarDoacao()" class="nav-link nav-link-active">Agendar Doação</a>
+      <a (click)="verHistorico()" class="nav-link">Histórico</a>
+      <a (click)="verNotificacoes()" class="nav-link">Notificações</a>
+      
+    </nav>
+
+    <div class="user-area">
+      <button class="btn-profile" (click)="verPerfil()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="main-content-dashboard">
+    <section class="hero-section-doador">
+      <div class="container-doador">
+        
+        <div class="message-bubble-doador">
+          <p class="message-text">Uma simples doação pode transformar histórias.</p>
+          <div class="cta-area">
+            <a (click)="agendarDoacao()" class="btn-primary-doador">Agendar Minha Doação</a>
+          </div>
+        </div>
+        
+
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+</div>

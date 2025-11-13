@@ -6,11 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { DoadorDashboardComponent } from './pages/doador/doador-dashboard.component';
 
 @NgModule({
   declarations: [
     App,
-    CadastroComponent
+    CadastroComponent,
+    DoadorDashboardComponent 
   ],
   imports: [
     BrowserModule,
