@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\mobile",
+    "\\src\\mobile\\GiveLife",
+    "\\src\\mobile\\GiveLife\\screens",
     "\\src\\Web",
     "\\src\\Web\\Web-Api",
     "\\src\\Web\\Web-Api\\DoarSangue.Api",
     "\\src\\Web\\Web-Api\\DoarSangue.Api\\Controllers",
-    "\\src\\Web\\Web-Client",
-    "\\src\\Web\\Web-Client\\DoarSangue.Client\\public",
-    "\\src\\Web\\Web-Client\\DoarSangue.Client\\src",
-    "\\src\\Web\\Web-Client\\DoarSangue.Client\\src\\app"
+    "\\src\\Web\\Web-Api\\DoarSangue.Api\\Models"
   ],
-  "SelectedNode": "\\src",
+  "SelectedNode": "\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.sln",
   "PreviewInSolutionExplorer": false
 }

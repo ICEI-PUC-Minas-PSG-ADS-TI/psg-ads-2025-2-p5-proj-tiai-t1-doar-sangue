@@ -1254,11 +1254,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\DoarSangue.Api.csproj",
+      "projectUniqueName": "C:\\Users\\samyr\\Source\\Repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
       "projectName": "DoarSangue.Api",
-      "projectPath": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\DoarSangue.Api.csproj",
+      "projectPath": "C:\\Users\\samyr\\Source\\Repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
       "packagesPath": "C:\\Users\\samyr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\obj\\",
+      "outputPath": "C:\\Users\\samyr\\Source\\Repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
