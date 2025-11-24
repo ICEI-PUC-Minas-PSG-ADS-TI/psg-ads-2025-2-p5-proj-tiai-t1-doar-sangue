@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doador - Give Life</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./doador.component.css">
+</head>
+
+<body>
+
+  <main>
+    <section class="doador-section">
+      <div class="layout">
+
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="sidebar">
+          <img src="/psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue/src/Web/Web-Client/DoarSangue.Client/public/Logo GiveLife.png"
+            class="logo" alt="Logo Give Life">
+
+          <h2>Bem-vindo, Doador!</h2>
+          <p class="descricao">Acompanhe locais e agende sua próxima doação.</p>
+
+          <a routerLink="/login" class="btn-sair">Sair</a>
+
+          <p class="edit-info">Deseja atualizar seus dados?</p>
+          <a routerLink="/cadastro" class="btn-editar">Editar Perfil</a>
+        </aside>
+
+        <!-- ========== CONTEÚDO ========== -->
+        <div class="conteudo">
+
+          <!-- MAPA -->
+          <section class="card mapa-card">
+            <h3>Instituições Próximas</h3>
+
+            <div id="mapa-google" class="mapa" #mapContainer></div>
+
+            <button class="btn-primario">Agendar Doação</button>
+          </section>
+
+          <!-- INSTITUIÇÕES -->
+          <section class="card instituicoes-card">
+            <h3>Instituições de Doação</h3>
+
+            <div class="lista-instituicoes">
+
+              <div class="card-instituicao">
+                <img src="assets/images/instituto3.jfif" alt="Instituição Ihene">
+                <h4>Instituição Ihene</h4>
+                <p>Rua A, 123</p>
+                <p>(31) 1234-5678</p>
+              </div>
+
+              <div class="card-instituicao">
+                <img src="assets/images/instituto1.png" alt="Instituição Sabin">
+                <h4>Instituição Sabin</h4>
+                <p>Rua B, 456</p>
+                <p>(31) 8765-4321</p>
+              </div>
+
+              <div class="card-instituicao">
+                <img src="assets/images/Instituto2.jpg" alt="Instituição Hermece">
+                <h4>Instituição Hermece</h4>
+                <p>Rua C, 789</p>
+                <p>(31) 1122-3344</p>
+              </div>
+
+            </div>
+
+            <button class="btn-secundario">Informações sobre Doação</button>
+          </section>
+
+          <!-- DEPOIMENTOS -->
+          <section class="card depoimentos-card">
+            <h3>Depoimentos</h3>
+
+            <div class="lista-depoimentos">
+
+              <div class="depoimento">
+                <img src="assets/images/user1.png" alt="Usuário 1">
+                <p>"Nunca pensei que doar sangue seria tão acessível..."</p>
+                <span>- Ana</span>
+              </div>
+
+              <div class="depoimento">
+                <img src="assets/images/user2.png" alt="Usuário 2">
+                <p>"Doar foi uma experiência transformadora..."</p>
+                <span>- Carlos</span>
+              </div>
+
+              <div class="depoimento">
+                <img src="assets/images/user3.jpeg" alt="Usuário 3">
+                <p>"Quando minha mãe precisou de uma transfusão..."</p>
+                <span>- Larissa</span>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+
+</body>
+
+</html>
