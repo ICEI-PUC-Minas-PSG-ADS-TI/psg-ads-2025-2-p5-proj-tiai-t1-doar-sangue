@@ -8,10 +8,14 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { createClient } from "@supabase/supabase-js";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../App";
 
-// ⚠️ Nunca suba essas chaves em repositórios públicos!
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2Z3dxcGZvdXFmbndoYWtkdWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyOTI2ODUsImV4cCI6MjA3Nzg2ODY4NX0.fJdeZhBz6_ASOXevFhw0MpmXi2Fs7Nv5KRTI4Sexnrw";
@@ -19,14 +23,15 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Cadastro() {
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmar, setConfirmar] = useState("");
-  const [nome, setNome] = useState("");
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Atualiza mensagem de erro se as senhas não coincidirem
   useEffect(() => {
     if (senha && confirmar && senha !== confirmar) {
       setErro("As senhas não coincidem!");
@@ -46,153 +51,185 @@ export default function Cadastro() {
 
     try {
       setLoading(true);
-
       const { data, error } = await supabase.auth.signUp({
         email,
         password: senha,
         options: { data: { nome } },
       });
 
-      setLoading(false);
-
       if (error) {
         Alert.alert("Erro no cadastro", error.message);
-        return;
-      } else
-        Alert.alert(
-          "Sucesso!",
-          "Cadastro realizado! Verifique seu e-mail para confirmar a conta."
-        );
-
-      // Limpa os campos
-      setEmail("");
-      setSenha("");
-      setConfirmar("");
-      setNome("");
+      } else {
+        Alert.alert("Sucesso!", "Verifique seu e-mail para confirmar a conta.");
+        navigation.navigate("Login");
+      }
     } catch (e) {
-      setLoading(false);
       const mensagem =
         e instanceof Error ? e.message : "Erro inesperado durante o cadastro.";
       Alert.alert("Erro inesperado", mensagem);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <View style={styles.fundo}>
-      <KeyboardAvoidingView
-        style={styles.container} // Aplica os estilos de flex e alinhamento
-        behavior={Platform.OS === "ios" ? "padding" : "height"} // Comportamento diferente para iOS e Android
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20} // Ajuste opcional para o topo
-      >
-        <Text style={styles.textogrande}>Crie Sua Conta</Text>
+    <KeyboardAvoidingView
+      style={styles.fundo}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <View style={styles.container}>
+        <Text style={styles.textogrande}>Crie sua conta</Text>
         <Text style={styles.textopequeno}>
           Doe sangue, salve vidas. Juntos podemos fazer a diferença.
         </Text>
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nome"
-          onChangeText={setNome}
-          placeholderTextColor="#fff"
-          value={nome}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="E-mail"
-          onChangeText={setEmail}
-          placeholderTextColor="#fff"
-          value={email}
-        />
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          placeholder="Senha"
-          onChangeText={setSenha}
-          placeholderTextColor="#fff"
-          value={senha}
-        />
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          placeholder="Confirme a Senha"
-          onChangeText={setConfirmar}
-          placeholderTextColor="#fff"
-          value={confirmar}
-        />
+        <View style={styles.inputContainer}>
+          <MaterialIcons name="person" size={24} color="#fff" />
+          <TextInput
+            style={styles.input}
+            placeholder="Nome completo"
+            placeholderTextColor="#fff"
+            value={nome}
+            onChangeText={setNome}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <MaterialIcons name="email" size={24} color="#fff" />
+          <TextInput
+            style={styles.input}
+            placeholder="E-mail"
+            placeholderTextColor="#fff"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <MaterialIcons name="lock" size={24} color="#fff" />
+          <TextInput
+            style={styles.input}
+            placeholder="Senha"
+            placeholderTextColor="#fff"
+            secureTextEntry
+            value={senha}
+            onChangeText={setSenha}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <MaterialIcons name="lock-outline" size={24} color="#fff" />
+          <TextInput
+            style={styles.input}
+            placeholder="Confirmar senha"
+            placeholderTextColor="#fff"
+            secureTextEntry
+            value={confirmar}
+            onChangeText={setConfirmar}
+          />
+        </View>
 
         {erro ? <Text style={styles.erro}>{erro}</Text> : null}
 
         <TouchableOpacity
-          style={styles.botaoconfirmar}
+          style={[styles.botaoconfirmar, loading && { opacity: 0.7 }]}
           onPress={handleSignUp}
           disabled={loading}
         >
-          <Text style={styles.textobotao}>
-            {loading ? "Enviando..." : "Confirmar"}
-          </Text>
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.textobotao}>Cadastrar</Text>
+          )}
         </TouchableOpacity>
-      </KeyboardAvoidingView>
-    </View>
+
+        <Text style={styles.textoInferior}>
+          Já tem uma conta?{" "}
+          <Text
+            style={styles.link}
+            onPress={() => navigation.navigate("Login")}
+          >
+            Faça login
+          </Text>
+        </Text>
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
   fundo: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "#fff",
+    flex: 1,
+    backgroundColor: "#ffffffff",
+    justifyContent: "center",
     alignItems: "center",
   },
   container: {
-    flex: 1,
-    justifyContent: "center",
+    width: "85%",
+    backgroundColor: "#003049",
+    borderRadius: 20,
+    padding: 30,
     alignItems: "center",
-    margin: 20,
   },
   textogrande: {
-    fontSize: 50,
-    color: "#003049",
+    fontSize: 34,
+    color: "#fff",
     fontWeight: "bold",
+    marginBottom: 10,
   },
   textopequeno: {
-    alignSelf: "center",
-    fontSize: 22,
-    color: "#003049",
+    fontSize: 16,
+    color: "#fff",
+    marginBottom: 25,
     textAlign: "center",
-    marginBottom: 20,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#002233",
+    borderRadius: 10,
+    marginVertical: 8,
+    width: "100%",
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: "#fff",
   },
   input: {
-    width: 377,
-    height: 55,
-    backgroundColor: "#003049",
+    flex: 1,
     color: "#fff",
-    borderColor: "#fff",
-    borderWidth: 2,
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    marginVertical: 5,
+    paddingLeft: 8,
+    fontSize: 16,
+    height: 50,
   },
   botaoconfirmar: {
     backgroundColor: "#D62828",
-    borderWidth: 3,
-    borderRadius: 20,
-    borderColor: "#fff",
-    width: 208,
-    height: 53,
+    borderRadius: 12,
+    width: "70%",
+    height: 50,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 25,
   },
   textobotao: {
     color: "#fff",
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: "bold",
   },
   erro: {
-    color: "red",
-    fontSize: 16,
+    color: "#ffcccc",
+    fontSize: 14,
     marginTop: 5,
-    fontWeight: "bold",
     textAlign: "center",
+  },
+  textoInferior: {
+    color: "#fff",
+    fontSize: 16,
+    marginTop: 20,
+  },
+  link: {
+    color: "#FFD166",
+    fontWeight: "bold",
   },
 });
