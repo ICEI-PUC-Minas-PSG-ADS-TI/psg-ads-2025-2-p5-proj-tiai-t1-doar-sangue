@@ -1,0 +1,115 @@
+
+# 3. Especificações do Projeto
+
+<span style="color:red">Pré-requisitos: <a href="2-Planejamento-Projeto.md"> Planejamento do Projeto do Software (Cronograma) </a></span>
+
+> Nesta seção, estão detalhados os requisitos do seu sistema e as restrições do projeto, organizando as funcionalidades e características que a solução deve ter.
+
+---
+
+## 3.1 Requisitos Funcionais
+
+O Quadro abaixo contem os requisitos funcionais que **detalham as funcionalidades que seu sistema deverá oferecer**.
+
+
+|ID     | Descrição do Requisito                                                                                          | Prioridade |
+|-------|-----------------------------------------------------------------------------------------------------------------|------------|
+|RF-01  | O sistema deve permitir que os usuários criem uma conta informando nome, e-mail, senha e endereço.              | ALTA  | 
+|RF-02  |O sistema deve permitir o controle de estoque de sangue, registrando e organizando as unidades de acordo com os   diferentes tipos sanguíneos| MÉDIA |
+|RF-03  |O sistema deve garantir que apenas usuários autorizados (como administradores e profissionais de saúde)possam acessar dados sensíveis.| ALTA  |
+|RF-04  |	O sistema deve gerar relatórios sobre número de doações por período.                                                        | MÉDIA  |
+|RF-05  | O sistema deve mostrar informações de contato e horários de funcionamento dos postos.                                                        | ALTA |
+|RF-06  | O sistema deve disponibilizar um questionário prévio de triagem para avaliar se o usuário está apto a doar sangue                                                        | ALTA  |
+|RF-07  | O sistema deve permitir que o doador agende data e hora para realizar a doação.                                                        | ALTA  |
+|RF-08  | O usuário deve poder consultar seu histórico de doações.                                                        | BAIXA  |
+
+---
+
+## 3.2 Histórias de Usuário
+
+<div style="border: 2px dashed #999999; padding: 15px; margin: 10px 0;">
+  
+<!-- Espaço para escrever o texto -->  
+> **História 1 (relacionada ao Requisito RF-001):**  
+Como doador de sangue, eu quero criar uma conta informando meu nome, e-mail, senha e endereço, para que eu possa acessar os recursos da plataforma e agendar doações.
+>  
+> **História 2 (relacionada ao Requisito RF-001):**  
+Como administrador, eu quero visualizar e gerenciar os cadastros de doadores, para que eu possa validar as informações e garantir a integridade dos registros.
+>  
+> **História 3 (relacionada ao Requisito RF-002):**  
+Como profissional de saúde, quero registrar novas unidades de sangue para manter o estoque atualizado.
+>  
+> **História 4 (relacionada ao Requisito RF-002):**  
+Como profissional de saúde, quero atualizar unidades existentes para corrigir informações ou refletir alterações.
+>  
+> **História 5 (relacionada ao Requisito RF-002):**  
+Como doador, eu quero visualizar os tipos sanguíneos em maior necessidade, para que eu possa direcionar minha doação conforme a urgência dos hospitais.
+>  
+> **História 6 (relacionada ao Requisito RF-003):**  
+Como administrador, eu quero gerenciar as permissões de acesso ao sistema, para que apenas usuários autorizados possam visualizar dados sensíveis.
+>  
+> **História 7 (relacionada ao Requisito RF-003):**  
+Como profissional de saúde, eu quero acessar relatórios com dados confidenciais sobre doadores e estoques, para que eu possa tomar decisões clínicas com segurança.
+>  
+> **História 8 (relacionada ao Requisito RF-003):**  
+Como usuário comum (doador), eu quero ter acesso apenas às minhas informações pessoais, para que meus dados sensíveis fiquem protegidos de acessos indevidos.
+
+> **História 9 (relacionada ao Requisito RF-002):**  
+Como profissional de saúde, quero remover unidades expiradas ou inválidas para que o estoque seja confiável.
+
+
+
+</div>
+
+---
+
+## 3.3 Requisitos Não Funcionais
+
+Preencha o Quadro abaixo com os requisitos não funcionais que definem **características desejadas para o sistema que irão desenvolver**, como desempenho, segurança, usabilidade, etc.
+
+|ID     | Descrição do Requisito                                                                              |Prioridade |
+|-------|-----------------------------------------------------------------------------------------------------|-----------|
+|RNF-01 | O sistema deve carregar as páginas em até 3 segundos para garantir uma boa experiência ao usuário.  | MÉDIA     | 
+|RNF-02 | O sistema deve proteger as informações dos clientes por meio de criptografia e medidas de segurança.| ALTA      | 
+|RNF-03 | A sistema deve ter uma interface simples e intuitiva adequada a usuários com pouca experiência em tecnologia.  | ALTA  |
+|RNF-04 | O sistema deve ser responsivo se adptando a diferentes tamanhos de tela e dispositivos móveis.   | MÉDIA  |
+
+---
+
+## 3.4 Restrições do Projeto
+
+> Estas são limitações externas que estão impostas ao projeto obedecidas durante o desenvolvimento. Elas estão relacionadas a prazos, tecnologias obrigatórias ou proibidas, ambiente de execução, normas legais ou políticas internas do projeto.
+
+| ID  | Restrição                                                              |
+|------|-----------------------------------------------------------------------|
+| R-01   | O projeto deverá ser entregue até o final do semestre.              |
+| R-02   | A plataforma deve seguir as diretrizes e regulamentações do Ministério da Saúde e da Anvisa referentes à coleta e doação de sangue no Brasil, garantindo a conformidade legal.|
+| R-03   | O sistema deve ser acessível via web, compatível com navegadores modernos (Chrome, Firefox, Safari e Edge) e com interface responsiva para dispositivos móveis.|
+| R-04   | O uso de dados de pacientes, doadores e instituições deve estar em total conformidade com a Lei Geral de Proteção de Dados (LGPD), garantindo a segurança e a privacidade das informações.|
+| R-05   |A plataforma deve integrar-se com sistemas de agendamento de hemocentros parceiros ou hospitais, exigindo a utilização de APIs compatíveis.|
+| R-06   | O sistema deve suportar um volume de usuários e acessos que atenda a demanda em períodos de pico, como em campanhas de doação ou desastres naturais, sem comprometer o desempenho.|
+
+---
+## 3.5 Regras de Negócio
+
+> Estas são as condições e políticas que o sistema deve seguir para garantir o correto funcionamento alinhado ao propósito do projeto e legislação.  
+
+---
+
+ A tabela abaixo esta preenchida com as regras de negócio que **impactam o projeto**.
+
+|ID    | Regra de Negócio                                                       |
+|-------|-----------------------------------------------------------------------|
+|RN-01 | Se o doador tiver entre 16 e 17 anos, então ele precisará de autorização formal dos responsáveis para se cadastrar e agendar uma doação. Isso garante a conformidade com a legislação de doação de sangue para menores de idade.|
+|RN-02 | Se o doador potencial informar que pesa menos de 50 kg ou não atende aos requisitos básicos de saúde, então a plataforma deve impedi-lo de agendar a doação e exibir uma mensagem informativa sobre os critérios de doação. Isso evita agendamentos inviáveis e direciona o usuário corretamente.|
+|RN-03 | Se o doador tentar agendar uma doação e houver uma restrição temporária (ex: doou há menos de 60 dias para homens ou 90 para mulheres), então o sistema deve bloquear o agendamento e informar a data mínima em que ele poderá doar novamente. Isso é crucial para a saúde do doador e a qualidade da doação.|
+|RN-04 | Se um hemocentro ou hospital parceiro atualizar seus estoques de sangue, então a plataforma deve refletir essa mudança em tempo real para os doadores, destacando os tipos sanguíneos em nível crítico com alertas visuais. Isso serve para direcionar as doações para onde são mais necessárias.|
+|RN-05 | Se a data e horário de agendamento escolhidos por um doador já estiverem lotados no hemocentro, então o sistema deve informar a indisponibilidade e sugerir horários alternativos. Isso otimiza o fluxo de doadores e o atendimento nas unidades de coleta.|
+|RN-06 | Se uma campanha de doação para um tipo sanguíneo específico for lançada por uma instituição, então os doadores cadastrados que possuírem esse tipo sanguíneo devem ser notificados por e-mail ou notificação no aplicativo. Isso aumenta o engajamento e a eficácia das campanhas.|
+|RN-07 | Se um doador potencial concluir o cadastro com todos os dados obrigatórios e cumprir os critérios de doação, então o sistema deve permitir o agendamento da primeira doação.|
+|RN-08 | Se uma instituição de saúde for cadastrada, então a equipe responsável deve ser designada como administrador da conta, com permissão para gerenciar a agenda, o estoque de sangue e as campanhas de doação.|
+
+---
+> **Links Úteis**:
+> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
+> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
