@@ -35,6 +35,7 @@ body, html {
 .sidebar .logo {
   width: 110px;
   margin-bottom: 15px;
+  border-radius: 35px;
 }
 
 .sidebar h2 {
