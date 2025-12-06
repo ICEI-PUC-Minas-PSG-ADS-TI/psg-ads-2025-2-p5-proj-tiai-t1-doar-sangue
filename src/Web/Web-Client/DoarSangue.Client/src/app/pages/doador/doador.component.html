@@ -8,6 +8,28 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./doador.component.css">
+
+  <!-- GOOGLE MAPS SCRIPT -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbLeUbVujoqQzfQg8PVGcbl_pzpoz0WgI" defer></script>
+  <script defer>
+    function initMap() {
+      const location = { lat: -19.8157, lng: -43.9542 }; // Exemplo: Lagoa Santa
+
+      const map = new google.maps.Map(document.getElementById("mapa-google"), {
+        zoom: 14,
+        center: location,
+      });
+
+      new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Posto de Doação Central",
+      });
+    }
+
+    window.onload = initMap;
+  </script>
+
 </head>
 
 <body>
@@ -23,11 +45,27 @@
 
           <h2>Bem-vindo, Doador!</h2>
           <p class="descricao">Acompanhe locais e agende sua próxima doação.</p>
+<div class="sidebar-section">
+  <h3 class="sidebar-title">Minha Conta</h3>
 
-          <a routerLink="/login" class="btn-sair">Sair</a>
+  <ul class="sidebar-menu">
+    <li routerLink="/dados-pessoais">Dados Pessoais</li>
+    <li routerLink="/notificacoes">Notificações</li>
+    <li routerLink="/privacidade">Privacidade</li>
+    <li routerLink="/agendamentos">Agendamentos</li>
+  </ul>
+</div>
+<!--  - CONFIGURAÇÕES -->
+<div class="sidebar-section">
+  <h3 class="sidebar-title">Configurações</h3>
 
-          <p class="edit-info">Deseja atualizar seus dados?</p>
-          <a routerLink="/cadastro" class="btn-editar">Editar Perfil</a>
+  <ul class="sidebar-menu">
+    <li routerLink="/seguranca">Segurança</li>
+    <li routerLink="/preferencias">Preferências</li>
+    <li routerLink="/acessibilidade">Acessibilidade</li>
+  </ul>
+</div>
+
         </aside>
 
         <!-- ========== CONTEÚDO ========== -->
@@ -37,7 +75,8 @@
           <section class="card mapa-card">
             <h3>Instituições Próximas</h3>
 
-            <div id="mapa-google" class="mapa" #mapContainer></div>
+            <!-- DIV DO MAPA COM ID CORRETO -->
+            <div id="mapa-google" class="mapa"></div>
 
             <button class="btn-primario">Agendar Doação</button>
           </section>
@@ -51,22 +90,25 @@
               <div class="card-instituicao">
                 <img src="assets/images/instituto3.jfif" alt="Instituição Ihene">
                 <h4>Instituição Ihene</h4>
-                <p>Rua A, 123</p>
-                <p>(31) 1234-5678</p>
+                <p><strong>Endereço:</strong> Rua A, 123</p>
+                <p><strong>Telefone:</strong> (31) 1234-5678</p>
+                <p><strong>Horário:</strong> Seg–Sex: 08h–18h</p>
               </div>
 
               <div class="card-instituicao">
                 <img src="assets/images/instituto1.png" alt="Instituição Sabin">
                 <h4>Instituição Sabin</h4>
-                <p>Rua B, 456</p>
-                <p>(31) 8765-4321</p>
+                <p><strong>Endereço:</strong> Rua B, 456</p>
+                <p><strong>Telefone:</strong> (31) 8765-4321</p>
+                <p><strong>Horário:</strong> Seg–Sáb: 08h–17h</p>
               </div>
 
               <div class="card-instituicao">
                 <img src="assets/images/Instituto2.jpg" alt="Instituição Hermece">
                 <h4>Instituição Hermece</h4>
-                <p>Rua C, 789</p>
-                <p>(31) 1122-3344</p>
+                <p><strong>Endereço:</strong> Rua C, 789</p>
+                <p><strong>Telefone:</strong> (31) 1122-3344</p>
+                <p><strong>Horário:</strong> Seg–Sex: 07h–19h</p>
               </div>
 
             </div>

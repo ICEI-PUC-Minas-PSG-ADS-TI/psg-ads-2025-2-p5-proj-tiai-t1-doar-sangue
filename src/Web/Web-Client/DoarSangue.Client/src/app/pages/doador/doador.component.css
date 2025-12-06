@@ -265,4 +265,46 @@ footer {
   .card-instituicao {
     width: 100%;
   }
+}/* ===== MINHA CONTA - NOVA SEÇÃO ===== */
+
+.sidebar-section {
+  width: 100%;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  text-align: left;
 }
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #065e5e;
+  margin-bottom: 10px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-menu li {
+  padding: 10px 5px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.sidebar-menu li:hover {
+  background: #e6f7f3;
+  color: #065e5e;
+  transform: translateX(4px);
+  font-weight: 600;
+}
+.sidebar-section + .sidebar-section {
+  margin-top: 30px;
+}
+
