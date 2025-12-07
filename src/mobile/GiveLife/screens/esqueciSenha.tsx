@@ -1,4 +1,4 @@
-// screens/login.tsx
+// screens/esqueciSenha.tsx
 
 import React, { useState } from "react";
 import {
@@ -10,11 +10,11 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
-  ActivityIndicator,
   SafeAreaView,
+  ActivityIndicator,
 } from "react-native";
 import { createClient } from "@supabase/supabase-js";
-import { useNavigation } from "@react-navigation/native"; 
+import { useNavigation } from "@react-navigation/native";
 
 // ⚠️ Seus dados de conexão do Supabase
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
@@ -23,52 +23,54 @@ const SUPABASE_ANON_KEY =
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-export default function Login() {
+// Função auxiliar para validação de e-mail
+const isValidEmail = (email) => {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return regex.test(email);
+};
+
+export default function EsqueciSenha() {
   const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSignIn = async () => {
-    if (!email || !senha) {
-      Alert.alert("Erro", "Preencha o e-mail e a senha.");
+  const handlePasswordReset = async () => {
+    if (!email || !isValidEmail(email)) {
+      Alert.alert("Erro", "Por favor, insira um e-mail válido.");
       return;
     }
 
     try {
       setLoading(true);
 
-      // Chama a função de login do Supabase
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password: senha,
+      // 🎯 CHAMADA CRÍTICA: Usa o Deep Link configurado no App.js e no painel do Supabase
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: 'givlife://reset-password', 
       });
 
       setLoading(false);
 
       if (error) {
-        // O Supabase retorna mensagens úteis para senhas incorretas, etc.
-        Alert.alert("Erro no Login", error.message);
-        return;
+        // Logar o erro interno, mas dar a mensagem genérica ao usuário por segurança
+        console.error("Erro ao solicitar redefinição:", error.message);
       }
+
+      // Mensagem de sucesso/genérica (sem confirmar se o e-mail existe, por segurança)
+      Alert.alert(
+        "E-mail Enviado!",
+        "Se este e-mail estiver cadastrado, você receberá um link para redefinir sua senha. Verifique sua caixa de spam e siga as instruções."
+      );
       
-      // Sucesso no login
-      Alert.alert("Sucesso!", "Login realizado com sucesso!");
-      // ⚠️ Substitua 'Home' pelo nome da sua rota principal após o login
-      // navigation.navigate('Home'); 
+      setEmail("");
+      // navigation.goBack(); // Opcional: voltar para a tela de Login após envio
 
     } catch (e) {
       setLoading(false);
       const mensagem =
-        e instanceof Error ? e.message : "Erro inesperado durante o login.";
+        e instanceof Error ? e.message : "Erro inesperado durante a solicitação.";
       Alert.alert("Erro inesperado", mensagem);
     }
-  };
-
-  const goToForgotPassword = () => {
-    // 🎯 Navega para a tela de solicitação de redefinição
-    navigation.navigate('EsqueciSenha'); 
   };
 
   return (
@@ -78,74 +80,46 @@ export default function Login() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 20}
       >
-        
         {/* BOTÃO DE VOLTAR */}
         <TouchableOpacity
           style={styles.botaoVoltar}
           onPress={() => navigation.goBack()}
-          disabled={loading}
         >
-          <Text style={styles.textoVoltar}>{"Voltar"}</Text>
+          <Text style={styles.textoVoltar}>{"< Voltar"}</Text>
         </TouchableOpacity>
 
-        <Text style={styles.textogrande}>Bem-vindo de Volta!</Text>
+        <Text style={styles.textogrande}>Esqueceu a Senha?</Text>
         <Text style={styles.textopequeno}>
-          Entre para continuar salvando vidas.
+          Insira seu e-mail de cadastro abaixo e enviaremos um link seguro para você redefinir sua senha.
         </Text>
 
         <TextInput
           style={styles.input}
-          placeholder="E-mail"
+          placeholder="E-mail de Cadastro"
           onChangeText={setEmail}
           placeholderTextColor="#666"
           keyboardType="email-address"
           value={email}
           autoCapitalize="none"
         />
-        <TextInput
-          style={styles.input}
-          secureTextEntry
-          placeholder="Senha"
-          onChangeText={setSenha}
-          placeholderTextColor="#666"
-          value={senha}
-        />
-
-        {/* LINK DE ESQUECI MINHA SENHA */}
-        <TouchableOpacity 
-          style={styles.forgotPasswordButton} 
-          onPress={goToForgotPassword}
-          disabled={loading}
-        >
-          <Text style={styles.forgotPasswordText}>Esqueci minha senha</Text>
-        </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.botaoconfirmar}
-          onPress={handleSignIn}
+          onPress={handlePasswordReset}
           disabled={loading}
         >
           <Text style={styles.textobotao}>
-            {loading ? <ActivityIndicator size="small" color="#fff" /> : "Login"}
+            {loading ? <ActivityIndicator size="small" color="#fff" /> : "Enviar Link de Redefinição"}
           </Text>
         </TouchableOpacity>
-
-        {/* Link para cadastro de doador (retorna à tela inicial ou vai para cadastro) */}
-        <TouchableOpacity
-          style={styles.linkCadastro}
-          onPress={() => navigation.navigate('Cadastro')}
-          disabled={loading}
-        >
-          <Text style={styles.linkCadastroText}>Não tem conta? Cadastre-se</Text>
-        </TouchableOpacity>
-
+        
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }
 
 // -------------------------------------------------------------------
-// Estilos
+// Estilos (Reutilizando seu padrão)
 const styles = StyleSheet.create({
   fundo: {
     flex: 1,
@@ -164,13 +138,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start', 
     padding: 10,
     marginBottom: 0, 
-    marginTop: 50, 
+    marginTop: 20, 
   },
   textoVoltar: {
     fontSize: 18, 
     fontWeight: '600',
     color: '#003049',
-    textDecorationLine: 'underline',
   },
   textogrande: {
     fontSize: 32,
@@ -204,16 +177,6 @@ const styles = StyleSheet.create({
     shadowRadius: 1.0,
     elevation: 1,
   },
-  forgotPasswordButton: {
-    alignSelf: 'flex-end',
-    padding: 5,
-    marginTop: 5,
-  },
-  forgotPasswordText: {
-    fontSize: 14,
-    color: '#003049',
-    textDecorationLine: 'underline',
-  },
   botaoconfirmar: {
     backgroundColor: "#D62828", 
     borderWidth: 0,
@@ -234,13 +197,4 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
   },
-  linkCadastro: {
-    marginTop: 20,
-    padding: 10,
-  },
-  linkCadastroText: {
-    color: "#003049",
-    fontSize: 16,
-    textDecorationLine: 'underline',
-  }
 });
