@@ -1,0 +1,66 @@
+[
+  {
+    "ContainingType": "DoarSangue.Api.Controllers.PostoDeColetaController",
+    "Method": "Cadastrar",
+    "RelativePath": "api/PostoDeColeta",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DoarSangue.Api.DTOs.PostoDeColetaDTOs.PostoDeColetaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoarSangue.Api.Controllers.PostoDeColetaController",
+    "Method": "Login",
+    "RelativePath": "api/PostoDeColeta/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DoarSangue.Api.DTOs.PostoDeColetaDTOs.PostoDeColetaLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoarSangue.Api.Controllers.UsuarioController",
+    "Method": "Cadastrar",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DoarSangue.Api.DTOs.UsuarioDTOs.UsuarioRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "DoarSangue.Api.Controllers.UsuarioController",
+    "Method": "Login",
+    "RelativePath": "api/Usuario/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DoarSangue.Api.DTOs.UsuarioDTOs.UsuarioLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

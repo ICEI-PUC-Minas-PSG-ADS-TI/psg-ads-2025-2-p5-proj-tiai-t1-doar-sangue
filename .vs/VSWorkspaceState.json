@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\mobile",
+    "\\src\\mobile\\GiveLife",
+    "\\src\\mobile\\GiveLife\\screens",
+    "\\src\\Web",
+    "\\src\\Web\\Web-Api",
+    "\\src\\Web\\Web-Api\\DoarSangue.Api",
+    "\\src\\Web\\Web-Api\\DoarSangue.Api\\Controllers",
+    "\\src\\Web\\Web-Api\\DoarSangue.Api\\Models"
+  ],
+  "SelectedNode": "\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.sln",
+  "PreviewInSolutionExplorer": false
+}

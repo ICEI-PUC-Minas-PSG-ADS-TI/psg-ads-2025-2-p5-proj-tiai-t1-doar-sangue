@@ -6,13 +6,8 @@
 **ARQUITETURA DO SOFTWARE**
 ## 4.1. Arquitetura da Solução
 
-Nesta seção, descreva como os componentes do sistema se organizam e interagem.  
-Inclua um **diagrama de arquitetura** mostrando módulos, camadas e tecnologias utilizadas.
-
-**Orientações:**
-- Indique quais módulos compõem a solução (ex.: frontend, backend, banco de dados, APIs externas).
-- Especifique as tecnologias e frameworks adotados (ex.: React, Node.js, MySQL).
-- Explique como ocorre a comunicação entre os módulos.
+Nesta seção, estam descritos como os componentes do sistema se organizam e interagem.  
+Um **diagrama de arquitetura** mostras módulos, camadas e tecnologias utilizadas.
 
 **Exemplo de diagrama:**
  
@@ -80,20 +75,69 @@ Eles ajudam a planejar, comunicar ideias e validar a interface com antecedência
 
 📌 **Entrega:** incluir imagens ou links para os wireframes/mockups.
 
-**Wireframe 1 — Tela Principal**  
+**Wireframe 1 — Tela de Dados do Doador**
+
 ![alt text](./images/Home_Desktop.png)
+
+
+**Wireframe — Tela Principal Doador** 
+
 .![alt text](./images/tela%20inicial%20do%20usuario.jpeg)
 
 
-**Wireframe 2 — Tela de Login**  
-
+**Wireframe — Tela de Login Doador**  
 
 ![alt text](./images/Inicio_Desktop.png)
 
 
-**Wireframe 2 — Tela de Campanha**  
+**Wireframe — Tela de Campanhas**  
 
 ![alt text](./images/Campanhas_Desktop.png)
+
+
+**Wireframe — Tela de Agendar Doação**  
+
+![alt text](./images/Agendar_Doador_Mobile.png)
+
+
+**Wireframe 2 — Tela de Cadastro Doador Mobile**  
+
+![alt text](./images/Cadastro_Doador_Mobile.png)
+
+
+**Wireframe 2 — Tela de Cadastro Empresas Mobile**  
+
+![alt text](./images/Cadastro_Empresa_Mobile.png)
+
+
+**Wireframe 2 — Tela de Cadastro Empresas Desktop**  
+
+![alt text](./images/Cadastro_Empresa_desktop.png)
+
+
+**Wireframe 2 — Tela de Campanhas Mobile**  
+
+![alt text](./images/Campanhas.png)
+
+
+**Wireframe 2 — Tela de DashBoard Empresas**  
+
+![alt text](./images/Dashboard_Empresa_Desktop.png)
+
+
+**Wireframe 2 — Tela de DeshBoard Empresas Mobile**  
+
+![alt text](./images/Dashboard_Instituicao_Mobile.png)
+
+
+**Wireframe 2 — Tela de Nova Campanha DeskTop**  
+
+![alt text](./images/Nova_Campanha_Desktop.png)
+
+
+**Wireframe 2 — Tela Inicial Mobile**  
+
+![alt text](./images/Inicio_Mobile.png)
 
 ---
 **UML**
@@ -112,44 +156,19 @@ O diagrama de classes ilustra graficamente como será a estrutura do software, e
 
 A solução proposta exige um banco de dados capaz de armazenar e relacionar as informações necessárias para os processos mapeados, garantindo integridade e controle de acesso por perfil de usuário.
 
-O desenvolvimento deve seguir **três etapas**:
-
----
-
 ### 4.4.1 Diagrama Entidade-Relacionamento (DER)
 
 O **Diagrama Entidade-Relacionamento (DER)** descreve as entidades, atributos e relacionamentos do sistema.  
-Utilize a ferramenta **[BR Modelo Web](https://www.brmodeloweb.com/lang/pt-br/index.html)** para criar o diagrama.
-
-**Orientações:**
-- Todas as entidades devem possuir chave primária.
-- Relacionamentos devem estar corretamente cardinalizados.
-- O diagrama deve contemplar todas as funcionalidades levantadas nos processos de negócio.
-
-**Exemplo de imagem:**
-
-![Diagrama ER - Exemplo](./images/DER.png)
-
-📌 **Entrega:** gere o diagrama no BR Modelo, exporte em **.png** e inclua-o nesta seção.
-
 
 ---
+
+![Diagrama ER](./images/DERGiveLife.png)
 
 ### 4.4.2 Esquema Relacional
 
 O **Esquema Relacional** converte o Modelo ER para tabelas relacionais, incluindo chaves primárias, estrangeiras e restrições de integridade.  
-Utilize o **[MySQL Workbench](https://www.mysql.com/products/workbench/)** para gerar o diagrama de tabelas (Modelo Lógico).
 
-**Orientações:**
-- Inclua todos os atributos das entidades.
-- Defina tipos de dados adequados para cada campo.
-- Configure as restrições de integridade (NOT NULL, UNIQUE, FOREIGN KEY, etc.).
-
-📌 **Entrega:** exporte o diagrama do Workbench e adicione a imagem aqui.
-
-**Exemplo de imagem:**
-
-![Esquema Relacional - Exemplo](./images/TabelasBD.png)
+![Esquema Relacional](./images/ModeloLogico.jpg)
 
 ---
 
@@ -160,61 +179,150 @@ Este script pode ser gerado automaticamente no MySQL Workbench a partir do esque
 
 **Exemplo:**
 ```sql
-CREATE TABLE Medico (
-    MedCodigo INT PRIMARY KEY,
-    MedNome VARCHAR(100) NOT NULL
+
+
+CREATE TABLE Usuario (
+    id double PRIMARY KEY,
+    nome varchar,
+    email varchar,
+    senha varchar,
+    tipoPermissao varchar,
+    Usuario_TIPO INT,
+    fk_HistoricoDoacao_id double,
+    fk_Agendamento_id double
 );
 
-CREATE TABLE Paciente (
-    PacCodigo INT PRIMARY KEY,
-    PacNome VARCHAR(100) NOT NULL
+CREATE TABLE Endereco (
+    id double PRIMARY KEY,
+    cep varchar,
+    numero varchar,
+    logradouro varchar,
+    complemento varchar,
+    bairro varchar,
+    cidade varchar,
+    estado varchar
 );
 
-CREATE TABLE Consulta (
-    ConCodigo INT PRIMARY KEY,
-    MedCodigo INT,
-    PacCodigo INT,
-    Data DATE,
-    FOREIGN KEY (MedCodigo) REFERENCES Medico(MedCodigo),
-    FOREIGN KEY (PacCodigo) REFERENCES Paciente(PacCodigo)
+CREATE TABLE tipoSanguineo (
+    id double PRIMARY KEY,
+    nomeTipo varchar,
+    fk_UnidadeSangue_id double
 );
 
-CREATE TABLE Medicamento (
-    MdcCodigo INT PRIMARY KEY,
-    MdcNome VARCHAR(100) NOT NULL
+CREATE TABLE PostoDeColeta (
+    id double PRIMARY KEY,
+    nome varchar,
+    contato varchar,
+    endereco varchar,
+    horarioFuncionamento varchar,
+    fk_Relatorio_id double,
+    fk_HistoricoDoacao_id double,
+    fk_Agendamento_id double
 );
 
-CREATE TABLE Prescricao (
-    ConCodigo INT,
-    MdcCodigo INT,
-    Posologia VARCHAR(200),
-    PRIMARY KEY (ConCodigo, MdcCodigo),
-    FOREIGN KEY (ConCodigo) REFERENCES Consulta(ConCodigo),
-    FOREIGN KEY (MdcCodigo) REFERENCES Medicamento(MdcCodigo)
+CREATE TABLE UnidadeSangue (
+    id double PRIMARY KEY,
+    dataColeta datetime,
+    status varchar,
+    fk_Estoque_id double
 );
+
+CREATE TABLE Estoque (
+    id double PRIMARY KEY,
+    descricao varchar,
+    fk_Relatorio_id double,
+    fk_PostoDeColeta_id double
+);
+
+CREATE TABLE Relatorio (
+    id double PRIMARY KEY,
+    periodo varchar,
+    dadosDoacao varchar
+);
+
+CREATE TABLE Agendamento (
+    id double PRIMARY KEY,
+    dataHora datetime,
+    status varchar
+);
+
+CREATE TABLE HistoricoDoacao (
+    id double PRIMARY KEY,
+    dataDoacao datetime
+);
+
+CREATE TABLE Possui (
+    fk_Usuario_id double,
+    fk_Endereco_id double
+);
+
+CREATE TABLE Pertence (
+    fk_tipoSanguineo_id double,
+    fk_Usuario_id double
+);
+ 
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_2
+    FOREIGN KEY (fk_HistoricoDoacao_id)
+    REFERENCES HistoricoDoacao (id)
+    ON DELETE NO ACTION;
+ 
+ALTER TABLE Usuario ADD CONSTRAINT FK_Usuario_3
+    FOREIGN KEY (fk_Agendamento_id)
+    REFERENCES Agendamento (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE tipoSanguineo ADD CONSTRAINT FK_tipoSanguineo_2
+    FOREIGN KEY (fk_UnidadeSangue_id)
+    REFERENCES UnidadeSangue (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE PostoDeColeta ADD CONSTRAINT FK_PostoDeColeta_2
+    FOREIGN KEY (fk_Relatorio_id)
+    REFERENCES Relatorio (id)
+    ON DELETE NO ACTION;
+ 
+ALTER TABLE PostoDeColeta ADD CONSTRAINT FK_PostoDeColeta_3
+    FOREIGN KEY (fk_HistoricoDoacao_id)
+    REFERENCES HistoricoDoacao (id)
+    ON DELETE NO ACTION;
+ 
+ALTER TABLE PostoDeColeta ADD CONSTRAINT FK_PostoDeColeta_4
+    FOREIGN KEY (fk_Agendamento_id)
+    REFERENCES Agendamento (id)
+    ON DELETE RESTRICT;
+ 
+ALTER TABLE UnidadeSangue ADD CONSTRAINT FK_UnidadeSangue_2
+    FOREIGN KEY (fk_Estoque_id)
+    REFERENCES Estoque (id)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Estoque ADD CONSTRAINT FK_Estoque_2
+    FOREIGN KEY (fk_Relatorio_id)
+    REFERENCES Relatorio (id)
+    ON DELETE NO ACTION;
+ 
+ALTER TABLE Estoque ADD CONSTRAINT FK_Estoque_3
+    FOREIGN KEY (fk_PostoDeColeta_id)
+    REFERENCES PostoDeColeta (id)
+    ON DELETE CASCADE;
+ 
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_1
+    FOREIGN KEY (fk_Usuario_id)
+    REFERENCES Usuario (id)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_2
+    FOREIGN KEY (fk_Endereco_id)
+    REFERENCES Endereco (id)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_1
+    FOREIGN KEY (fk_tipoSanguineo_id)
+    REFERENCES tipoSanguineo (id)
+    ON DELETE SET NULL;
+ 
+ALTER TABLE Pertence ADD CONSTRAINT FK_Pertence_2
+    FOREIGN KEY (fk_Usuario_id)
+    REFERENCES Usuario (id)
+    ON DELETE SET NULL;
 ```
-## 📌ATENÇÃO: salvar como banco.sql na pasta src/bd
-
----
-### 4.4.4 Banco de Dados NoSQL (Opcional)
-
-> **Atenção:** Preencha esta seção **somente se o seu projeto utilizar Banco de Dados NoSQL**.
-
-Se o projeto adotar NoSQL, a entrega deve incluir:
-
-#### 1. Modelo de Coleções / Documentos
-- Descreva como os dados serão organizados em **coleções, documentos ou grafos**.  
-
-#### 2. Exemplos de Documentos / Registros
-- Mostre exemplos reais de dados para cada coleção ou entidade.  
-
-```json
-{
-  "_id": "1",
-  "nome": "Juliana",
-  "email": "juliana@email.com",
-  "perfil": "admin"
-}
-```
-
-📌 **Entrega:** Inclua aqui os scripts utilizados para criar coleções e inserir dados.
