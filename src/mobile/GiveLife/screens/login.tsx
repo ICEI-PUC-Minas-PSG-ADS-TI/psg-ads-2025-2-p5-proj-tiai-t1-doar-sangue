@@ -1,3 +1,5 @@
+// screens/login.tsx
+
 import React, { useState } from "react";
 import {
   StyleSheet,
@@ -8,10 +10,14 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
+  SafeAreaView,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { createClient } from "@supabase/supabase-js";
+import { useNavigation } from "@react-navigation/native"; 
 
-// ⚠️ Nunca suba essas chaves em repositórios públicos!
+// ⚠️ Seus dados de conexão do Supabase
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2Z3dxcGZvdXFmbndoYWtkdWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyOTI2ODUsImV4cCI6MjA3Nzg2ODY4NX0.fJdeZhBz6_ASOXevFhw0MpmXi2Fs7Nv5KRTI4Sexnrw";
@@ -19,150 +25,222 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Login() {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async () => {
+  const handleSignIn = async () => {
     if (!email || !senha) {
-      Alert.alert("Erro", "Por favor, preencha E-mail e Senha.");
+      Alert.alert("Erro", "Preencha o e-mail e a senha.");
       return;
     }
 
-    setErro("");
-    setLoading(true);
-
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
+      setLoading(true);
+
+      // Chama a função de login do Supabase
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
         password: senha,
       });
 
-      setLoading(false);
-
       if (error) {
-        setErro(error.message);
+        // O Supabase retorna mensagens úteis para senhas incorretas, etc.
         Alert.alert("Erro no Login", error.message);
         return;
       }
+      
+      // Sucesso no login
+      Alert.alert("Sucesso!", "Login realizado com sucesso!");
+      // ⚠️ Substitua 'Home' pelo nome da sua rota principal após o login
+      // navigation.navigate('Home'); 
 
-      if (data.user) {
-        Alert.alert("Sucesso!", `Bem-vindo(a), ${data.user.email}!`);
-        setEmail("");
-        setSenha("");
-        // Implementar navegação aqui
-      }
     } catch (e) {
-      setLoading(false);
       const mensagem =
         e instanceof Error ? e.message : "Erro inesperado durante o login.";
-      setErro(mensagem);
       Alert.alert("Erro inesperado", mensagem);
+    } finally {
+      setLoading(false);
     }
   };
 
+  const goToForgotPassword = () => {
+    // 🎯 Navega para a tela de solicitação de redefinição
+    navigation.navigate('EsqueciSenha'); 
+  };
+
   return (
-    <View style={styles.fundo}>
+    <SafeAreaView style={styles.fundo}>
       <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 20}
       >
-        <Text style={styles.textogrande}>Login</Text>
-        <Text style={styles.textopequeno}>Entre em sua conta</Text>
+        
+        {/* BOTÃO DE VOLTAR */}
+        <TouchableOpacity
+          style={styles.botaoVoltar}
+          onPress={() => navigation.goBack()}
+          disabled={loading}
+        >
+          <Text style={styles.textoVoltar}>{"Voltar"}</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.textogrande}>Bem-vindo de Volta!</Text>
+        <Text style={styles.textopequeno}>
+          Entre para continuar salvando vidas.
+        </Text>
 
         <TextInput
           style={styles.input}
           placeholder="E-mail"
           onChangeText={setEmail}
-          placeholderTextColor="#fff"
+          placeholderTextColor="#666"
+          keyboardType="email-address"
           value={email}
           autoCapitalize="none"
         />
-
         <TextInput
           style={styles.input}
           secureTextEntry
           placeholder="Senha"
           onChangeText={setSenha}
-          placeholderTextColor="#fff"
+          placeholderTextColor="#666"
           value={senha}
         />
 
-        {erro ? <Text style={styles.erro}>{erro}</Text> : null}
+        {/* LINK DE ESQUECI MINHA SENHA */}
+        <TouchableOpacity 
+          style={styles.forgotPasswordButton} 
+          onPress={goToForgotPassword}
+          disabled={loading}
+        >
+          <Text style={styles.forgotPasswordText}>Esqueci minha senha</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.botaoconfirmar}
-          onPress={handleLogin}
+          onPress={handleSignIn}
           disabled={loading}
         >
           <Text style={styles.textobotao}>
-            {loading ? "Entrando..." : "Login"}
+            {loading ? <ActivityIndicator size="small" color="#fff" /> : "Login"}
           </Text>
         </TouchableOpacity>
+
+        {/* Link para cadastro de doador (retorna à tela inicial ou vai para cadastro) */}
+        <TouchableOpacity
+          style={styles.linkCadastro}
+          onPress={() => navigation.navigate('Cadastro')}
+          disabled={loading}
+        >
+          <Text style={styles.linkCadastroText}>Não tem conta? Cadastre-se</Text>
+        </TouchableOpacity>
+
       </KeyboardAvoidingView>
-    </View>
+    </SafeAreaView>
   );
 }
 
+// -------------------------------------------------------------------
+// Estilos
 const styles = StyleSheet.create({
   fundo: {
-    height: "100%",
-    width: "100%",
+    flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
   },
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start", 
     alignItems: "center",
-    margin: 20,
+    width: "90%",
+    maxWidth: 400,
+    paddingTop: 20,
+  },
+  botaoVoltar: {
+    alignSelf: 'flex-start', 
+    padding: 10,
+    marginBottom: 0, 
+    marginTop: 50, 
+  },
+  textoVoltar: {
+    fontSize: 18, 
+    fontWeight: '600',
+    color: '#003049',
+    textDecorationLine: 'underline',
   },
   textogrande: {
-    fontSize: 50,
-    color: "#003049",
+    fontSize: 32,
+    color: "#D62828", 
     fontWeight: "bold",
+    marginBottom: 10,
+    alignSelf: 'flex-start',
+    marginTop: 20,
   },
   textopequeno: {
-    alignSelf: "center",
-    fontSize: 22,
-    color: "#003049",
-    textAlign: "center",
-    marginBottom: 20,
+    alignSelf: "flex-start", 
+    fontSize: 16,
+    color: "#333", 
+    textAlign: "left",
+    marginBottom: 40,
   },
   input: {
-    width: 377,
-    height: 55,
-    backgroundColor: "#003049",
-    color: "#fff",
-    borderColor: "#fff",
-    borderWidth: 2,
+    width: "100%",
+    height: 50,
+    backgroundColor: "#fff",
+    color: "#003049",
+    borderColor: "#ccc",
+    borderWidth: 1,
     borderRadius: 10,
-    paddingHorizontal: 10,
-    marginVertical: 5,
+    paddingHorizontal: 15,
+    marginVertical: 8,
+    fontSize: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1.0,
+    elevation: 1,
+  },
+  forgotPasswordButton: {
+    alignSelf: 'flex-end',
+    padding: 5,
+    marginTop: 5,
+  },
+  forgotPasswordText: {
+    fontSize: 14,
+    color: '#003049',
+    textDecorationLine: 'underline',
   },
   botaoconfirmar: {
-    backgroundColor: "#D62828",
-    borderWidth: 3,
-    borderRadius: 20,
-    borderColor: "#fff",
-    width: 208,
-    height: 53,
+    backgroundColor: "#D62828", 
+    borderWidth: 0,
+    borderRadius: 30,
+    width: "100%",
+    height: 55,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   textobotao: {
     color: "#fff",
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: "bold",
   },
-  erro: {
-    color: "red",
+  linkCadastro: {
+    marginTop: 20,
+    padding: 10,
+  },
+  linkCadastroText: {
+    color: "#003049",
     fontSize: 16,
-    marginTop: 5,
-    fontWeight: "bold",
-    textAlign: "center",
-  },
+    textDecorationLine: 'underline',
+  }
 });

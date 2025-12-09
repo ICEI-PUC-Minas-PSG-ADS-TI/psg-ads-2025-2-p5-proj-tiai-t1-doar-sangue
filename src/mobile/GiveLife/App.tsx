@@ -6,6 +6,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Cadastro from "./screens/cadastro";
 import Login from "./screens/login";
+import CadastroInstituicao from "./screens/cadastroInstituicao";
+import EsqueciSenha from "./screens/esqueciSenha";
 export type RootStackParamList = {
   Inicial: undefined;
   Cadastro: undefined;
@@ -36,6 +38,8 @@ export default function App() {
         <Stack.Screen name="Inicial" component={Inicial} />
         <Stack.Screen name="Cadastro" component={Cadastro} />
         <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="CadastroInstituicao" component={CadastroInstituicao} />
+        <Stack.Screen name="EsqueciSenha" component={EsqueciSenha} />
       </Stack.Navigator>
     </NavigationContainer>
   );

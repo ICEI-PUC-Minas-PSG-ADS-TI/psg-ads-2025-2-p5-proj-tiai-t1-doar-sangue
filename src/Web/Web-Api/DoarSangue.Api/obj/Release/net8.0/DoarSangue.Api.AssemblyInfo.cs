@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoarSangue.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+baa3f6e7799a39578215d74c586841064859b053")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fe05814f833f639c7c4b5bfd9cf2eb87cdc4d817")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoarSangue.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoarSangue.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

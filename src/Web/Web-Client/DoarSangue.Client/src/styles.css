@@ -56,6 +56,240 @@ body {
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration:none;
+}
+
+  .btn-login:hover,
+  .btn-partner:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+
+/* Formulário de Cadastro */
+.registration-form {
+  background-color: #fff;
+  padding: 40px;
+  text-align: left;
+  flex: 1;
+}
+
+.error {
+  color: red; /* deixa a mensagem em vermelho */
+  font-size: 0.875rem; /* opcional: tamanho menor que o normal */
+  margin-top: 4px; /* espaço entre o input e a mensagem */
+}
+
+  .registration-form h2 {
+    color: #004f4f;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+  input:focus,
+  select:focus {
+    border-color: #007b7b;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 123, 0.3);
+    transform: scale(1.02);
+  }
+
+/* Botão Principal */
+.btn-primary {
+  background-color: #007b7b;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+  .btn-primary:hover {
+    background-color: #005f5f;
+    transform: scale(1.05);
+  }
+
+/* Links e parágrafos do formulário */
+.registration-form p {
+  text-align: center;
+  font-size: 16px;
+}
+
+.registration-form a {
+  color: #007b7b;
+  text-decoration: none;
+}
+
+  .registration-form a:hover {
+    text-decoration: underline;
+  }
+
+/* Footer */
+footer {
+  background-color: #004f4f;
+  color: white;
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 20px;
+  border-top: 3px solid #f4f0f0;
+}
+
+  footer p {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    margin: 10px;
+  }
+}
+
+/* Animações */
+.container {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container:hover {
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+  .password-container input {
+    width: 100%;
+    padding-right: 40px; /* espaço pro botão do olho */
+  }
+
+.toggle-visibility {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+  .toggle-visibility img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+  }
+
+    .toggle-visibility img:hover {
+      opacity: 1;
+    }
+
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Estilos Gerais */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: white;
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/* Seção Esquerda */
+.left-section {
+  background-color: #d32f2f;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  flex: 1;
+}
+
+  .left-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .left-section p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+.btn-login,
+.btn-partner {
+  display: block;
+  background-color: transparent;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  margin: 10px auto;
+  width: 80%;
+  border: 2px solid white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
   .btn-login:hover,
@@ -177,4 +411,51 @@ footer {
 .container:hover {
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease;
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+  .password-container input {
+    width: 100%;
+    padding-right: 40px; /* espaço pro botão do olho */
+  }
+
+.toggle-visibility {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+  .toggle-visibility img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.7;
+  }
+
+    .toggle-visibility img:hover {
+      opacity: 1;
+    }
+
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

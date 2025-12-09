@@ -7,8 +7,11 @@ namespace DoarSangue.Api.Models
     [Table("usuario")]
     public class Usuario : BaseModel
     {
-        [PrimaryKey("id", true)]
-        public long Id { get; set; }
+        [PrimaryKey("id", false)]
+        public long? Id { get; set; }
+
+        [Column("auth_uid")]
+        public string AuthUid { get; set; }
 
         [Column("nome")]
         public string Nome { get; set; }
@@ -18,6 +21,12 @@ namespace DoarSangue.Api.Models
 
         [Column("senha")]
         public string Senha { get; set; }
+
+        [Column("telefone")]
+        public string Telefone { get; set; }
+
+        [Column("sexo")]
+        public string Sexo { get; set; }
 
         [Column("tipopermissao")]
         public string TipoPermissao { get; set; }

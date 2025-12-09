@@ -1,24 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'; // ADICIONE ESTA LINHA
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { DoadorDashboardComponent } from './pages/doador/doador-dashboard.component';
 
 @NgModule({
   declarations: [
     App,
-    CadastroComponent,
-    DoadorDashboardComponent 
+    CadastroComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [App]

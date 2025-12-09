@@ -1,0 +1,152 @@
+/* Layout Geral */
+.dashboard-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #f6f7f8;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 270px;
+  background: #004d45;
+  color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #009688;
+}
+
+/* Conteudo */
+.content {
+  padding: 40px;
+  width: 100%;
+}
+
+/* Título */
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* Botão */
+.btn-main {
+  background: #00897b;
+  color: white;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-main:hover {
+  background: #006f62;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.07);
+}
+
+/* Tabela */
+.table-container {
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #e9f4f2;
+}
+
+th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #004d45;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ececec;
+}
+
+/* Status Badge */
+.badge {
+  padding: 6px 12px;
+  border-radius: 50px;
+  color: white;
+  font-size: 13px;
+}
+
+.ativo {
+  background: #28a745;
+}
+
+.pausado {
+  background: #f4a742;
+}
+
+.finalizado {
+  background: #d9534f;
+}
+.charts-row {
+  display: flex;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.chart-card {
+  width: 50%;
+  padding: 20px;
+}
+
+
+canvas {
+  max-width: 300px;
+  max-height: 300px;
+  margin: auto;
+  display: block;
+}
+/* Gráfico da esquerda (Controle de Estoque) */
+.chart-card:first-child {
+  width: 60%; /* deixa ele maior */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ajuste extra para centralizar o canvas */
+.chart-card:first-child canvas {
+  max-width: 320px;
+  max-height: 260px;
+}
