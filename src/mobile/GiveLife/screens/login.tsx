@@ -13,6 +13,7 @@ import {
   ActivityIndicator,
   SafeAreaView,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
 
@@ -45,8 +46,6 @@ export default function Login() {
         password: senha,
       });
 
-      setLoading(false);
-
       if (error) {
         // O Supabase retorna mensagens úteis para senhas incorretas, etc.
         Alert.alert("Erro no Login", error.message);
@@ -59,10 +58,11 @@ export default function Login() {
       // navigation.navigate('Home'); 
 
     } catch (e) {
-      setLoading(false);
       const mensagem =
         e instanceof Error ? e.message : "Erro inesperado durante o login.";
       Alert.alert("Erro inesperado", mensagem);
+    } finally {
+      setLoading(false);
     }
   };
 

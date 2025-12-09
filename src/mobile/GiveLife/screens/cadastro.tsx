@@ -8,11 +8,12 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
 
-// ⚠️ Nunca suba essas chaves em repositórios públicos!
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2Z3dxcGZvdXFmbndoYWtkdWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyOTI2ODUsImV4cCI6MjA3Nzg2ODY4NX0.fJdeZhBz6_ASOXevFhw0MpmXi2Fs7Nv5KRTI4Sexnrw";
@@ -25,7 +26,6 @@ export default function Cadastro() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmar, setConfirmar] = useState("");
-  const [nome, setNome] = useState("");
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -112,10 +112,11 @@ export default function Cadastro() {
       setLoading(false);
 
     } catch (e) {
-      setLoading(false);
       const mensagem =
         e instanceof Error ? e.message : "Erro inesperado durante o cadastro.";
       Alert.alert("Erro inesperado", mensagem);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -174,16 +175,28 @@ export default function Cadastro() {
         {erro ? <Text style={styles.erro}>{erro}</Text> : null}
 
         <TouchableOpacity
-          style={styles.botaoconfirmar}
+          style={[styles.botaoconfirmar, loading && { opacity: 0.7 }]}
           onPress={handleSignUp}
           disabled={loading}
         >
-          <Text style={styles.textobotao}>
-            {loading ? "Enviando..." : "Confirmar"}
-          </Text>
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.textobotao}>Cadastrar</Text>
+          )}
         </TouchableOpacity>
-      </KeyboardAvoidingView>
-    </View>
+
+        <Text style={styles.textoInferior}>
+          Já tem uma conta?{" "}
+          <Text
+            style={styles.link}
+            onPress={() => navigation.navigate("Login")}
+          >
+            Faça login
+          </Text>
+        </Text>
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -191,9 +204,9 @@ export default function Cadastro() {
 // Estilos (Mantidos)
 const styles = StyleSheet.create({
   fundo: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "#fff",
+    flex: 1,
+    backgroundColor: "#ffffffff",
+    justifyContent: "center",
     alignItems: "center",
     paddingTop: 50, 
   },

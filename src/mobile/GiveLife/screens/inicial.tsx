@@ -12,9 +12,14 @@ import {
   Easing
 } from "react-native";
 import {
-  createStaticNavigation,
-  useNavigation,
-} from "@react-navigation/native";
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "../App"; 
 import Cadastro from "./cadastro";
@@ -222,6 +227,7 @@ const carouselStyles = StyleSheet.create({
 export default function Inicial() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
   return (
     <View style={styles.fundo}>
       <View style={styles.container}>
