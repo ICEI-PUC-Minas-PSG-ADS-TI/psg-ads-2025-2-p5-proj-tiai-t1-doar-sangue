@@ -1,0 +1,5 @@
+.error {
+  color: red; /* deixa a mensagem em vermelho */
+  font-size: 0.875rem; /* opcional: tamanho menor que o normal */
+  margin-top: 4px; /* espaço entre o input e a mensagem */
+}

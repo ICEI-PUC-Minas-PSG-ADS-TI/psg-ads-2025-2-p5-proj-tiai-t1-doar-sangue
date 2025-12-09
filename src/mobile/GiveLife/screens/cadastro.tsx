@@ -12,9 +12,7 @@ import {
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { createClient } from "@supabase/supabase-js";
-import { useNavigation } from "@react-navigation/native";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { RootStackParamList } from "../App";
+import { useNavigation } from "@react-navigation/native"; 
 
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
@@ -23,9 +21,8 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Cadastro() {
-  const navigation =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
-  const [nome, setNome] = useState("");
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmar, setConfirmar] = useState("");
@@ -51,18 +48,69 @@ export default function Cadastro() {
 
     try {
       setLoading(true);
-      const { data, error } = await supabase.auth.signUp({
+
+      // 1. Tenta registrar o usuário no Auth
+      const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password: senha,
-        options: { data: { nome } },
+        options: { 
+          data: { 
+            nome, 
+            role: 'doador' // Flag de perfil no metadado
+          } 
+        },
       });
 
-      if (error) {
-        Alert.alert("Erro no cadastro", error.message);
-      } else {
-        Alert.alert("Sucesso!", "Verifique seu e-mail para confirmar a conta.");
-        navigation.navigate("Login");
+      if (authError) {
+        Alert.alert("Erro no cadastro", authError.message);
+        setLoading(false);
+        return;
       }
+      
+      const user = authData.user;
+
+      if (user) {
+        // 2. Se o Auth for bem-sucedido, insere os dados adicionais na TABELA 'usuario'
+        const { error: dbError } = await supabase
+          .from('usuario') 
+          .insert([
+            { 
+              // Usa o UUID do Auth como ID na tabela usuario (Corrigido no BD)
+              id: user.id, 
+              nome: nome,
+              email: email, 
+              // Define os campos específicos para um USUÁRIO PADRÃO (Doador):
+              tipopermissao: 'doador', // Usando o tipo string
+              usuario_tipo: 0,         // Usando o tipo int4 (0 para doador)
+              // CEP, CNPJ, Telefone, Sexo ficam NULL, conforme definido na tabela
+            },
+          ]);
+
+        if (dbError) {
+          // Se o banco falhar, logamos o erro.
+          console.error("Erro ao salvar dados do doador na tabela 'usuario'. ID:", user.id, "Erro:", dbError.message);
+          
+          // O ideal é reverter o registro do Auth aqui (se for crítico)
+          
+          Alert.alert("Erro no Banco de Dados", "Seu usuário foi criado, mas os dados do perfil falharam ao salvar. Contate o suporte. (Erro: " + dbError.message + ")");
+          setLoading(false);
+          return;
+        }
+
+        // Sucesso em ambos os passos
+        Alert.alert(
+          "Sucesso!",
+          "Cadastro realizado! Verifique seu e-mail para confirmar a conta."
+        );
+
+        setEmail("");
+        setSenha("");
+        setConfirmar("");
+        setNome("");
+      }
+
+      setLoading(false);
+
     } catch (e) {
       const mensagem =
         e instanceof Error ? e.message : "Erro inesperado durante o cadastro.";
@@ -73,63 +121,56 @@ export default function Cadastro() {
   };
 
   return (
-    <KeyboardAvoidingView
-      style={styles.fundo}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <View style={styles.container}>
-        <Text style={styles.textogrande}>Crie sua conta</Text>
+    <View style={styles.fundo}>
+      <KeyboardAvoidingView
+        style={styles.container}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 20}
+      >
+        {/* BOTÃO DE VOLTAR */}
+        <TouchableOpacity
+          style={styles.botaoVoltar}
+          onPress={() => navigation.goBack()}
+        >
+          <Text style={styles.textoVoltar}>Voltar</Text>
+        </TouchableOpacity>
+        
+        <Text style={styles.textogrande}>Crie Sua Conta</Text>
         <Text style={styles.textopequeno}>
           Doe sangue, salve vidas. Juntos podemos fazer a diferença.
         </Text>
 
-        <View style={styles.inputContainer}>
-          <MaterialIcons name="person" size={24} color="#fff" />
-          <TextInput
-            style={styles.input}
-            placeholder="Nome completo"
-            placeholderTextColor="#fff"
-            value={nome}
-            onChangeText={setNome}
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <MaterialIcons name="email" size={24} color="#fff" />
-          <TextInput
-            style={styles.input}
-            placeholder="E-mail"
-            placeholderTextColor="#fff"
-            value={email}
-            onChangeText={setEmail}
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <MaterialIcons name="lock" size={24} color="#fff" />
-          <TextInput
-            style={styles.input}
-            placeholder="Senha"
-            placeholderTextColor="#fff"
-            secureTextEntry
-            value={senha}
-            onChangeText={setSenha}
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <MaterialIcons name="lock-outline" size={24} color="#fff" />
-          <TextInput
-            style={styles.input}
-            placeholder="Confirmar senha"
-            placeholderTextColor="#fff"
-            secureTextEntry
-            value={confirmar}
-            onChangeText={setConfirmar}
-          />
-        </View>
+        <TextInput
+          style={styles.input}
+          placeholder="Nome"
+          onChangeText={setNome}
+          placeholderTextColor="#666"
+          value={nome}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="E-mail"
+          onChangeText={setEmail}
+          placeholderTextColor="#666"
+          keyboardType="email-address"
+          value={email}
+        />
+        <TextInput
+          style={styles.input}
+          secureTextEntry
+          placeholder="Senha"
+          onChangeText={setSenha}
+          placeholderTextColor="#666"
+          value={senha}
+        />
+        <TextInput
+          style={styles.input}
+          secureTextEntry
+          placeholder="Confirme a Senha"
+          onChangeText={setConfirmar}
+          placeholderTextColor="#666"
+          value={confirmar}
+        />
 
         {erro ? <Text style={styles.erro}>{erro}</Text> : null}
 
@@ -159,77 +200,91 @@ export default function Cadastro() {
   );
 }
 
+// -------------------------------------------------------------------
+// Estilos (Mantidos)
 const styles = StyleSheet.create({
   fundo: {
     flex: 1,
     backgroundColor: "#ffffffff",
     justifyContent: "center",
     alignItems: "center",
+    paddingTop: 50, 
   },
   container: {
-    width: "85%",
-    backgroundColor: "#003049",
-    borderRadius: 20,
-    padding: 30,
+    flex: 1,
+    justifyContent: "flex-start", 
     alignItems: "center",
+    width: "90%",
+    maxWidth: 400,
+  },
+  botaoVoltar: {
+    alignSelf: 'flex-start', 
+    padding: 10,
+    marginBottom: 0, 
+    marginTop: 20, 
+  },
+  textoVoltar: {
+    fontSize: 18, 
+    fontWeight: '600',
+    color: '#003049',
+    textDecorationLine: 'underline', 
   },
   textogrande: {
-    fontSize: 34,
-    color: "#fff",
+    fontSize: 32,
+    color: "#D62828",
     fontWeight: "bold",
     marginBottom: 10,
+    marginTop: 0, 
   },
   textopequeno: {
+    alignSelf: "center",
     fontSize: 16,
-    color: "#fff",
-    marginBottom: 25,
+    color: "#333", 
     textAlign: "center",
-  },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    backgroundColor: "#002233",
-    borderRadius: 10,
-    marginVertical: 8,
-    width: "100%",
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: "#fff",
+    marginBottom: 40,
   },
   input: {
-    flex: 1,
-    color: "#fff",
-    paddingLeft: 8,
-    fontSize: 16,
+    width: "100%",
     height: 50,
+    backgroundColor: "#fff",
+    color: "#003049",
+    borderColor: "#ccc",
+    borderWidth: 1,
+    borderRadius: 10,
+    paddingHorizontal: 15,
+    marginVertical: 8,
+    fontSize: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 1.0,
+    elevation: 1,
   },
   botaoconfirmar: {
     backgroundColor: "#D62828",
-    borderRadius: 12,
-    width: "70%",
-    height: 50,
+    borderWidth: 0,
+    borderRadius: 30,
+    width: "100%",
+    height: 55,
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 25,
+    marginTop: 30,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   textobotao: {
     color: "#fff",
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
   },
   erro: {
-    color: "#ffcccc",
+    color: "#D62828",
     fontSize: 14,
-    marginTop: 5,
-    textAlign: "center",
-  },
-  textoInferior: {
-    color: "#fff",
-    fontSize: 16,
-    marginTop: 20,
-  },
-  link: {
-    color: "#FFD166",
+    marginTop: 10,
     fontWeight: "bold",
+    textAlign: "center",
   },
 });
