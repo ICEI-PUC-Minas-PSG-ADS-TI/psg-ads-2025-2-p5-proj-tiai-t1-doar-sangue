@@ -8,6 +8,7 @@ import Cadastro from "./screens/cadastro";
 import Login from "./screens/login";
 import CadastroInstituicao from "./screens/cadastroInstituicao";
 import EsqueciSenha from "./screens/esqueciSenha";
+import TabInstituicao from "./nav/tab_instituicao";
 export type RootStackParamList = {
   Inicial: undefined;
   Cadastro: undefined;
@@ -22,6 +23,13 @@ export type RootStackParamList = {
   Estoque: undefined;
   Termos: undefined;
   Privacidade: undefined;
+  CadastroInstituicao:undefined;
+  EsqueciSenha: undefined;
+  Dashboard: undefined;
+  Campanha: undefined;
+  NovaCampanha: undefined;
+  HomeDoador: undefined;
+  Instituicao: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -40,6 +48,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="CadastroInstituicao" component={CadastroInstituicao} />
         <Stack.Screen name="EsqueciSenha" component={EsqueciSenha} />
+        <Stack.Screen name="Instituicao" component={TabInstituicao}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
