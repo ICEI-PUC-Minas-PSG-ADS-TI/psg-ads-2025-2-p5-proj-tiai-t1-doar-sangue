@@ -1,0 +1,67 @@
+<div class="dashboard-container">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="logo">
+      <h2>Instituição</h2>
+    </div>
+
+    <nav>
+      <a routerLink="/instituicao" class="active">Painel</a>
+      <a routerLink="/campanhas">Campanhas</a>
+      <a routerLink="/agendamentos">Agendamentos</a>
+      <a routerLink="/configuracoes">Configurações</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content">
+<!-- Gráficos -->
+<div class="charts-row">
+  
+  <!-- Controle de Estoque -->
+  <div class="card chart-card">
+    <h3>Controle de Estoque</h3>
+    <canvas id="estoqueChart"></canvas>
+  </div>
+
+  <!-- Tipos Sanguíneos -->
+  <div class="card chart-card">
+    <h3>Distribuição de Tipos Sanguíneos</h3>
+    <canvas id="sangueChart"></canvas>
+  </div>
+
+</div>
+
+    <h2 class="page-title">Minhas Campanhas</h2>
+
+    <!-- Botão nova campanha -->
+    <button class="btn-main">Nova Campanha</button>
+
+    <!-- Card da tabela -->
+    <div class="card table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Visualizações</th>
+            <th>Confirmações</th>
+            <th>Público</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let campanha of campanhas">
+            <td>{{ campanha.nome }}</td>
+            <td><span class="badge" [ngClass]="campanha.status">{{ campanha.status }}</span></td>
+            <td>{{ campanha.views }}</td>
+            <td>{{ campanha.confirmacoes }}</td>
+            <td>{{ campanha.publico }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>

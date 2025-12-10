@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\DoarSangue.Api.csproj": {}
+    "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\DoarSangue.Api.csproj": {
+    "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\DoarSangue.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
         "projectName": "DoarSangue.Api",
-        "projectPath": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.API\\DoarSangue.Api.csproj",
-        "packagesPath": "C:\\Users\\samyr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\samyr\\Source\\Repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\obj\\",
+        "projectPath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
+        "packagesPath": "C:\\Users\\Júlio Navarro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\samyr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Júlio Navarro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -25,7 +25,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -78,7 +77,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.300/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

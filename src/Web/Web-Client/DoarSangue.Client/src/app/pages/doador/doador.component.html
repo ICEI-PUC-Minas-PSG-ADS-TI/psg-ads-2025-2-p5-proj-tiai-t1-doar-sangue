@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doador - Give Life</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./doador.component.css">
+
+  <!-- GOOGLE MAPS SCRIPT -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbLeUbVujoqQzfQg8PVGcbl_pzpoz0WgI" defer></script>
+  <script defer>
+    function initMap() {
+      const location = { lat: -19.8157, lng: -43.9542 }; // Exemplo: Lagoa Santa
+
+      const map = new google.maps.Map(document.getElementById("mapa-google"), {
+        zoom: 14,
+        center: location,
+      });
+
+      new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Posto de Doação Central",
+      });
+    }
+
+    window.onload = initMap;
+  </script>
+
+</head>
+
+<body>
+
+  <main>
+    <section class="doador-section">
+      <div class="layout">
+
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="sidebar">
+          <img src="/psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue/src/Web/Web-Client/DoarSangue.Client/public/Logo GiveLife.png"
+            class="logo" alt="Logo Give Life">
+
+          <h2>Bem-vindo, Doador!</h2>
+          <p class="descricao">Acompanhe locais e agende sua próxima doação.</p>
+<div class="sidebar-section">
+  <h3 class="sidebar-title">Minha Conta</h3>
+
+  <ul class="sidebar-menu">
+    <li routerLink="/dados-pessoais">Dados Pessoais</li>
+    <li routerLink="/notificacoes">Notificações</li>
+    <li routerLink="/privacidade">Privacidade</li>
+    <li routerLink="/agendamentos">Agendamentos</li>
+  </ul>
+</div>
+<!--  - CONFIGURAÇÕES -->
+<div class="sidebar-section">
+  <h3 class="sidebar-title">Configurações</h3>
+
+  <ul class="sidebar-menu">
+    <li routerLink="/seguranca">Segurança</li>
+    <li routerLink="/preferencias">Preferências</li>
+    <li routerLink="/acessibilidade">Acessibilidade</li>
+  </ul>
+</div>
+
+        </aside>
+
+        <!-- ========== CONTEÚDO ========== -->
+        <div class="conteudo">
+
+          <!-- MAPA -->
+          <section class="card mapa-card">
+            <h3>Instituições Próximas</h3>
+
+            <!-- DIV DO MAPA COM ID CORRETO -->
+            <div id="mapa-google" class="mapa"></div>
+
+            <button class="btn-primario">Agendar Doação</button>
+          </section>
+
+          <!-- INSTITUIÇÕES -->
+          <section class="card instituicoes-card">
+            <h3>Instituições de Doação</h3>
+
+            <div class="lista-instituicoes">
+
+              <div class="card-instituicao">
+                <img src="assets/images/instituto3.jfif" alt="Instituição Ihene">
+                <h4>Instituição Ihene</h4>
+                <p><strong>Endereço:</strong> Rua A, 123</p>
+                <p><strong>Telefone:</strong> (31) 1234-5678</p>
+                <p><strong>Horário:</strong> Seg–Sex: 08h–18h</p>
+              </div>
+
+              <div class="card-instituicao">
+                <img src="assets/images/instituto1.png" alt="Instituição Sabin">
+                <h4>Instituição Sabin</h4>
+                <p><strong>Endereço:</strong> Rua B, 456</p>
+                <p><strong>Telefone:</strong> (31) 8765-4321</p>
+                <p><strong>Horário:</strong> Seg–Sáb: 08h–17h</p>
+              </div>
+
+              <div class="card-instituicao">
+                <img src="assets/images/Instituto2.jpg" alt="Instituição Hermece">
+                <h4>Instituição Hermece</h4>
+                <p><strong>Endereço:</strong> Rua C, 789</p>
+                <p><strong>Telefone:</strong> (31) 1122-3344</p>
+                <p><strong>Horário:</strong> Seg–Sex: 07h–19h</p>
+              </div>
+
+            </div>
+
+            <button class="btn-secundario">Informações sobre Doação</button>
+          </section>
+
+          <!-- DEPOIMENTOS -->
+          <section class="card depoimentos-card">
+            <h3>Depoimentos</h3>
+
+            <div class="lista-depoimentos">
+
+              <div class="depoimento">
+                <img src="assets/images/user1.png" alt="Usuário 1">
+                <p>"Nunca pensei que doar sangue seria tão acessível..."</p>
+                <span>- Ana</span>
+              </div>
+
+              <div class="depoimento">
+                <img src="assets/images/user2.png" alt="Usuário 2">
+                <p>"Doar foi uma experiência transformadora..."</p>
+                <span>- Carlos</span>
+              </div>
+
+              <div class="depoimento">
+                <img src="assets/images/user3.jpeg" alt="Usuário 3">
+                <p>"Quando minha mãe precisou de uma transfusão..."</p>
+                <span>- Larissa</span>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+
+</body>
+
+</html>
