@@ -16,7 +16,7 @@ namespace DoarSangue.Api
                 options.AddPolicy("AllowAngular",
                     policy =>
                     {
-                        policy.WithOrigins("http://localhost:63482")
+                        policy.WithOrigins("http://127.0.0.1:63482","http://localhost:63482")
                               .AllowAnyHeader()
                               .AllowAnyMethod();
                     });

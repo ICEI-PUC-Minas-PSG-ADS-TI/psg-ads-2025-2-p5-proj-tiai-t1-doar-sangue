@@ -1,11 +1,12 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
 import Chart from 'chart.js/auto';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-instituicao-dashboard',
   standalone: true,
-  imports: [CommonModule, NgFor, NgClass],
+  imports: [CommonModule, NgFor, NgClass,RouterLink],
   templateUrl: './instituicao-dashboard.component.html',
   styleUrls: ['./instituicao-dashboard.component.css']
 })
