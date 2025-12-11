@@ -100,59 +100,6 @@ C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\
 C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.genruntimeconfig.cache
 C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\ref\DoarSangue.Api.dll
 <<<<<<< HEAD
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\appsettings.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.staticwebassets.endpoints.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.exe
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.deps.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.runtimeconfig.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.pdb
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Microsoft.IO.RecyclableMemoryStream.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Microsoft.OpenApi.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\MimeMapping.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Newtonsoft.Json.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.Core.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.Functions.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.Gotrue.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.Postgrest.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.Realtime.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Supabase.Storage.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\System.Reactive.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\Websocket.Client.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.csproj.AssemblyReference.cache
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.AssemblyInfoInputs.cache
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.AssemblyInfo.cs
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.csproj.CoreCompileInputs.cache
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.sourcelink.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\scopedcss\bundle\DoarSangue.Api.styles.css
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets.build.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets.development.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets\msbuild.DoarSangue.Api.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets\msbuild.DoarSangue.Api.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets\msbuild.build.DoarSangue.Api.props
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.DoarSangue.Api.props
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.DoarSangue.Api.props
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSang.C9C0B915.Up2Date
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\refint\DoarSangue.Api.dll
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.pdb
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.genruntimeconfig.cache
-C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\ref\DoarSangue.Api.dll
 =======
 C:\Users\samyr\source\repos\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.API\bin\Debug\net8.0\package-lock.json
 C:\Users\samyr\source\repos\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.API\bin\Debug\net8.0\package.json
