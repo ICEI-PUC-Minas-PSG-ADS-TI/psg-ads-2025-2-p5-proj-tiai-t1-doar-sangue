@@ -268,14 +268,21 @@ export default function Inicial() {
             >
               <Text style={styles.textobotaoSecundario}>Seja parceiro</Text>
             </TouchableOpacity>
-            {/*BOTÃO PARA TESTES*/}
+            <TouchableOpacity
+              style={styles.botaologin}
+              onPress={() => {
+                navigation.navigate("Contatos");
+              }}
+            >
+              <Text style={styles.textobotaoSecundario}>Contatos</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.botaologin}
               onPress={() => {
                 navigation.navigate("Instituicao");
               }}
             >
-              <Text style={styles.textobotaoSecundario}>Pular Login</Text>
+              <Text style={styles.textobotaoSecundario}>Pular login</Text>
             </TouchableOpacity>
           </View>
         </View>
