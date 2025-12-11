@@ -34,16 +34,6 @@
             "description": "OK"
           }
         }
-      },
-      "get": {
-        "tags": [
-          "PostoDeColeta"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
       }
     },
     "/api/PostoDeColeta/login": {
@@ -70,28 +60,6 @@
             }
           }
         },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/PostoDeColeta/{id}": {
-      "get": {
-        "tags": [
-          "PostoDeColeta"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -160,178 +128,10 @@
           }
         }
       }
-    },
-    "/api/usuario/{usuarioId}/restricoes": {
-      "get": {
-        "tags": [
-          "UsuarioRestricoes"
-        ],
-        "parameters": [
-          {
-            "name": "usuarioId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "UsuarioRestricoes"
-        ],
-        "parameters": [
-          {
-            "name": "usuarioId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsuarioRestricao"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsuarioRestricao"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsuarioRestricao"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/usuario/{usuarioId}/restricoes/{id}": {
-      "put": {
-        "tags": [
-          "UsuarioRestricoes"
-        ],
-        "parameters": [
-          {
-            "name": "usuarioId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsuarioRestricao"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsuarioRestricao"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsuarioRestricao"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "UsuarioRestricoes"
-        ],
-        "parameters": [
-          {
-            "name": "usuarioId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
     }
   },
   "components": {
     "schemas": {
-      "ClientOptions": {
-        "type": "object",
-        "properties": {
-          "schema": {
-            "type": "string",
-            "nullable": true
-          },
-          "headers": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "queryParams": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "string"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "PostoDeColetaLoginRequest": {
         "type": "object",
         "properties": {
@@ -416,56 +216,6 @@
           "sexo": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UsuarioRestricao": {
-        "type": "object",
-        "properties": {
-          "baseUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "requestClientOptions": {
-            "$ref": "#/components/schemas/ClientOptions"
-          },
-          "tableName": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          },
-          "primaryKey": {
-            "type": "object",
-            "additionalProperties": {
-              "nullable": true
-            },
-            "nullable": true,
-            "readOnly": true
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
-          },
-          "usuarioId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "tipo": {
-            "type": "string",
-            "nullable": true
-          },
-          "descricao": {
-            "type": "string",
-            "nullable": true
-          },
-          "permanente": {
-            "type": "boolean"
-          },
-          "dataRegistro": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

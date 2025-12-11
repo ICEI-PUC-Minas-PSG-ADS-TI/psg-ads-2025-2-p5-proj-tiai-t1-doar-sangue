@@ -8,14 +8,19 @@ namespace DoarSangue.Api.Models
     public class Usuario : BaseModel
     {
         [PrimaryKey("id", false)]
-        [Column("id")]
-        public string Id { get; set; } // UUID gerado automaticamente pelo banco
+        public long? Id { get; set; }
+
+        [Column("auth_uid")]
+        public string AuthUid { get; set; }
 
         [Column("nome")]
         public string Nome { get; set; }
 
         [Column("email")]
         public string Email { get; set; }
+
+        [Column("senha")]
+        public string Senha { get; set; }
 
         [Column("telefone")]
         public string Telefone { get; set; }
@@ -29,12 +34,10 @@ namespace DoarSangue.Api.Models
         [Column("usuario_tipo")]
         public int UsuarioTipo { get; set; }
 
-        [Column("fk_historico_id")]
+        [Column("fk_historicodoacao_id")]
         public double? HistoricoId { get; set; }
 
         [Column("fk_agendamento_id")]
         public double? AgendamentoId { get; set; }
-
-        public ICollection<UsuarioRestricao> Restricoes { get; set; }
     }
 }

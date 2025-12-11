@@ -99,7 +99,6 @@ C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\
 C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.pdb
 C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.genruntimeconfig.cache
 C:\Users\Júlio Navarro\TrabalhodeTI\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\ref\DoarSangue.Api.dll
-<<<<<<< HEAD
 C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\appsettings.json
 C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\bin\Debug\net8.0\DoarSangue.Api.staticwebassets.endpoints.json
@@ -153,7 +152,3 @@ C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangu
 C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.pdb
 C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\DoarSangue.Api.genruntimeconfig.cache
 C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\obj\Debug\net8.0\ref\DoarSangue.Api.dll
-=======
-C:\Users\samyr\source\repos\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.API\bin\Debug\net8.0\package-lock.json
-C:\Users\samyr\source\repos\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.API\bin\Debug\net8.0\package.json
->>>>>>> develop

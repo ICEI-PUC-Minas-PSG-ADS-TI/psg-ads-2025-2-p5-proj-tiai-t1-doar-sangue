@@ -17,32 +17,6 @@
   },
   {
     "ContainingType": "DoarSangue.Api.Controllers.PostoDeColetaController",
-    "Method": "GetPostos",
-    "RelativePath": "api/PostoDeColeta",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoarSangue.Api.Controllers.PostoDeColetaController",
-    "Method": "GetPostoById",
-    "RelativePath": "api/PostoDeColeta/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.String",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoarSangue.Api.Controllers.PostoDeColetaController",
     "Method": "Login",
     "RelativePath": "api/PostoDeColeta/login",
     "HttpMethod": "POST",
@@ -68,90 +42,6 @@
       {
         "Name": "req",
         "Type": "DoarSangue.Api.DTOs.UsuarioDTOs.UsuarioRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoarSangue.Api.Controllers.UsuarioRestricoesController",
-    "Method": "GetRestricoes",
-    "RelativePath": "api/usuario/{usuarioId}/restricoes",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuarioId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoarSangue.Api.Controllers.UsuarioRestricoesController",
-    "Method": "CriarRestricao",
-    "RelativePath": "api/usuario/{usuarioId}/restricoes",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuarioId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "req",
-        "Type": "DoarSangue.Api.Models.UsuarioRestricao",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoarSangue.Api.Controllers.UsuarioRestricoesController",
-    "Method": "EditarRestricao",
-    "RelativePath": "api/usuario/{usuarioId}/restricoes/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuarioId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "req",
-        "Type": "DoarSangue.Api.Models.UsuarioRestricao",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "DoarSangue.Api.Controllers.UsuarioRestricoesController",
-    "Method": "RemoverRestricao",
-    "RelativePath": "api/usuario/{usuarioId}/restricoes/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuarioId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

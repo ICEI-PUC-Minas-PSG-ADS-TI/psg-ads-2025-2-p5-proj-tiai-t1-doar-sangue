@@ -13,11 +13,10 @@ import {
   ActivityIndicator,
   SafeAreaView,
 } from "react-native";
-import MaterialIcons from "@react-native-vector-icons/material-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { RootStackParamList } from "../App";
+
 // ⚠️ Seus dados de conexão do Supabase
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
@@ -26,8 +25,7 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Login() {
-  const navigation =
-       useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const navigation = useNavigation();
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");

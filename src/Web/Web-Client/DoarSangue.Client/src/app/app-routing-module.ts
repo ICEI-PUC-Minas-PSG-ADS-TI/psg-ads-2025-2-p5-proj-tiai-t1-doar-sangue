@@ -3,13 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroParceirosComponent } from './pages/cadastro-parceiros/cadastro-parceiros.component';
-
+// import { CriarCampanhaComponent } from './pages/criar-campanha/criar-campanha.component';
 const routes: Routes = [
   { path: '', redirectTo: 'instituicao', pathMatch: 'full' },
   { path: 'cadastro', component: CadastroComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastroParceiros', component: CadastroParceirosComponent },
-
+  { 
+    path: 'nova-campanha', 
+    loadComponent: () =>
+      import('./pages/criar-campanha/criar-campanha.component')
+        .then(m => m.CriarCampanhaComponent)
+  },
   {
     path: 'instituicao',
     loadComponent: () =>
@@ -24,4 +29,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

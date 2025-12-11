@@ -1,55 +1,63 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useRef, useEffect } from "react";
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  Image, 
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  Animated,
+  Easing
+} from "react-native";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   TouchableOpacity,
-  ScrollView,
   Dimensions,
-  Animated,
-  Easing,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
 } from "react-native";
-
 import { useNavigation } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { RootStackParamList } from "../App";
+import type { RootStackParamList } from "../App"; 
 import Cadastro from "./cadastro";
 import Login from "./login";
 import CadastroParceiro from "./cadastroInstituicao";
 
+// --- Dados de Exemplo para o Carrossel (Mantidos) ---
 const carouselData = [
   {
-    id: "1",
-    title: "Conectamos sua doação",
-    text: "Encontre o hemocentro mais próximo e salve uma vida hoje.",
-    backgroundColor: "#D62828",
+    id: '1',
+    title: 'Conectamos sua doação',
+    text: 'Encontre o hemocentro mais próximo e salve uma vida hoje.',
+    backgroundColor: '#D62828', // Vermelho do app
   },
   {
-    id: "2",
-    title: "Faça a diferença",
-    text: "Acompanhe as necessidades dos bancos de sangue da sua região.",
-    backgroundColor: "#003049",
+    id: '2',
+    title: 'Faça a diferença',
+    text: 'Acompanhe as necessidades dos bancos de sangue da sua região.',
+    backgroundColor: '#003049', // Azul Escuro de contraste
   },
   {
-    id: "3",
-    title: "Agendamento Fácil",
-    text: "Marque sua doação de forma rápida, segura e sem burocracia.",
-    backgroundColor: "#D62828",
+    id: '3',
+    title: 'Agendamento Fácil',
+    text: 'Marque sua doação de forma rápida, segura e sem burocracia.',
+    backgroundColor: '#D62828',
   },
 ];
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 
+// --- Componente Carrossel (Mantido) ---
 const Carousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef<ScrollView | null>(null);
+  const scrollRef = useRef(null);
   const progressAnim = useRef(new Animated.Value(0)).current;
-  const itemWidth = SCREEN_WIDTH;
-  const interval = 6000;
+  
+  const itemWidth = SCREEN_WIDTH; 
+  const interval = 6000; 
 
   useEffect(() => {
     const startProgressAnimation = () => {
@@ -67,6 +75,7 @@ const Carousel = () => {
     const timer = setInterval(() => {
       let nextIndex = (activeIndex + 1) % carouselData.length;
       setActiveIndex(nextIndex);
+      
       if (scrollRef.current) {
         scrollRef.current.scrollTo({
           x: nextIndex * itemWidth,
@@ -75,14 +84,16 @@ const Carousel = () => {
         });
       }
       startProgressAnimation();
+
     }, interval);
 
     return () => clearInterval(timer);
   }, [activeIndex]);
 
-  const onScrollEnd = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+  const onScrollEnd = (event) => {
     const contentOffsetX = event.nativeEvent.contentOffset.x;
     const index = Math.round(contentOffsetX / itemWidth);
+    
     if (index !== activeIndex) {
       setActiveIndex(index);
     }
@@ -100,16 +111,8 @@ const Carousel = () => {
         style={{ width: SCREEN_WIDTH }}
       >
         {carouselData.map((item, index) => (
-          <View
-            key={item.id}
-            style={[carouselStyles.slideWrapper, { width: SCREEN_WIDTH }]}
-          >
-            <View
-              style={[
-                carouselStyles.slide,
-                { backgroundColor: item.backgroundColor },
-              ]}
-            >
+          <View key={item.id} style={[carouselStyles.slideWrapper, { width: SCREEN_WIDTH }]}>
+            <View style={[carouselStyles.slide, { backgroundColor: item.backgroundColor }]}>
               <Text style={carouselStyles.slideTitle}>{item.title}</Text>
               <Text style={carouselStyles.slideText}>{item.text}</Text>
             </View>
@@ -129,7 +132,7 @@ const Carousel = () => {
                   {
                     width: progressAnim.interpolate({
                       inputRange: [0, 1],
-                      outputRange: ["0%", "100%"],
+                      outputRange: ['0%', '100%'],
                     }),
                   },
                 ]}
@@ -138,10 +141,7 @@ const Carousel = () => {
               <View
                 style={[
                   carouselStyles.progressBar,
-                  {
-                    width: activeIndex > index ? "100%" : "0%",
-                    backgroundColor: "#003049",
-                  },
+                  { width: activeIndex > index ? '100%' : '0%', backgroundColor: '#003049' }
                 ]}
               />
             )}
@@ -152,26 +152,27 @@ const Carousel = () => {
   );
 };
 
+// --- Estilos Específicos do Carrossel (Mantidos) ---
 const carouselStyles = StyleSheet.create({
   carouselContainer: {
-    height: 200,
+    height: 200, 
     marginBottom: 30,
     marginTop: 20,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   slideWrapper: {
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20, 
   },
   slide: {
-    width: "100%",
-    borderRadius: 15,
+    width: '100%', 
+    borderRadius: 15, 
     padding: 20,
-    height: 150,
-    justifyContent: "center",
-    alignItems: "center",
+    height: 150, 
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -180,48 +181,49 @@ const carouselStyles = StyleSheet.create({
   },
   slideTitle: {
     fontSize: 20,
-    fontWeight: "bold",
-    color: "#fff",
-    textAlign: "center",
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
     marginBottom: 8,
   },
   slideText: {
     fontSize: 14,
-    color: "#fff",
-    textAlign: "center",
+    color: '#fff',
+    textAlign: 'center',
   },
   indicatorContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 15,
     height: 3,
-    width: "80%",
-    justifyContent: "center",
+    width: '80%',
+    justifyContent: 'center',
   },
   dotWrapper: {
-    flex: 1,
+    flex: 1, 
     height: 3,
     marginHorizontal: 3,
     borderRadius: 1.5,
-    overflow: "hidden",
-    backgroundColor: "#ccc",
+    overflow: 'hidden', 
+    backgroundColor: '#ccc',
   },
   dotBackground: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
     left: 0,
     height: 3,
-    width: "100%",
-    backgroundColor: "#ccc",
+    width: '100%',
+    backgroundColor: '#ccc',
   },
   progressBar: {
     height: 3,
-    backgroundColor: "#003049",
-    position: "absolute",
+    backgroundColor: '#003049', 
+    position: 'absolute',
     top: 0,
     left: 0,
   },
 });
 
+// --- Componente Inicial Principal ATUALIZADO ---
 export default function Inicial() {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -229,15 +231,20 @@ export default function Inicial() {
   return (
     <View style={styles.fundo}>
       <View style={styles.container}>
+
+        {/* 1. CARROSSEL (Topo) */}
         <Carousel />
-        
+
+        {/* 2. Área de Título e Chamada */}
         <View style={styles.topo}>
           <Text style={styles.textogrande}>Olá!</Text>
           <Text style={styles.textopequeno}>Faça login ou crie sua conta</Text>
         </View>
 
+        {/* 3. Área de Botões (Fundo com cor suave) */}
         <View style={styles.botoesWrapper}>
           <View style={styles.botoesContainer}>
+            {/* Botão de Cadastro (Principal) */}
             <TouchableOpacity
               style={styles.botaocadastro}
               onPress={() => {
@@ -246,7 +253,7 @@ export default function Inicial() {
             >
               <Text style={styles.textobotaoPrincipal}>Cadastre-se</Text>
             </TouchableOpacity>
-
+            {/* Botão de Login */}
             <TouchableOpacity
               style={styles.botaologin}
               onPress={() => {
@@ -259,89 +266,81 @@ export default function Inicial() {
             <Text style={styles.textoparceiro}>
               Quer ser um dos nossos parceiros?
             </Text>
-
-            <TouchableOpacity
+            
+            {/* Botão de Parceiro - LINKADO */}
+            <TouchableOpacity 
               style={styles.botaologin}
               onPress={() => {
-                navigation.navigate("CadastroInstituicao");
+                navigation.navigate("CadastroInstituicao"); 
               }}
             >
               <Text style={styles.textobotaoSecundario}>Seja parceiro</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.botaologin}
-              onPress={() => {
-                navigation.navigate("Contatos");
-              }}
-            >
-              <Text style={styles.textobotaoSecundario}>Contatos</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.botaologin}
-              onPress={() => {
-                navigation.navigate("Instituicao");
-              }}
-            >
-              <Text style={styles.textobotaoSecundario}>Pular login</Text>
-            </TouchableOpacity>
           </View>
+          
+          {/* REMOVIDO: <View style={styles.fundoNavegacao}></View> */}
         </View>
+
       </View>
     </View>
   );
 }
 
+// --- Estilos Gerais ATUALIZADOS ---
 const styles = StyleSheet.create({
   fundo: {
-    backgroundColor: "#fff",
+    backgroundColor: "#fff", // Fundo branco principal
     justifyContent: "center",
     alignItems: "center",
     height: "100%",
     width: "100%",
     paddingTop: 50,
-    paddingBottom: 30,
+    paddingBottom: 30, // Adicionado padding no fundo novamente para dar respiro na base
   },
   container: {
     flex: 1,
     flexDirection: "column",
-    justifyContent: "space-between",
+    justifyContent: "space-between", 
     alignItems: "center",
-    width: "100%",
+    width: "100%", 
     maxWidth: 400,
   },
   topo: {
-    alignItems: "center",
-    paddingHorizontal: 20,
+    alignItems: 'center',
+    paddingHorizontal: 20, 
   },
   textogrande: {
-    fontSize: 36,
-    color: "#D62828",
+    fontSize: 36, 
+    color: "#D62828", 
     fontWeight: "bold",
     marginBottom: 5,
   },
   textopequeno: {
     fontSize: 18,
-    color: "#333",
-    textAlign: "center",
-    marginBottom: 30,
+    color: "#333", 
+    textAlign: 'center',
+    marginBottom: 30, 
   },
+  // REVERTIDO: Removemos flexGrow e adicionamos paddingBottom para o fundo cinza
   botoesWrapper: {
     width: "100%",
-    backgroundColor: "#F5F5F5",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    paddingTop: 30,
-    paddingBottom: 30,
-    alignItems: "center",
-    paddingHorizontal: 20,
+    backgroundColor: "#F5F5F5", // Cinza muito claro e suave
+    borderTopLeftRadius: 20, 
+    borderTopRightRadius: 20, 
+    paddingTop: 30, 
+    paddingBottom: 30, // Espaçamento na base do fundo cinza
+    alignItems: 'center',
+    paddingHorizontal: 20, 
   },
   botoesContainer: {
     width: "100%",
     alignItems: "center",
+    // Removido marginBottom
   },
+  // REMOVIDO: fundoNavegacao: {...}
   botaocadastro: {
-    backgroundColor: "#D62828",
-    borderRadius: 30,
+    backgroundColor: "#D62828", 
+    borderRadius: 30, 
     width: "100%",
     height: 55,
     justifyContent: "center",
@@ -354,10 +353,10 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   botaologin: {
-    backgroundColor: "transparent",
+    backgroundColor: "transparent", 
     borderWidth: 2,
-    borderRadius: 30,
-    borderColor: "#D62828",
+    borderRadius: 30, 
+    borderColor: "#D62828", 
     width: "100%",
     height: 55,
     justifyContent: "center",
@@ -365,12 +364,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   textobotaoPrincipal: {
-    color: "#fff",
+    color: "#fff", 
     fontSize: 18,
     fontWeight: "bold",
   },
   textobotaoSecundario: {
-    color: "#D62828",
+    color: "#D62828", 
     fontSize: 18,
     fontWeight: "bold",
   },
@@ -379,5 +378,5 @@ const styles = StyleSheet.create({
     color: "#666",
     marginTop: 15,
     marginBottom: 10,
-  },
+  }
 });
