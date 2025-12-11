@@ -63,7 +63,7 @@ export default function EsqueciSenha() {
       );
       
       setEmail("");
-      // navigation.goBack(); // Opcional: voltar para a tela de Login após envio
+      navigation.goBack();
 
     } catch (e) {
       setLoading(false);
@@ -85,7 +85,7 @@ export default function EsqueciSenha() {
           style={styles.botaoVoltar}
           onPress={() => navigation.goBack()}
         >
-          <Text style={styles.textoVoltar}>{"< Voltar"}</Text>
+          <Text style={styles.textoVoltar}>{"Voltar"}</Text>
         </TouchableOpacity>
 
         <Text style={styles.textogrande}>Esqueceu a Senha?</Text>
