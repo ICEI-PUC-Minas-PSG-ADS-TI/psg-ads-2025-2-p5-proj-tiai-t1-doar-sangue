@@ -1,0 +1,76 @@
+<div class="agendamento-container">
+
+  <h2>Agendar Doação</h2>
+  <p class="subtitulo">Antes de prosseguir, confirme se você atende aos requisitos.</p>
+
+  <!-- ========== REQUISITOS ========== -->
+  <section class="card requisitos-card">
+
+    <h3>Quem Pode Doar?</h3>
+    <ul>
+      <li>✔ Idade entre <strong>16 e 69 anos</strong></li>
+      <li>✔ Peso acima de <strong>50 kg</strong></li>
+      <li>✔ Estar descansado e bem alimentado</li>
+      <li>✔ Boas condições de saúde</li>
+    </ul>
+
+    <h3>Restrições Temporárias</h3>
+    <ul class="restricoes">
+      <li>❌ Febre, gripe ou sintomas recentes</li>
+      <li>❌ Uso de alguns medicamentos</li>
+      <li>❌ Tatuagem ou piercing (últimos 6 meses)</li>
+      <li>❌ Pós-cirúrgico recente</li>
+    </ul>
+
+    <h3>Intervalos Entre Doações</h3>
+    <ul>
+      <li>⏳ Homens: a cada <strong>60 dias</strong> (máx. 4x/ano)</li>
+      <li>⏳ Mulheres: a cada <strong>90 dias</strong> (máx. 3x/ano)</li>
+    </ul>
+
+  </section>
+
+  <!-- CHECKBOX DE CONFIRMAÇÃO -->
+  <div class="confirmacao">
+    <label>
+      <input type="checkbox" [(ngModel)]="aceitouRequisitos">
+      Declaro que li e confirmo que atendo aos requisitos acima.
+    </label>
+  </div>
+
+  <!-- ========== FORMULÁRIO DE AGENDAMENTO ========== -->
+  <section class="card agendamento-form" *ngIf="aceitouRequisitos">
+
+    <h3>Escolha uma Instituição</h3>
+
+    <select [(ngModel)]="instituicaoSelecionada">
+      <option value="" disabled selected>Selecione...</option>
+      <option *ngFor="let inst of instituicoes" [value]="inst.nome">{{ inst.nome }}</option>
+    </select>
+
+    <h3>Escolha a Data</h3>
+    <input type="date" [(ngModel)]="dataSelecionada" />
+
+    <h3>Escolha o Horário</h3>
+    <select [(ngModel)]="horarioSelecionado">
+      <option value="" disabled selected>Selecione...</option>
+      <option *ngFor="let h of horarios">{{ h }}</option>
+    </select>
+
+    <button class="btn-agendar" (click)="confirmarAgendamento()">
+      Confirmar Agendamento
+    </button>
+
+  </section>
+
+  <!-- CONFIRMAÇÃO -->
+  <div class="confirmacao-final" *ngIf="agendamentoConfirmado">
+    <h3>Agendamento Confirmado! 🎉</h3>
+    <p><strong>Instituição:</strong> {{ instituicaoSelecionada }}</p>
+    <p><strong>Data:</strong> {{ dataSelecionada }}</p>
+    <p><strong>Horário:</strong> {{ horarioSelecionado }}</p>
+
+    <button class="btn-voltar" routerLink="/doador">Voltar ao Painel</button>
+  </div>
+
+</div>

@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
+import { PostoService } from 'src/app/services/posto.service';
 import { Router } from '@angular/router';
-import { PostoService } from '../../services/postodecoleta.service';
 
 @Component({
   selector: 'app-cadastro-parceiros',
   templateUrl: './cadastro-parceiros.component.html',
-  styleUrls: ['./cadastro-parceiros.component.css'],
-  standalone: false
+  styleUrls: ['./cadadastro-parceiros.component.css']
 })
 export class CadastroParceirosComponent {
+
   posto: any = {
     contato: '',
     cnpj: '',
     senha: ''
   };
+
   confirmarSenha = '';
   mostrarSenha = false;
-  mostrarConfirmarSenha = false;  
+  mostrarConfirmarSenha = false;
   carregando = false;
 
   constructor(private postoService: PostoService, private router: Router) { }
@@ -35,8 +36,8 @@ export class CadastroParceirosComponent {
   formatarCnpj() {
     if (!this.posto.cnpj) return;
 
-    let valor = this.posto.cnpj.replace(/\D/g, ''); // remove tudo que não é número
-    valor = valor.substring(0, 14); // limita a 14 dígitos
+    let valor = this.posto.cnpj.replace(/\D/g, '');
+    valor = valor.substring(0, 14);
 
     valor = valor.replace(/^(\d{2})(\d)/, '$1.$2');
     valor = valor.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
@@ -46,7 +47,6 @@ export class CadastroParceirosComponent {
     this.posto.cnpj = valor;
   }
 
-
   cadastrar() {
     if (this.posto.senha !== this.confirmarSenha) {
       alert('As senhas não coincidem!');
@@ -55,21 +55,20 @@ export class CadastroParceirosComponent {
 
     this.carregando = true;
 
-    this.postoService.cadastrarPosto(this.posto)
-      .subscribe({
-        next: () => {
-          this.carregando = false;
-          alert('Cadastro realizado com sucesso!');
-          this.router.navigate(['/login']); // redireciona para login
-        },
-        error: err => {
-          this.carregando = false;
-          alert('Erro ao cadastrar: ' + (err.error?.message || err.message));
-        }
-      });
+    this.postoService.cadastrarPosto(this.posto).subscribe({
+      next: () => {
+        this.carregando = false;
+        alert('Cadastro realizado com sucesso!');
+        this.router.navigate(['/login']);
+      },
+      error: err => {
+        this.carregando = false;
+        alert('Erro ao cadastrar: ' + (err.error?.message || err.message));
+      }
+    });
   }
 
   verificarSenhas() {
-    // apenas força o Angular a atualizar o binding, não precisa retornar nada
+    // força atualização do Angular
   }
 }

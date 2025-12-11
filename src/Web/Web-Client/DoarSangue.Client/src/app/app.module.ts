@@ -9,13 +9,15 @@ import { App } from './app';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroParceirosComponent } from './pages/cadastro-parceiros/cadastro-parceiros.component';
+import { AgendamentoComponent } from './pages/agendamento/agendamento.component';
 
 @NgModule({
   declarations: [
     App,
     CadastroComponent,
     LoginComponent,
-    CadastroParceirosComponent
+    CadastroParceirosComponent,
+    AgendamentoComponent 
   ],
   imports: [
     BrowserModule,
