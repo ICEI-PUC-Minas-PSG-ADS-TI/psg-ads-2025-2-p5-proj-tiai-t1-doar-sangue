@@ -10,6 +10,14 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastroParceiros', component: CadastroParceirosComponent },
 
+  // ********* NOVA ROTA ADICIONADA AQUI *********
+  {
+    path: 'nova-campanha',
+    loadComponent: () =>
+      import('./pages/criar-campanha/criar-campanha.component')
+        .then(m => m.CriarCampanhaComponent)
+  },
+
   {
     path: 'instituicao',
     loadComponent: () =>

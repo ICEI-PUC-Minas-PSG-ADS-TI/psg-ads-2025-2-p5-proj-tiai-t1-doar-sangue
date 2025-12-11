@@ -1,29 +1,31 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { CommonModule, NgClass, NgFor } from '@angular/common';
+import { CommonModule, NgClass, NgFor, DatePipe } from '@angular/common'; // Adicionado DatePipe para formatação de data
 import Chart from 'chart.js/auto';
-import { RouterLink } from '@angular/router';
-import { CampanhaService } from '../../services/campanha.service'; // 1. Importa o Service
+import { RouterLink } from '@angular/router'; // Importado para usar routerLink no HTML
+import { CampanhaService } from '../../services/campanha.service';
 
 @Component({
   selector: 'app-instituicao-dashboard',
   standalone: true,
-  imports: [CommonModule, NgFor, NgClass],
+  // CORRIGIDO: RouterLink deve ser importado para que o botão funcione
+  // DatePipe deve ser importado para usar o pipe de data no template
+  imports: [CommonModule, NgFor, NgClass, RouterLink, DatePipe], 
   templateUrl: './instituicao-dashboard.component.html',
   styleUrls: ['./instituicao-dashboard.component.css']
 })
-export class InstituicaoDashboardComponent implements OnInit, AfterViewInit { // 2. Implementa OnInit
+export class InstituicaoDashboardComponent implements OnInit, AfterViewInit {
 
-  // 3. Remove os dados fictícios e define a lista como array vazio
+  // Lista para armazenar as campanhas carregadas do backend
   campanhas: any[] = []; 
 
-  constructor(private campanhaService: CampanhaService) {} // 4. Injeta o Service
+  constructor(private campanhaService: CampanhaService) {}
 
   ngOnInit(): void {
-    this.carregarCampanhas(); // 5. Chama a função de busca ao inicializar
+    this.carregarCampanhas();
   }
 
   ngAfterViewInit(): void {
-    // Adicionei uma verificação de segurança (if (ctx)) nos métodos do gráfico
+    // Inicializa os gráficos após a visualização
     this.createEstoqueChart();
     this.createTipoSangueChart();
   }
@@ -34,20 +36,21 @@ export class InstituicaoDashboardComponent implements OnInit, AfterViewInit { //
   carregarCampanhas() {
     this.campanhaService.listarCampanhas().subscribe({
       next: (dados) => {
-        // O Angular preenche a lista e o *ngFor no HTML exibe os dados
+        // O Angular preenche a lista
         this.campanhas = dados;
         console.log('Campanhas carregadas:', dados);
       },
       error: (erro) => {
         console.error('Erro ao buscar campanhas:', erro);
-        // Opcional: Mostrar uma mensagem de erro na interface
+        // Exemplo: alert('Falha ao carregar campanhas.');
       }
     });
   }
 
+  // Métodos de criação de gráficos (mantidos inalterados)
   createEstoqueChart() {
     const ctx = document.getElementById('estoqueChart') as HTMLCanvasElement;
-    if (!ctx) return; // Se o elemento não existe, evita erro
+    if (!ctx) return; 
 
     new Chart(ctx, {
       type: 'bar',
@@ -73,7 +76,7 @@ export class InstituicaoDashboardComponent implements OnInit, AfterViewInit { //
 
   createTipoSangueChart() {
     const ctx = document.getElementById('sangueChart') as HTMLCanvasElement;
-    if (!ctx) return; // Se o elemento não existe, evita erro
+    if (!ctx) return;
 
     new Chart(ctx, {
       type: 'pie',

@@ -11,7 +11,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroParceirosComponent } from './pages/cadastro-parceiros/cadastro-parceiros.component';
 import { DoadorComponent } from './pages/doador/doador.component';
-import { InstituicaoDashboardComponent } from './pages/instituicao/instituicao-dashboard.component';
+import { InstituicaoDashboardComponent } from './pages/instituicao/instituicao-dashboard.component'; // IMPORTADO
 import { PerfilComponent } from './pages/perfil/perfil.component';
 
 @NgModule({
@@ -21,8 +21,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     LoginComponent,
     CadastroParceirosComponent,
     DoadorComponent,
-    PerfilComponent,
-    InstituicaoDashboardComponent
+    PerfilComponent
+    // InstituicaoDashboardComponent FOI REMOVIDO DAQUI
   ],
   imports: [
     BrowserModule,
@@ -31,7 +31,9 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    // ADICIONADO AQUI POR SER STANDALONE
+    InstituicaoDashboardComponent 
   ],
   providers: [],
   bootstrap: [App]
