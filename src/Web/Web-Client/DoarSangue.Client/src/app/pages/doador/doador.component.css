@@ -38,6 +38,13 @@ body, html {
   border-radius: 35px;
 }
 
+.sidebar-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 0;
+}
+
 .sidebar h2 {
   font-size: 22px;
   font-weight: 600;

@@ -2,6 +2,7 @@
 using DoarSangue.Api.Models;
 using DoarSangue.Api.Services;
 using Microsoft.AspNetCore.Mvc;
+using Supabase.Gotrue;
 
 namespace DoarSangue.Api.Controllers
 {
@@ -19,46 +20,47 @@ namespace DoarSangue.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Cadastrar([FromBody] PostoDeColetaRequest req)
         {
-            if (req == null)
-                return BadRequest(new { message = "Dados inválidos" });
+            if (req == null ||
+                string.IsNullOrWhiteSpace(req.Nome) ||
+                string.IsNullOrWhiteSpace(req.Email) ||
+                string.IsNullOrWhiteSpace(req.Senha))
+            {
+                return BadRequest(new { message = "Nome, Email e Senha são obrigatórios" });
+            }
 
             var client = _supabase.Client;
 
             try
             {
-                // Cria conta no Supabase Auth
-                var authResponse = await client.Auth.SignUp(req.Email, req.Senha);
+                // Criar posto no Supabase Auth
+                // O TRIGGER vai cuidar de inserir na tabela 'postodecoleta' automaticamente
+                var authResponse = await client.Auth.SignUp(
+                    req.Email,
+                    req.Senha,
+                    options: new SignUpOptions
+                    {
+                        Data = new Dictionary<string, object>
+                        {
+                            { "nome", req.Nome },
+                            { "contato", req.Contato ?? "" },
+                            { "endereco", req.Endereco ?? "" },
+                            { "horariofuncionamento", req.HorarioFuncionamento ?? "" },
+                            { "cnpj", req.Cnpj ?? "" },
+                            { "role", "posto" } // IMPORTANTE: Define como 'posto'
+                        }
+                    }
+                );
 
                 if (authResponse.User == null)
                     return StatusCode(500, new { message = "Erro ao criar autenticação no Supabase" });
 
-                // Cria registro no banco
-                var posto = new PostoDeColeta
-                {
-                    Nome = req.Nome,
-                    Email = req.Email,
-                    Senha = req.Senha,
-                    Contato = req.Contato,
-                    Endereco = req.Endereco,
-                    HorarioFuncionamento = req.HorarioFuncionamento,
-                    Cnpj = req.Cnpj,
-                    TipoPermissao = "posto"
-                };
+                var uid = authResponse.User.Id;
 
-                var result = await client.From<PostoDeColeta>().Insert(posto);
-
-                var response = result.Models.Select(p => new PostoDeColetaResponse
+                return Ok(new
                 {
-                    Id = p.Id,
-                    Nome = p.Nome,
-                    Email = p.Email,
-                    Contato = p.Contato,
-                    Endereco = p.Endereco,
-                    HorarioFuncionamento = p.HorarioFuncionamento,
-                    Cnpj = p.Cnpj
+                    message = "Posto cadastrado com sucesso!",
+                    uid = uid
                 });
-
-                return Ok(new { message = "Posto cadastrado com sucesso!", data = response });
             }
             catch (Exception ex)
             {
