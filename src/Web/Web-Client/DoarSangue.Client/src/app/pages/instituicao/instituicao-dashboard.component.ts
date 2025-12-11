@@ -7,7 +7,7 @@ import { CampanhaService } from '../../services/campanha.service'; // 1. Importa
 @Component({
   selector: 'app-instituicao-dashboard',
   standalone: true,
-  imports: [CommonModule, NgFor, NgClass, RouterLink],
+  imports: [CommonModule, NgFor, NgClass],
   templateUrl: './instituicao-dashboard.component.html',
   styleUrls: ['./instituicao-dashboard.component.css']
 })

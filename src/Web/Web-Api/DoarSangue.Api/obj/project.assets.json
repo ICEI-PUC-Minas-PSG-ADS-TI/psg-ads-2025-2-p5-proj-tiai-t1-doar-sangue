@@ -231,7 +231,7 @@
           }
         }
       },
-      "Supabase.Postgrest/4.0.3": {
+      "Supabase.Postgrest/4.1.0": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
@@ -986,10 +986,10 @@
         "supabase.gotrue.nuspec"
       ]
     },
-    "Supabase.Postgrest/4.0.3": {
-      "sha512": "hpDIh+E5bDgZiHMuM6l+RDm9WWlt/T3fXXFQoqzlsrJFesFMNzkK9feVBG5egJyL/OlwmxuLsnPkR7O+bV3Vcw==",
+    "Supabase.Postgrest/4.1.0": {
+      "sha512": "DwgBVeU3Xjo1pr7vJ7EiTEHFHa7bN4CwOvsiDqTFfT5Q8Dq1Ok/KT7P6XUbs578zYA2uQb7II8TLo0dfv6Qx5g==",
       "type": "package",
-      "path": "supabase.postgrest/4.0.3",
+      "path": "supabase.postgrest/4.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -997,7 +997,7 @@
         "icon.png",
         "lib/netstandard2.0/Supabase.Postgrest.dll",
         "lib/netstandard2.0/Supabase.Postgrest.xml",
-        "supabase.postgrest.4.0.3.nupkg.sha512",
+        "supabase.postgrest.4.1.0.nupkg.sha512",
         "supabase.postgrest.nuspec"
       ]
     },
@@ -1243,28 +1243,46 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
+      "Microsoft.Extensions.Logging.Abstractions >= 8.0.0",
       "Supabase >= 1.1.1",
+      "Supabase.Postgrest >= 4.1.0",
       "Swashbuckle.AspNetCore >= 6.6.2"
     ]
   },
   "packageFolders": {
+<<<<<<< HEAD
     "C:\\Users\\Immy\\.nuget\\packages\\": {},
+=======
+    "C:\\Users\\samyr\\.nuget\\packages\\": {},
+>>>>>>> develop
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\Immy\\Downloads\\Nova pasta (2)\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
       "projectName": "DoarSangue.Api",
       "projectPath": "C:\\Users\\Immy\\Downloads\\Nova pasta (2)\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
       "packagesPath": "C:\\Users\\Immy\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Immy\\Downloads\\Nova pasta (2)\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\obj\\",
+=======
+      "projectUniqueName": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\web-api\\doarsangue.api\\DoarSangue.Api.csproj",
+      "projectName": "DoarSangue.Api",
+      "projectPath": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\web-api\\doarsangue.api\\DoarSangue.Api.csproj",
+      "packagesPath": "C:\\Users\\samyr\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\samyr\\source\\repos\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\web-api\\doarsangue.api\\obj\\",
+>>>>>>> develop
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+<<<<<<< HEAD
         "C:\\Users\\Immy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+        "C:\\Users\\samyr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> develop
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1273,7 +1291,10 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+<<<<<<< HEAD
         "C:\\Program Files\\dotnet\\library-packs": {},
+=======
+>>>>>>> develop
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1298,9 +1319,17 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
+          "Microsoft.Extensions.Logging.Abstractions": {
+            "target": "Package",
+            "version": "[8.0.0, )"
+          },
           "Supabase": {
             "target": "Package",
             "version": "[1.1.1, )"
+          },
+          "Supabase.Postgrest": {
+            "target": "Package",
+            "version": "[4.1.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
@@ -1326,7 +1355,11 @@
             "privateAssets": "all"
           }
         },
+<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100-rc.2.24474.11/PortableRuntimeIdentifierGraph.json"
+=======
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+>>>>>>> develop
       }
     }
   }

@@ -9,13 +9,21 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DoarSangue.Api
 build_property.RootNamespace = DoarSangue.Api
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api\
+=======
+build_property.ProjectDir = C:\Users\samyr\source\repos\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.API\
+>>>>>>> develop
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = C:\Users\Immy\Downloads\Nova pasta (2)\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.Api
+=======
+build_property.MSBuildProjectDirectory = C:\Users\samyr\source\repos\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\src\Web\Web-Api\DoarSangue.API
+>>>>>>> develop
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
