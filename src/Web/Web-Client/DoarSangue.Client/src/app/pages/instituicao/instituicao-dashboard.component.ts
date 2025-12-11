@@ -4,8 +4,7 @@ import Chart from 'chart.js/auto';
 
 @Component({
   selector: 'app-instituicao-dashboard',
-  standalone: true,
-  imports: [CommonModule, NgFor, NgClass],
+  standalone: false,
   templateUrl: './instituicao-dashboard.component.html',
   styleUrls: ['./instituicao-dashboard.component.css']
 })

@@ -7,7 +7,7 @@ namespace DoarSangue.Api.Models
     public class PostoDeColeta : BaseModel
     {
         [PrimaryKey("id", false)]
-        public long? Id { get; set; }
+        public string Id { get; set; }
 
         [Column("auth_uid")]
         public string AuthUid { get; set; } = string.Empty;

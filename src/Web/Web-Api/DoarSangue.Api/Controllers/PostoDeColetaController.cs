@@ -32,12 +32,9 @@ namespace DoarSangue.Api.Controllers
                 if (authResponse.User == null)
                     return StatusCode(500, new { message = "Erro ao criar autenticação no Supabase" });
 
-                var uid = authResponse.User.Id;
-
                 // Cria registro no banco
                 var posto = new PostoDeColeta
                 {
-                    AuthUid = uid,
                     Nome = req.Nome,
                     Email = req.Email,
                     Senha = req.Senha,
@@ -91,7 +88,7 @@ namespace DoarSangue.Api.Controllers
 
                 var result = await client
                     .From<PostoDeColeta>()
-                    .Where(p => p.AuthUid == uid)
+                    .Where(p => p.Id == uid)
                     .Get();
 
                 var posto = result.Models.FirstOrDefault();
@@ -115,6 +112,72 @@ namespace DoarSangue.Api.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = "Erro ao realizar login", error = ex.Message });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPostos()
+        {
+            var client = _supabase.Client;
+
+            try
+            {
+                var result = await client
+                    .From<PostoDeColeta>()
+                    .Get();
+
+                var response = result.Models.Select(p => new PostoDeColetaResponse
+                {
+                    Id = p.Id,
+                    Nome = p.Nome,
+                    Email = p.Email,
+                    Contato = p.Contato,
+                    Endereco = p.Endereco,
+                    HorarioFuncionamento = p.HorarioFuncionamento,
+                    Cnpj = p.Cnpj
+                }).ToList();
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erro ao buscar postos", error = ex.Message });
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetPostoById(string id)
+        {
+            var client = _supabase.Client;
+
+            try
+            {
+                var result = await client
+                    .From<PostoDeColeta>()
+                    .Where(p => p.Id == id)
+                    .Get();
+
+                var posto = result.Models.FirstOrDefault();
+
+                if (posto == null)
+                    return NotFound(new { message = "Posto não encontrado" });
+
+                var response = new PostoDeColetaResponse
+                {
+                    Id = posto.Id,
+                    Nome = posto.Nome,
+                    Email = posto.Email,
+                    Contato = posto.Contato,
+                    Endereco = posto.Endereco,
+                    HorarioFuncionamento = posto.HorarioFuncionamento,
+                    Cnpj = posto.Cnpj
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Erro ao buscar posto", error = ex.Message });
             }
         }
     }

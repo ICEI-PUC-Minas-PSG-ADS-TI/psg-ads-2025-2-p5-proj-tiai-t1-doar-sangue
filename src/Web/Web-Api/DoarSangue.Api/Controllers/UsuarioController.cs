@@ -35,18 +35,15 @@ namespace DoarSangue.Api.Controllers
                 if (authResponse.User == null)
                     return StatusCode(500, new { message = "Erro ao criar autenticação no Supabase" });
 
-                var uid = authResponse.User.Id; // string UUID do Supabase Auth
-
                 // Criar o registro na tabela "usuario"
                 var usuario = new Usuario
                 {
-                    AuthUid = uid,
                     Nome = req.Nome,
                     Email = req.Email,
                     Senha = req.Senha,
                     Telefone = req.Telefone,
                     Sexo = req.Sexo,
-                    TipoPermissao = "usuario",
+                    TipoPermissao = "doador",
                     UsuarioTipo = 0
                 };
 
@@ -54,7 +51,6 @@ namespace DoarSangue.Api.Controllers
 
                 var response = result.Models.Select(u => new UsuarioResponse
                 {
-                    Id = u.Id,
                     Nome = u.Nome,
                     Email = u.Email,
                     Telefone = u.Telefone,
@@ -100,7 +96,7 @@ namespace DoarSangue.Api.Controllers
                 // Tentar buscar na tabela "usuario"
                 var userResult = await client
                     .From<Usuario>()
-                    .Where(u => u.AuthUid == uid)
+                    .Where(u => u.Id == uid)
                     .Get();
 
                 var usuario = userResult.Models.FirstOrDefault();

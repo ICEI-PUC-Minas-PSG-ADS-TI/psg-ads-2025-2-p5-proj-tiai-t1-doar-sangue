@@ -40,31 +40,31 @@
 
         <!-- ========== SIDEBAR ========== -->
         <aside class="sidebar">
-          <img src="/psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue/src/Web/Web-Client/DoarSangue.Client/public/Logo GiveLife.png"
-            class="logo" alt="Logo Give Life">
+          <img src="/Logo GiveLife.png"
+               class="logo" alt="Logo Give Life">
 
           <h2>Bem-vindo, Doador!</h2>
           <p class="descricao">Acompanhe locais e agende sua próxima doação.</p>
-<div class="sidebar-section">
-  <h3 class="sidebar-title">Minha Conta</h3>
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Minha Conta</h3>
 
-  <ul class="sidebar-menu">
-    <li routerLink="/dados-pessoais">Dados Pessoais</li>
-    <li routerLink="/notificacoes">Notificações</li>
-    <li routerLink="/privacidade">Privacidade</li>
-    <li routerLink="/agendamentos">Agendamentos</li>
-  </ul>
-</div>
-<!--  - CONFIGURAÇÕES -->
-<div class="sidebar-section">
-  <h3 class="sidebar-title">Configurações</h3>
+            <ul class="sidebar-menu">
+              <li routerLink="/dados-pessoais">Dados Pessoais</li>
+              <li routerLink="/notificacoes">Notificações</li>
+              <li routerLink="/privacidade">Privacidade</li>
+              <li routerLink="/agendamentos">Agendamentos</li>
+            </ul>
+          </div>
+          <!--  - CONFIGURAÇÕES -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Configurações</h3>
 
-  <ul class="sidebar-menu">
-    <li routerLink="/seguranca">Segurança</li>
-    <li routerLink="/preferencias">Preferências</li>
-    <li routerLink="/acessibilidade">Acessibilidade</li>
-  </ul>
-</div>
+            <ul class="sidebar-menu">
+              <li routerLink="/seguranca">Segurança</li>
+              <li routerLink="/preferencias">Preferências</li>
+              <li routerLink="/acessibilidade">Acessibilidade</li>
+            </ul>
+          </div>
 
         </aside>
 
@@ -85,35 +85,35 @@
           <section class="card instituicoes-card">
             <h3>Instituições de Doação</h3>
 
-            <div class="lista-instituicoes">
+            <!-- Loading -->
+            <div *ngIf="loading" style="text-align: center; padding: 20px; color: #065e5e;">
+              <p>⏳ Carregando instituições...</p>
+            </div>
 
-              <div class="card-instituicao">
-                <img src="assets/images/instituto3.jfif" alt="Instituição Ihene">
-                <h4>Instituição Ihene</h4>
-                <p><strong>Endereço:</strong> Rua A, 123</p>
-                <p><strong>Telefone:</strong> (31) 1234-5678</p>
-                <p><strong>Horário:</strong> Seg–Sex: 08h–18h</p>
+            <!-- Lista de Instituições -->
+            <div class="lista-instituicoes" *ngIf="!loading">
+
+              <!-- Card para cada instituição -->
+              <div class="card-instituicao" *ngFor="let instituicao of instituicoes">
+                <!-- Removendo imagem temporariamente para evitar erro 404 -->
+                <div style="width: 100%; height: 150px; background: linear-gradient(135deg, #065e5e, #0a9e9e); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold; margin-bottom: 15px;">
+                  {{ instituicao.nome.charAt(0) }}
+                </div>
+
+                <h4>{{ instituicao.nome }}</h4>
+                <p><strong>📍 Endereço:</strong> {{ instituicao.endereco }}</p>
+                <p><strong>📞 Telefone:</strong> {{ instituicao.contato }}</p>
+                <p><strong>🕐 Horário:</strong> {{ instituicao.horarioFuncionamento }}</p>
               </div>
 
-              <div class="card-instituicao">
-                <img src="assets/images/instituto1.png" alt="Instituição Sabin">
-                <h4>Instituição Sabin</h4>
-                <p><strong>Endereço:</strong> Rua B, 456</p>
-                <p><strong>Telefone:</strong> (31) 8765-4321</p>
-                <p><strong>Horário:</strong> Seg–Sáb: 08h–17h</p>
-              </div>
-
-              <div class="card-instituicao">
-                <img src="assets/images/Instituto2.jpg" alt="Instituição Hermece">
-                <h4>Instituição Hermece</h4>
-                <p><strong>Endereço:</strong> Rua C, 789</p>
-                <p><strong>Telefone:</strong> (31) 1122-3344</p>
-                <p><strong>Horário:</strong> Seg–Sex: 07h–19h</p>
+              <!-- Mensagem se não houver instituições -->
+              <div *ngIf="instituicoes.length === 0" style="text-align: center; padding: 20px; color: #666;">
+                <p>📋 Nenhuma instituição cadastrada no momento.</p>
               </div>
 
             </div>
 
-            <button class="btn-secundario">Informações sobre Doação</button>
+            <button class="btn-secundario" (click)="abrirModalInfo()">Informações sobre Doação</button>
           </section>
 
           <!-- DEPOIMENTOS -->
@@ -152,6 +152,75 @@
   <footer>
     <p>© 2024 Give Life - Todos os direitos reservados</p>
   </footer>
+
+  <!-- ===== MODAL INFORMAÇÕES ===== -->
+  <div class="modal-overlay" id="modal-info" (click)="fecharModalInfo()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+
+      <button class="modal-close" (click)="fecharModalInfo()">×</button>
+
+      <h2 class="modal-title">Informações para Doadores</h2>
+
+      <div class="modal-section">
+        <h3>✔ Quem Pode Doar?</h3>
+        <ul>
+          <li>Idade entre 16 e 69 anos</li>
+          <li>Peso acima de 50 kg</li>
+          <li>Estar descansado e bem alimentado</li>
+          <li>Boas condições de saúde</li>
+        </ul>
+
+        <h4>❌ Restrições Temporárias</h4>
+        <ul>
+          <li>Febre, gripe ou sintomas recentes</li>
+          <li>Uso de alguns medicamentos</li>
+          <li>Tatuagem ou piercing (últimos 6 meses)</li>
+          <li>Pós-cirúrgico recente</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>⏳ Intervalos Entre Doações</h3>
+        <ul>
+          <li><strong>Homens:</strong> a cada 60 dias (máx. 4x/ano)</li>
+          <li><strong>Mulheres:</strong> a cada 90 dias (máx. 3x/ano)</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>📋 O Que Levar no Dia?</h3>
+        <ul>
+          <li>Documento oficial com foto</li>
+          <li>Estar bem hidratado</li>
+          <li>Evitar refeições gordurosas antes da doação</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>🩸 Como Funciona o Processo de Doação?</h3>
+        <ol>
+          <li>Cadastro e preenchimento do formulário</li>
+          <li>Triagem e testes rápidos</li>
+          <li>Doação (8 a 12 minutos)</li>
+          <li>Lanche e recuperação</li>
+        </ol>
+      </div>
+
+      <div class="modal-section">
+        <h3>❤️ Benefícios de Doar Sangue</h3>
+        <ul>
+          <li>Ajuda a salvar até 4 vidas por doação</li>
+          <li>Triagem e exames gratuitos</li>
+          <li>Contribui com hospitais e bancos de sangue</li>
+          <li>É seguro, rápido e totalmente esterilizado</li>
+        </ul>
+      </div>
+
+      <button class="btn-primario" (click)="fecharModalInfo()">Entendido</button>
+
+    </div>
+  </div>
+
 
 </body>
 
