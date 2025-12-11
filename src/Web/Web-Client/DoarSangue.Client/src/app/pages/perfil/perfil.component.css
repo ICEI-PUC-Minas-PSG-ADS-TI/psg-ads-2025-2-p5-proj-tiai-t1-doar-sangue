@@ -53,23 +53,23 @@ body, html {
   text-align: center;
 }
 
-  .sidebar .logo {
-    width: 110px;
-    margin-bottom: 15px;
-    border-radius: 35px;
-  }
+.sidebar .logo {
+  width: 110px;
+  margin-bottom: 15px;
+  border-radius: 35px;
+}
 
-  .sidebar h2 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #054d4d;
-  }
+.sidebar h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #054d4d;
+}
 
-  .sidebar .descricao {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 25px;
-  }
+.sidebar .descricao {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
 
 /* ===== MENU ===== */
 .sidebar-section {
@@ -85,6 +85,12 @@ body, html {
   font-weight: 600;
   color: #065e5e;
   margin-bottom: 10px;
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 8px 0;
 }
 
 .sidebar-menu li {
@@ -127,6 +133,7 @@ body, html {
   font-weight: 600;
   cursor: pointer;
   margin-top: 15px;
+  text-decoration: none;
 }
 
   .btn-sair:hover {
@@ -177,6 +184,63 @@ body, html {
   .btn-cancelar:hover {
     background-color: #b71c1c;
   }
+
+.btn-excluir,
+.btn-atualizar {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+/* Seções do card de segurança */
+.secao-redefinir,
+.secao-alterar,
+.secao-excluir {
+  margin-bottom: 1.5rem;
+}
+
+  .secao-redefinir h4,
+  .secao-alterar h4,
+  .secao-excluir h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+/* Descrição pequena */
+.descricao-pequena {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+/* Aviso de perigo */
+.aviso-perigo {
+  color: #d32f2f;
+  font-weight: 500;
+}
+
+/* Estilo para input readonly na seção de email */
+.secao-redefinir input[readonly] {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  color: #666;
+}
+
+/* Zona de perigo - destaque visual */
+.secao-excluir {
+  padding: 1rem;
+  background-color: #fff5f5;
+  border: 1px solid #ffebee;
+  border-radius: 8px;
+}
+
 
 /* Inputs desativados */
 input[readonly] {
@@ -276,3 +340,4 @@ footer {
   height: 24px;
   accent-color: #00897b; 
 }
+

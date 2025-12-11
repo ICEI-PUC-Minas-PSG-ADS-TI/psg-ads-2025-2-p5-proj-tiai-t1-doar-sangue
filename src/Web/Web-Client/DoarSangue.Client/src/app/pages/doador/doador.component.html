@@ -50,7 +50,7 @@
 
             <ul class="sidebar-menu">
               <li >
-              <a routerLink="/perfil" class="sidebar-link">Dados Pessoais></a>
+              <a routerLink="/perfil" class="sidebar-link">Dados Pessoais</a>
               </li>            
               <li routerLink="/agendamentos">Agendamentos</li>
             </ul>
@@ -60,9 +60,7 @@
             <h3 class="sidebar-title">Configurações</h3>
 
             <ul class="sidebar-menu">
-              <li routerLink="/seguranca">Segurança</li>
-              <li routerLink="/preferencias">Preferências</li>
-              <li routerLink="/acessibilidade">Acessibilidade</li>
+              <li><a routerLink="/perfil" class="sidebar-link">Segurança</a></li>
             </ul>
           </div>
 
@@ -115,35 +113,6 @@
 
             <button class="btn-secundario" (click)="abrirModalInfo()">Informações sobre Doação</button>
           </section>
-
-          <!-- DEPOIMENTOS -->
-          <section class="card depoimentos-card">
-            <h3>Depoimentos</h3>
-
-            <div class="lista-depoimentos">
-
-              <div class="depoimento">
-                <img src="assets/images/user1.png" alt="Usuário 1">
-                <p>"Nunca pensei que doar sangue seria tão acessível..."</p>
-                <span>- Ana</span>
-              </div>
-
-              <div class="depoimento">
-                <img src="assets/images/user2.png" alt="Usuário 2">
-                <p>"Doar foi uma experiência transformadora..."</p>
-                <span>- Carlos</span>
-              </div>
-
-              <div class="depoimento">
-                <img src="assets/images/user3.jpeg" alt="Usuário 3">
-                <p>"Quando minha mãe precisou de uma transfusão..."</p>
-                <span>- Larissa</span>
-              </div>
-
-            </div>
-
-          </section>
-
         </div>
       </div>
     </section>

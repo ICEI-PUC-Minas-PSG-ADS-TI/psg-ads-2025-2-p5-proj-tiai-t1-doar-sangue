@@ -8,13 +8,6 @@
 </head>
 
 <body>
-
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <img src="/Logo GiveLife.png" alt="Logo" class="header-logo">
-    <h1 class="header-title">Minha Conta</h1>
-  </header>
-
   <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <main>
     <div class="layout">
@@ -23,7 +16,7 @@
       <aside class="sidebar">
         <img src="/Logo GiveLife.png" class="logo" alt="Logo Give Life">
 
-        <h2>Olá, usuário!</h2>
+        <h2>Minha Conta!</h2>
         <p class="descricao">Gerencie seus dados e configurações.</p>
 
         <!-- Navegação principal -->
@@ -31,13 +24,14 @@
           <h3 class="sidebar-title">Navegação</h3>
 
           <ul class="sidebar-menu">
+            <li><a routerLink="/doador" class="sidebar-link">Página Inicial</a></li>
             <li (click)="scrollTo('dados')">Dados Pessoais</li>
             <li (click)="scrollTo('requisitos')">Requisitos para Doação</li>
             <li (click)="scrollTo('seguranca')">Segurança</li>
           </ul>
         </div>
 
-        <a class="btn-sair" routerLink="/login">Sair da Conta</a>
+        <a class="btn-sair" (click)="sairDaConta()">Sair da Conta</a>
       </aside>
 
       <!-- ===== ÁREA DE CARDS ===== -->
@@ -60,6 +54,18 @@
           <div class="form-group">
             <label>Telefone</label>
             <input type="text" [(ngModel)]="usuario.telefone" [placeholder]="usuario.telefone" [readonly]="!editandoDados">
+          </div>
+
+          <div class="form-group">
+            <label>Sexo</label>
+            <select [(ngModel)]="usuario.sexo"
+                    name="sexo"
+                    [disabled]="!editandoDados"
+                    required>
+              <option value="" disabled>Selecione seu sexo</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+            </select>
           </div>
 
           <div class="botoes-edicao">
@@ -99,7 +105,10 @@
               Fiz uma refeição leve antes da doação.
             </label>
 
-            <button class="btn-primario" (click)="confirmarChecklist()">Confirmar Requisitos</button>
+            <div class="botoes-edicao">
+              <button class="btn-editar" (click)="confirmarChecklist()">Confirmar Requisitos</button>
+            </div>
+
           </div>
         </section>
 
@@ -107,25 +116,37 @@
         <section id="seguranca" class="card">
           <h3>Segurança</h3>
 
-          <div class="form-group">
-            <label>Senha Atual</label>
-            <input type="password" [(ngModel)]="seguranca.senhaAtual">
+          <div class="secao-redefinir">
+            <h4>Redefinir Senha por Email</h4>
+            <p class="descricao-pequena">
+              Enviaremos um link de redefinição para o seu email cadastrado.
+            </p>
+
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email"
+                     [value]="usuario.email"
+                     readonly>
+            </div>
+
+            <div class="botoes-edicao">
+              <button class="btn-editar" (click)="solicitarRedefinirSenha()">
+                Enviar Link de Redefinição
+              </button>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label>Nova Senha</label>
-            <input type="password" [(ngModel)]="seguranca.senhaNova">
-          </div>
+          <div class="secao-excluir">
+            <h4>Zona de Perigo</h4>
+            <p class="descricao-pequena aviso-perigo">
+              ⚠️ Esta ação é permanente e não pode ser desfeita.
+            </p>
 
-          <button class="btn-primario" (click)="atualizarSenha()">Atualizar Senha</button>
-
-          <hr style="margin: 25px 0;">
-
-          <button class="btn-sair" (click)="excluirConta()">
-            Excluir Conta
-          </button>
+            <div class="botoes-edicao">
+              <button class="btn-cancelar" (click)="excluirConta()">Excluir Conta Permanentemente</button>
+            </div>
+          </div>      
         </section>
-
       </div>
     </div>
   </main>
