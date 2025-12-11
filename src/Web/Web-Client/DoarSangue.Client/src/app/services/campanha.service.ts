@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CampanhaService {
 
  
-  private apiUrl = 'http://localhost:5181/api/campanha';
+  private apiUrl = 'https://localhost:7013/api/campanha';
 
   constructor(private http: HttpClient) { }
 
