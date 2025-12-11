@@ -7,10 +7,8 @@ namespace DoarSangue.Api.Models
     public class PostoDeColeta : BaseModel
     {
         [PrimaryKey("id", false)]
-        public long? Id { get; set; }
-
-        [Column("auth_uid")]
-        public string AuthUid { get; set; } = string.Empty;
+        [Column("id")]
+        public string Id { get; set; }
 
         [Column("nome")]
         public string Nome { get; set; } = string.Empty;
@@ -29,9 +27,6 @@ namespace DoarSangue.Api.Models
 
         [Column("cnpj")]
         public string Cnpj { get; set; } = string.Empty;
-
-        [Column("senha")]
-        public string Senha { get; set; } = string.Empty;
 
         [Column("tipo_permissao")]
         public string TipoPermissao { get; set; } = "posto";

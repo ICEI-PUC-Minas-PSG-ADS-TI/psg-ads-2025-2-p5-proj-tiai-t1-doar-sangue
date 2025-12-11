@@ -10,10 +10,12 @@ import {
   Platform,
   ActivityIndicator,
 } from "react-native";
-import { MaterialIcons } from "@expo/vector-icons";
+import MaterialIcons from "@react-native-vector-icons/material-icons"; 
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
-
+import Login from "./login";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../App";
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2Z3dxcGZvdXFmbndoYWtkdWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyOTI2ODUsImV4cCI6MjA3Nzg2ODY4NX0.fJdeZhBz6_ASOXevFhw0MpmXi2Fs7Nv5KRTI4Sexnrw";
@@ -21,8 +23,9 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Cadastro() {
-  const navigation = useNavigation();
-
+ const navigation =
+     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmar, setConfirmar] = useState("");
@@ -81,7 +84,7 @@ export default function Cadastro() {
               email: email, 
               // Define os campos específicos para um USUÁRIO PADRÃO (Doador):
               tipopermissao: 'doador', // Usando o tipo string
-              usuario_tipo: 0,         // Usando o tipo int4 (0 para doador)
+              usuario_tipo: 0, // Usando o tipo int4 (0 para doador)
               // CEP, CNPJ, Telefone, Sexo ficam NULL, conforme definido na tabela
             },
           ]);
@@ -121,6 +124,7 @@ export default function Cadastro() {
   };
 
   return (
+    
     <View style={styles.fundo}>
       <KeyboardAvoidingView
         style={styles.container}
@@ -195,13 +199,11 @@ export default function Cadastro() {
             Faça login
           </Text>
         </Text>
-      </View>
-    </KeyboardAvoidingView>
+      </KeyboardAvoidingView>
+    </View> // Corrigido: Apenas um View de fechamento
   );
 }
 
-// -------------------------------------------------------------------
-// Estilos (Mantidos)
 const styles = StyleSheet.create({
   fundo: {
     flex: 1,
@@ -286,5 +288,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  textoInferior: {
+    fontSize: 16,
+    marginTop: 20,
+    color: "#666",
+  },
+  link: {
+    color: "#003049",
+    fontWeight: "bold",
+    textDecorationLine: "underline",
   },
 });
