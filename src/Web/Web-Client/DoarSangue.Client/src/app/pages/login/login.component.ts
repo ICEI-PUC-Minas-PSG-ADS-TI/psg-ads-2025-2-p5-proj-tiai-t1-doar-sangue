@@ -15,6 +15,12 @@ export class LoginComponent {
   mostrarSenha: boolean = false;
   isLoading: boolean = false;
 
+  mostrarModalRecuperacao: boolean = false;
+  emailRecuperacao: string = '';
+  erroRecuperacao: string = '';
+  sucessoRecuperacao: string = '';
+  enviandoRecuperacao: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
@@ -120,5 +126,67 @@ export class LoginComponent {
 
   toggleSenha(): void {
     this.mostrarSenha = !this.mostrarSenha;
+  }
+
+  abrirModalRecuperacao(event: Event): void {
+    event.preventDefault();
+    this.mostrarModalRecuperacao = true;
+    this.emailRecuperacao = '';
+    this.erroRecuperacao = '';
+    this.sucessoRecuperacao = '';
+  }
+
+  fecharModalRecuperacao(): void {
+    this.mostrarModalRecuperacao = false;
+    this.emailRecuperacao = '';
+    this.erroRecuperacao = '';
+    this.sucessoRecuperacao = '';
+    this.enviandoRecuperacao = false;
+  }
+
+  enviarRecuperacao(): void {
+    // Limpar mensagens anteriores
+    this.erroRecuperacao = '';
+    this.sucessoRecuperacao = '';
+
+    // Validar email
+    if (!this.emailRecuperacao) {
+      this.erroRecuperacao = 'Por favor, digite seu e-mail';
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.emailRecuperacao)) {
+      this.erroRecuperacao = 'E-mail inválido';
+      return;
+    }
+
+    console.log('📧 Enviando recuperação de senha para:', this.emailRecuperacao);
+    this.enviandoRecuperacao = true;
+
+    this.usuarioService.solicitarRedefinirSenha(this.emailRecuperacao).subscribe({
+      next: (response) => {
+        console.log('✅ Email enviado com sucesso:', response);
+        this.sucessoRecuperacao = 'Link de recuperação enviado! Verifique seu e-mail.';
+        this.enviandoRecuperacao = false;
+
+        // Fechar modal após 3 segundos
+        setTimeout(() => {
+          this.fecharModalRecuperacao();
+        }, 3000);
+      },
+      error: (error) => {
+        console.error('❌ Erro ao enviar email:', error);
+        this.enviandoRecuperacao = false;
+
+        if (error.status === 0) {
+          this.erroRecuperacao = 'Erro de conexão. Verifique se o servidor está rodando.';
+        } else if (error.error?.message) {
+          this.erroRecuperacao = error.error.message;
+        } else {
+          this.erroRecuperacao = 'Erro ao enviar e-mail. Tente novamente.';
+        }
+      }
+    });
   }
 }
