@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj": {}
+    "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj": {
+    "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
         "projectName": "DoarSangue.Api",
-        "projectPath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
+        "projectPath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
         "packagesPath": "C:\\Users\\Júlio Navarro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\obj\\",
+        "outputPath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\src\\Web\\Web-Api\\DoarSangue.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

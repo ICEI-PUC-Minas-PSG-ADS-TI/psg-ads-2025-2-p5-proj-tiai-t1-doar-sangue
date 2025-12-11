@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoarSangue.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+befbe2933f3cbf05dff8b26aec58fc3606442652")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88d3e9e17c97eee6ccacacb28eb089f667186d22")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoarSangue.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoarSangue.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

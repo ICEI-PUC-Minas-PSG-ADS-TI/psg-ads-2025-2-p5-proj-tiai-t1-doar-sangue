@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qA8M89fip/U=",
+  "dgSpecHash": "865lFVQ5MaI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\psg-ads-2025-2-p5-proj-tiai-t1-doar-sangue\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
+  "projectFilePath": "C:\\Users\\Júlio Navarro\\TrabalhodeTI\\src\\Web\\Web-Api\\DoarSangue.Api\\DoarSangue.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Júlio Navarro\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\Júlio Navarro\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
