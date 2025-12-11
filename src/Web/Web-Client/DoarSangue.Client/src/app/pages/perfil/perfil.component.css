@@ -1,0 +1,278 @@
+/* ===== GLOBAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f6;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* ===== HEADER ===== */
+.header {
+  width: 100%;
+  background: #065e5e;
+  padding: 18px 25px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: white;
+}
+
+.header-logo {
+  width: 45px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* ===== LAYOUT ===== */
+.layout {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 280px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+  .sidebar .logo {
+    width: 110px;
+    margin-bottom: 15px;
+    border-radius: 35px;
+  }
+
+  .sidebar h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #054d4d;
+  }
+
+  .sidebar .descricao {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 25px;
+  }
+
+/* ===== MENU ===== */
+.sidebar-section {
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+.sidebar-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #065e5e;
+  margin-bottom: 10px;
+}
+
+.sidebar-menu li {
+  list-style: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: #444;
+  cursor: pointer;
+  transition: .2s;
+}
+
+  .sidebar-menu li:hover {
+    background: #e6f7f3;
+    color: #065e5e;
+    transform: translateX(4px);
+    font-weight: 600;
+  }
+
+/* ===== BOTÕES ===== */
+.btn-primario {
+  background: linear-gradient(135deg, #0fa08a, #0e6f6f);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn-sair {
+  background: #d32f2f;
+  color: white !important;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
+  text-align: center;
+  display: block;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+  .btn-sair:hover {
+    background: #ff3b30;
+  }
+
+/* Botões de edição */
+.botoes-edicao {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.btn-editar, .btn-salvar, .btn-cancelar {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-editar {
+  background-color: #00897b;
+  color: white;
+}
+
+  .btn-editar:hover {
+    background-color: #00695c;
+  }
+
+.btn-salvar {
+  background-color: #00897b;
+  color: white;
+}
+
+  .btn-salvar:hover {
+    background-color: #00695c;
+  }
+
+.btn-cancelar {
+  background-color: #e53935;
+  color: white;
+}
+
+  .btn-cancelar:hover {
+    background-color: #b71c1c;
+  }
+
+/* Inputs desativados */
+input[readonly] {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+
+/* ===== CONTEÚDO ===== */
+.conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  border: 1px solid #e8eeee;
+}
+
+  .card h3 {
+    font-size: 20px;
+    color: #065e5e;
+    margin-bottom: 15px;
+  }
+
+/* ===== ROLAGEM ===== */
+.card-scroll {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+  .card-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .card-scroll::-webkit-scrollbar-thumb {
+    background: #0fa08a;
+    border-radius: 10px;
+  }
+
+/* ===== FORM ===== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+  .form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #444;
+  }
+
+input, select {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+  input:focus, select:focus {
+    border-color: #0fa08a;
+  }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #065e5e;
+  color: white;
+  text-align: center;
+  padding: 18px;
+  margin-top: 20px;
+}
+
+/* ===== CHECK ===== */
+.checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.check-item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  gap: 10px;
+}
+
+.check-item input[type="checkbox"] {
+  width: 24px;
+  height: 24px;
+  accent-color: #00897b; 
+}
