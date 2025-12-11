@@ -1,30 +1,53 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
 import Chart from 'chart.js/auto';
 import { RouterLink } from '@angular/router';
+import { CampanhaService } from '../../services/campanha.service'; // 1. Importa o Service
 
 @Component({
   selector: 'app-instituicao-dashboard',
   standalone: true,
-  imports: [CommonModule, NgFor, NgClass,RouterLink],
+  imports: [CommonModule, NgFor, NgClass, RouterLink],
   templateUrl: './instituicao-dashboard.component.html',
   styleUrls: ['./instituicao-dashboard.component.css']
 })
-export class InstituicaoDashboardComponent implements AfterViewInit {
+export class InstituicaoDashboardComponent implements OnInit, AfterViewInit { // 2. Implementa OnInit
 
-  campanhas = [
-    { nome: 'Campanha Vida +', status: 'ativo', views: 1523, confirmacoes: 87, publico: 'BH' },
-    { nome: 'Doe Hoje', status: 'pausado', views: 734, confirmacoes: 22, publico: 'RJ' },
-    { nome: 'Sangue Salva', status: 'finalizado', views: 1990, confirmacoes: 145, publico: 'SP' }
-  ];
+  // 3. Remove os dados fictícios e define a lista como array vazio
+  campanhas: any[] = []; 
+
+  constructor(private campanhaService: CampanhaService) {} // 4. Injeta o Service
+
+  ngOnInit(): void {
+    this.carregarCampanhas(); // 5. Chama a função de busca ao inicializar
+  }
 
   ngAfterViewInit(): void {
+    // Adicionei uma verificação de segurança (if (ctx)) nos métodos do gráfico
     this.createEstoqueChart();
     this.createTipoSangueChart();
   }
 
+  /**
+   * Busca a lista de campanhas do backend através do CampanhaService
+   */
+  carregarCampanhas() {
+    this.campanhaService.listarCampanhas().subscribe({
+      next: (dados) => {
+        // O Angular preenche a lista e o *ngFor no HTML exibe os dados
+        this.campanhas = dados;
+        console.log('Campanhas carregadas:', dados);
+      },
+      error: (erro) => {
+        console.error('Erro ao buscar campanhas:', erro);
+        // Opcional: Mostrar uma mensagem de erro na interface
+      }
+    });
+  }
+
   createEstoqueChart() {
     const ctx = document.getElementById('estoqueChart') as HTMLCanvasElement;
+    if (!ctx) return; // Se o elemento não existe, evita erro
 
     new Chart(ctx, {
       type: 'bar',
@@ -50,6 +73,7 @@ export class InstituicaoDashboardComponent implements AfterViewInit {
 
   createTipoSangueChart() {
     const ctx = document.getElementById('sangueChart') as HTMLCanvasElement;
+    if (!ctx) return; // Se o elemento não existe, evita erro
 
     new Chart(ctx, {
       type: 'pie',

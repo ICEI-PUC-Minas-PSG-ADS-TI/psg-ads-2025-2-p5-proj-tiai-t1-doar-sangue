@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using DoarSangue.Api.DTOs.CampanhaDTOs;
 using DoarSangue.Api.Models; 
 using DoarSangue.Api.Services; 
+using System;
+using System.Threading.Tasks;
+using System.Linq; // Necessário para usar .Select() e .ToList()
 
 namespace DoarSangue.Api.Controllers
 {
@@ -16,6 +19,55 @@ namespace DoarSangue.Api.Controllers
             _supabase = supabase;
         }
 
+        // -----------------------------------------------------------
+        // 1. MÉTODO: Listar Campanhas (GET)
+        // Usa o DTO de Resposta para evitar erros de serialização do Supabase SDK
+        // -----------------------------------------------------------
+        [HttpGet]
+        public async Task<IActionResult> Listar()
+        {
+            var client = _supabase.Client;
+            
+            if (client == null)
+                return StatusCode(500, new { message = "Erro de configuração do Supabase: Cliente não inicializado." });
+
+            try
+            {
+                // Busca todas as campanhas no Supabase
+                var result = await client
+                    .From<Campanha>()
+                    .Get();
+
+                // Mapeamento: Converte o Modelo de Domínio (Campanha) para o DTO de Resposta
+                // 
+                var campanhasResponse = result.Models.Select(c => new CampanhaResponseDTO
+                {
+                    Id = c.Id,
+                    Nome = c.Nome,
+                    Status = c.Status,
+                    DataInicio = c.DataInicio,
+                    MetaDoadores = c.MetaDoadores,
+                    Cidade = c.Cidade,
+                    Estado = c.Estado
+                    // Adicione aqui outros campos que você precisa no Angular
+                }).ToList();
+
+                // Retorna a lista de DTOs simples (sem metadados do Supabase) com status 200 OK
+                return Ok(campanhasResponse);
+            }
+            catch (Exception ex)
+            {
+                // Loga o erro exato no console da API para diagnóstico futuro
+                Console.WriteLine($"ERRO AO BUSCAR CAMPANHAS: {ex}");
+                
+                // Retorna uma mensagem de erro genérica para o frontend
+                return StatusCode(500, new { message = "Erro interno ao buscar campanhas. Verifique o console da API." });
+            }
+        }
+
+        // -----------------------------------------------------------
+        // 2. MÉTODO: Cadastrar Campanha (POST)
+        // -----------------------------------------------------------
         [HttpPost]
         public async Task<IActionResult> Cadastrar([FromBody] CampanhaRequestDTO req)
         {
@@ -23,46 +75,49 @@ namespace DoarSangue.Api.Controllers
             if (!ModelState.IsValid || req == null)
                 return BadRequest(new { message = "Dados inválidos. Verifique os campos obrigatórios." });
 
-            // **ATENÇÃO:** Para fins de teste, estou usando um ID FIXO para a Instituição.
-            // EM PRODUÇÃO, esse ID deve vir do Token de autenticação do usuário logado!
+            var client = _supabase.Client; 
+
+            // Verificação de segurança: Se a conexão falhou, avisa antes de tentar inserir
+            if (client == null)
+                return StatusCode(500, new { message = "Erro de configuração do Supabase: Cliente não inicializado." });
+
+            // **ATENÇÃO:** ID FIXO APENAS PARA TESTES. EM PRODUÇÃO USE O ID DO USUÁRIO LOGADO.
             var instituicaoIdFixo = Guid.Parse("00000000-0000-0000-0000-000000000001"); 
 
             try
             {
-                // 1. Mapeamento DTO -> Modelo de Domínio
+                // Mapeamento DTO -> Modelo de Domínio
                 var campanha = new Campanha
                 {
                     Id = Guid.NewGuid(),
                     Nome = req.Nome,
                     Descricao = req.Descricao,
                     
-                    // Converte a string de data do Angular (ex: "2025-01-01") para DateTime
+                    // Converte string para DateTime
                     DataInicio = DateTime.Parse(req.DataInicio), 
                     DataFim = string.IsNullOrEmpty(req.DataFim) ? (DateTime?)null : DateTime.Parse(req.DataFim), 
                     
-                    // Se metaDoadores vier null, usará 0
+                    // Garante 0 se nulo
                     MetaDoadores = req.MetaDoadores.GetValueOrDefault(0), 
                     
                     Cidade = req.Cidade,
                     Estado = req.Estado,
                     Status = "Ativo",
-                    InstituicaoId = instituicaoIdFixo // Usando o ID fixo/mockado
+                    InstituicaoId = instituicaoIdFixo
                 };
 
-                // 2. Insere o registro no Supabase
-                var client = _supabase.Client; 
+                // Insere no Supabase
                 var result = await client.From<Campanha>().Insert(campanha);
                 
-                // 3. Retorno de Sucesso (201 Created)
+                // Retorna 201 Created
                 return CreatedAtAction(nameof(Cadastrar), new { id = campanha.Id }, new { message = "Campanha criada com sucesso!" });
             }
             catch (FormatException)
             {
-                 return BadRequest(new { message = "Formato de data inválido. As datas devem seguir o formato AAAA-MM-DD (ex: 2025-12-31)." });
+                 return BadRequest(new { message = "Formato de data inválido. As datas devem seguir o formato AAAA-MM-DD." });
             }
             catch (Exception ex)
             {
-                // Erro de lógica, Supabase, ou DB
                 return StatusCode(500, new { message = "Erro ao criar campanha no servidor. Verifique o console da API.", error = ex.Message });
             }
         }
