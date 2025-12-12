@@ -24,7 +24,7 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Função auxiliar para validação de e-mail
-const isValidEmail = (email) => {
+const isValidEmail = (email:string) => {
   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return regex.test(email);
 };

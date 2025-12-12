@@ -30,6 +30,14 @@ export type RootStackParamList = {
   Estoque: undefined;
   Termos: undefined;
   Privacidade: undefined;
+  CadastroInstituicao:undefined;
+  EsqueciSenha: undefined;
+  Dashboard: undefined;
+  Campanha: undefined;
+  NovaCampanha: undefined;
+  HomeDoador: undefined;
+  Instituicao: undefined;
+  Contatos: undefined;
 };
 
 // CONFIGURAÇÃO DE DEEP LINK

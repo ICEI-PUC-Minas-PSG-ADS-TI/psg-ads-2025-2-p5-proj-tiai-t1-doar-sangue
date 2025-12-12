@@ -59,12 +59,47 @@
 
             <p *ngIf="errorMessage" style="color: red; margin-top: 10px;">{{ errorMessage }}</p>
 
-            <p>Esqueceu sua senha? <a href="#">Recupere aqui</a></p>
+            <p>Esqueceu sua senha? <a href="#" (click)="abrirModalRecuperacao($event)">Recupere aqui</a></p>
           </form>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="modal-overlay" *ngIf="mostrarModalRecuperacao" (click)="fecharModalRecuperacao()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="fecharModalRecuperacao()">&times;</button>
+
+      <div class="modal-header">
+        <h2>Recuperar Senha</h2>
+        <p>Digite seu e-mail cadastrado para receber o link de recuperação</p>
+      </div>
+
+      <div class="modal-body">
+        <label for="emailRecuperacao">E-mail</label>
+        <input type="email"
+               id="emailRecuperacao"
+               [(ngModel)]="emailRecuperacao"
+               placeholder="seu@email.com"
+               (keyup.enter)="enviarRecuperacao()">
+
+        <div class="error-message" *ngIf="erroRecuperacao">
+          {{ erroRecuperacao }}
+        </div>
+
+        <div class="success-message" *ngIf="sucessoRecuperacao">
+          {{ sucessoRecuperacao }}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" (click)="fecharModalRecuperacao()">Cancelar</button>
+        <button class="btn-primary" (click)="enviarRecuperacao()" [disabled]="enviandoRecuperacao">
+          {{ enviandoRecuperacao ? 'Enviando...' : 'Enviar Link' }}
+        </button>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2024 Give Life - Todos os direitos reservados</p>

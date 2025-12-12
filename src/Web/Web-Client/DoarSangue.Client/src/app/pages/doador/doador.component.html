@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doador - Give Life</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./doador.component.css">
+
+  <!-- GOOGLE MAPS SCRIPT -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbLeUbVujoqQzfQg8PVGcbl_pzpoz0WgI" defer></script>
+  <script defer>
+    function initMap() {
+      const location = { lat: -19.8157, lng: -43.9542 }; // Exemplo: Lagoa Santa
+
+      const map = new google.maps.Map(document.getElementById("mapa-google"), {
+        zoom: 14,
+        center: location,
+      });
+
+      new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Posto de Doação Central",
+      });
+    }
+
+    window.onload = initMap;
+  </script>
+
+</head>
+
+<body>
+
+  <main>
+    <section class="doador-section">
+      <div class="layout">
+
+        <!-- ========== SIDEBAR ========== -->
+        <aside class="sidebar">
+          <img src="/Logo GiveLife.png"
+               class="logo" alt="Logo Give Life">
+
+          <h2>Bem-vindo, Doador!</h2>
+          <p class="descricao">Acompanhe locais e agende sua próxima doação.</p>
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Minha Conta</h3>
+
+            <ul class="sidebar-menu">
+              <li >
+              <a routerLink="/perfil" class="sidebar-link">Dados Pessoais</a>
+              </li>            
+              <li routerLink="/agendamentos">Agendamentos</li>
+            </ul>
+          </div>
+          <!--  - CONFIGURAÇÕES -->
+          <div class="sidebar-section">
+            <h3 class="sidebar-title">Configurações</h3>
+
+            <ul class="sidebar-menu">
+              <li><a routerLink="/perfil" class="sidebar-link">Segurança</a></li>
+            </ul>
+          </div>
+
+        </aside>
+
+        <!-- ========== CONTEÚDO ========== -->
+        <div class="conteudo">
+
+          <!-- MAPA -->
+          <section class="card mapa-card">
+            <h3>Instituições Próximas</h3>
+
+            <!-- DIV DO MAPA COM ID CORRETO -->
+            <div id="mapa-google" class="mapa"></div>
+
+            <button class="btn-primario">Agendar Doação</button>
+          </section>
+
+          <!-- INSTITUIÇÕES -->
+          <section class="card instituicoes-card">
+            <h3>Instituições de Doação</h3>
+
+            <!-- Loading -->
+            <div *ngIf="loading" style="text-align: center; padding: 20px; color: #065e5e;">
+              <p>⏳ Carregando instituições...</p>
+            </div>
+
+            <!-- Lista de Instituições -->
+            <div class="lista-instituicoes" *ngIf="!loading">
+
+              <!-- Card para cada instituição -->
+              <div class="card-instituicao" *ngFor="let instituicao of instituicoes">
+                <!-- Removendo imagem temporariamente para evitar erro 404 -->
+                <div style="width: 100%; height: 150px; background: linear-gradient(135deg, #065e5e, #0a9e9e); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold; margin-bottom: 15px;">
+                  {{ instituicao.nome.charAt(0) }}
+                </div>
+
+                <h4>{{ instituicao.nome }}</h4>
+                <p><strong>📍 Endereço:</strong> {{ instituicao.endereco }}</p>
+                <p><strong>📞 Telefone:</strong> {{ instituicao.contato }}</p>
+                <p><strong>🕐 Horário:</strong> {{ instituicao.horarioFuncionamento }}</p>
+              </div>
+
+              <!-- Mensagem se não houver instituições -->
+              <div *ngIf="instituicoes.length === 0" style="text-align: center; padding: 20px; color: #666;">
+                <p>📋 Nenhuma instituição cadastrada no momento.</p>
+              </div>
+
+            </div>
+
+            <button class="btn-secundario" (click)="abrirModalInfo()">Informações sobre Doação</button>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+
+  <!-- ===== MODAL INFORMAÇÕES ===== -->
+  <div class="modal-overlay" id="modal-info" (click)="fecharModalInfo()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+
+      <button class="modal-close" (click)="fecharModalInfo()">×</button>
+
+      <h2 class="modal-title">Informações para Doadores</h2>
+
+      <div class="modal-section">
+        <h3>✔ Quem Pode Doar?</h3>
+        <ul>
+          <li>Idade entre 16 e 69 anos</li>
+          <li>Peso acima de 50 kg</li>
+          <li>Estar descansado e bem alimentado</li>
+          <li>Boas condições de saúde</li>
+        </ul>
+
+        <h4>❌ Restrições Temporárias</h4>
+        <ul>
+          <li>Febre, gripe ou sintomas recentes</li>
+          <li>Uso de alguns medicamentos</li>
+          <li>Tatuagem ou piercing (últimos 6 meses)</li>
+          <li>Pós-cirúrgico recente</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>⏳ Intervalos Entre Doações</h3>
+        <ul>
+          <li><strong>Homens:</strong> a cada 60 dias (máx. 4x/ano)</li>
+          <li><strong>Mulheres:</strong> a cada 90 dias (máx. 3x/ano)</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>📋 O Que Levar no Dia?</h3>
+        <ul>
+          <li>Documento oficial com foto</li>
+          <li>Estar bem hidratado</li>
+          <li>Evitar refeições gordurosas antes da doação</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>🩸 Como Funciona o Processo de Doação?</h3>
+        <ol>
+          <li>Cadastro e preenchimento do formulário</li>
+          <li>Triagem e testes rápidos</li>
+          <li>Doação (8 a 12 minutos)</li>
+          <li>Lanche e recuperação</li>
+        </ol>
+      </div>
+
+      <div class="modal-section">
+        <h3>❤️ Benefícios de Doar Sangue</h3>
+        <ul>
+          <li>Ajuda a salvar até 4 vidas por doação</li>
+          <li>Triagem e exames gratuitos</li>
+          <li>Contribui com hospitais e bancos de sangue</li>
+          <li>É seguro, rápido e totalmente esterilizado</li>
+        </ul>
+      </div>
+
+      <button class="btn-primario" (click)="fecharModalInfo()">Entendido</button>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>

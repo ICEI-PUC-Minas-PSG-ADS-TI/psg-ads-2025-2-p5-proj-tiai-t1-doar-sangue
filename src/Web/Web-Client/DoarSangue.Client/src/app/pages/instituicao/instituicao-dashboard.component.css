@@ -1,0 +1,224 @@
+/* Layout Geral */
+.dashboard-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background: #f6f7f8;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 270px;
+    background: #004d45; /* Verde Escuro */
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar nav a {
+    display: block;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: #009688; /* Verde Mais Claro */
+}
+
+/* Conteudo Principal */
+.content {
+    padding: 40px;
+    width: 100%;
+    overflow-y: auto; /* Permite rolagem no conteúdo principal */
+}
+
+/* Título */
+.page-title {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+/* Cards e Componentes Gerais */
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.07);
+}
+
+/* Botões */
+.btn-main {
+    background: #00897b;
+    color: white;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.btn-main:hover {
+    background: #006f62;
+}
+
+.btn-main:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #00897b;
+    padding: 12px 22px;
+    border: 1px solid #00897b;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none; /* Para usar em routerLink */
+    display: inline-block;
+    text-align: center;
+}
+
+/* === FORMULÁRIO (Usado na Campanha) === */
+
+.form-container {
+    max-width: 800px;
+    margin-top: 25px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    flex-grow: 1; /* Permite que os grupos de formulário cresçam em form-row */
+}
+
+.form-group.full-width {
+    flex-basis: 100%;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 15px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.form-actions {
+    padding-top: 20px;
+    text-align: right;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* === GRÁFICOS (Usado no Dashboard) === */
+
+.charts-row {
+    display: flex;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.chart-card {
+    /* Ocupa espaço flexível */
+    flex: 1; 
+    padding: 20px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chart-card h3 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #004d45;
+}
+
+canvas {
+    max-width: 100%; /* Garante que o gráfico se ajuste ao container */
+    max-height: 300px;
+}
+
+/* === TABELA (Usado no Dashboard) === */
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 25px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #e9f4f2;
+}
+
+th {
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #004d45;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ececec;
+}
+
+/* Status Badge */
+.badge {
+    padding: 6px 12px;
+    border-radius: 50px;
+    color: white;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.ativo {
+    background: #28a745; /* Verde */
+}
+
+.pausado {
+    background: #f4a742; /* Laranja */
+}
+
+.finalizado {
+    background: #d9534f; /* Vermelho */
+}

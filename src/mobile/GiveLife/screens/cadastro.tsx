@@ -8,7 +8,9 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  ActivityIndicator,
 } from "react-native";
+import MaterialIcons from "@react-native-vector-icons/material-icons"; 
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
 
@@ -23,12 +25,12 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Cadastro() {
-  const navigation = useNavigation();
-
+ const navigation =
+     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  const [nome, setNome] = useState('');
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmar, setConfirmar] = useState("");
-  const [nome, setNome] = useState("");
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -104,6 +106,7 @@ export default function Cadastro() {
   };
 
   return (
+    
     <View style={styles.fundo}>
       <KeyboardAvoidingView
         style={styles.container}
@@ -158,26 +161,36 @@ export default function Cadastro() {
         {erro ? <Text style={styles.erro}>{erro}</Text> : null}
 
         <TouchableOpacity
-          style={styles.botaoconfirmar}
+          style={[styles.botaoconfirmar, loading && { opacity: 0.7 }]}
           onPress={handleSignUp}
           disabled={loading}
         >
-          <Text style={styles.textobotao}>
-            {loading ? "Enviando..." : "Confirmar"}
-          </Text>
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <Text style={styles.textobotao}>Cadastrar</Text>
+          )}
         </TouchableOpacity>
+
+        <Text style={styles.textoInferior}>
+          Já tem uma conta?{" "}
+          <Text
+            style={styles.link}
+            onPress={() => navigation.navigate("Login")}
+          >
+            Faça login
+          </Text>
+        </Text>
       </KeyboardAvoidingView>
-    </View>
+    </View> // Corrigido: Apenas um View de fechamento
   );
 }
 
-// -------------------------------------------------------------------
-// Estilos (Mantidos)
 const styles = StyleSheet.create({
   fundo: {
-    height: "100%",
-    width: "100%",
-    backgroundColor: "#fff",
+    flex: 1,
+    backgroundColor: "#ffffffff",
+    justifyContent: "center",
     alignItems: "center",
     paddingTop: 50, 
   },
@@ -257,5 +270,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
     fontWeight: "bold",
     textAlign: "center",
+  },
+  textoInferior: {
+    fontSize: 16,
+    marginTop: 20,
+    color: "#666",
+  },
+  link: {
+    color: "#003049",
+    fontWeight: "bold",
+    textDecorationLine: "underline",
   },
 });

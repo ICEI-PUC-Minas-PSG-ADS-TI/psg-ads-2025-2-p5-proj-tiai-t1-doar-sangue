@@ -18,4 +18,9 @@ export class UsuarioService {
   login(loginData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, loginData);
   }
+
+  solicitarRedefinirSenha(email: string): Observable<any> {
+    console.log('📧 Service: Solicitando redefinição para:', email);
+    return this.http.post(`${this.apiUrl}/solicitar-redefinir-senha`, { email });
+  }
 }

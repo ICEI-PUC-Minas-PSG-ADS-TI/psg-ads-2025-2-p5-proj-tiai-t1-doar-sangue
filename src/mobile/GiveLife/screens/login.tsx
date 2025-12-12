@@ -13,9 +13,11 @@ import {
   ActivityIndicator,
   SafeAreaView,
 } from "react-native";
+import MaterialIcons from "@react-native-vector-icons/material-icons";
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
-
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { RootStackParamList } from "../App";
 // ⚠️ Seus dados de conexão do Supabase
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
@@ -24,7 +26,8 @@ const SUPABASE_ANON_KEY =
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 export default function Login() {
-  const navigation = useNavigation();
+  const navigation =
+       useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -45,8 +48,6 @@ export default function Login() {
         password: senha,
       });
 
-      setLoading(false);
-
       if (error) {
         // O Supabase retorna mensagens úteis para senhas incorretas, etc.
         Alert.alert("Erro no Login", error.message);
@@ -58,10 +59,11 @@ export default function Login() {
       navigation.navigate('TelaDoador'); 
 
     } catch (e) {
-      setLoading(false);
       const mensagem =
         e instanceof Error ? e.message : "Erro inesperado durante o login.";
       Alert.alert("Erro inesperado", mensagem);
+    } finally {
+      setLoading(false);
     }
   };
 
