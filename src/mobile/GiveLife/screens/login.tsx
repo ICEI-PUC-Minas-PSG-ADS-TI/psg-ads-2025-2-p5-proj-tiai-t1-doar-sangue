@@ -56,8 +56,7 @@ export default function Login() {
       
       // Sucesso no login
       Alert.alert("Sucesso!", "Login realizado com sucesso!");
-      // ⚠️ Substitua 'Home' pelo nome da sua rota principal após o login
-      // navigation.navigate('Home'); 
+      navigation.navigate('TelaDoador'); 
 
     } catch (e) {
       const mensagem =

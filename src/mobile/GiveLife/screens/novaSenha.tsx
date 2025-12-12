@@ -1,4 +1,4 @@
-// screens/NovaSenha.jsx (ou AtualizarSenha.jsx)
+// screens/NovaSenha.jsx
 
 import React, { useState } from "react";
 import {
@@ -47,8 +47,10 @@ export default function NovaSenha() {
     try {
       setLoading(true);
 
-      // 🎯 Atualiza a senha. Isso só funciona se o usuário chegou aqui pelo link de e-mail.
-      const { data: userData, error: updateError } = await supabase.auth.updateUser({
+      // 🎯 CHAMA A FUNÇÃO DE ATUALIZAÇÃO DA SENHA DO USUÁRIO
+      // Isso só funciona porque o Deep Link do Supabase já autenticou o usuário
+      // temporariamente ao ser clicado.
+      const { error: updateError } = await supabase.auth.updateUser({
         password: novaSenha,
       });
 
@@ -114,9 +116,18 @@ export default function NovaSenha() {
           onPress={handlePasswordUpdate}
           disabled={loading}
         >
-          <Text style={styles.textobotao}>
-            {loading ? <ActivityIndicator size="small" color="#fff" /> : "Redefinir Senha"}
-          </Text>
+          <TouchableOpacity
+  style={styles.botaoconfirmar}
+  onPress={handlePasswordUpdate}
+  disabled={loading}
+>
+  {loading ? (
+    <ActivityIndicator size="small" color="#fff" />
+  ) : (
+    <Text style={styles.textobotao}>Redefinir Senha</Text>
+  )}
+</TouchableOpacity>
+
         </TouchableOpacity>
         
       </KeyboardAvoidingView>
@@ -125,7 +136,7 @@ export default function NovaSenha() {
 }
 
 // -------------------------------------------------------------------
-// Estilos (Reutilizando seu padrão)
+// Estilos
 const styles = StyleSheet.create({
   fundo: {
     flex: 1,
@@ -134,7 +145,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: "center", // Centralizado verticalmente aqui
+    justifyContent: "center",
     alignItems: "center",
     width: "90%",
     maxWidth: 400,
