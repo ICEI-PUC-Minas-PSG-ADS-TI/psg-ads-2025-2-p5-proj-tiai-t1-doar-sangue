@@ -13,9 +13,11 @@ import {
 import MaterialIcons from "@react-native-vector-icons/material-icons"; 
 import { createClient } from "@supabase/supabase-js";
 import { useNavigation } from "@react-navigation/native"; 
-import Login from "./login";
-import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import type { RootStackParamList } from "../App";
+
+// ⚠️ Se você estiver no App.js ou index.js, use: 
+// import 'react-native-url-polyfill/auto'; 
+
+// ⚠️ Seus dados de conexão do Supabase
 const SUPABASE_URL = "https://jvgwqpfouqfnwhakduei.supabase.co";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp2Z3dxcGZvdXFmbndoYWtkdWVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyOTI2ODUsImV4cCI6MjA3Nzg2ODY4NX0.fJdeZhBz6_ASOXevFhw0MpmXi2Fs7Nv5KRTI4Sexnrw";
@@ -53,73 +55,53 @@ export default function Cadastro() {
       setLoading(true);
 
       // 1. Tenta registrar o usuário no Auth
-      const { data: authData, error: authError } = await supabase.auth.signUp({
+      // O Trigger no banco de dados cuidará da inserção na tabela 'usuario'.
+      const { error: authError } = await supabase.auth.signUp({
         email,
         password: senha,
         options: { 
           data: { 
             nome, 
-            role: 'doador' // Flag de perfil no metadado
+            role: 'doador' // Passa o nome no metadado para o Trigger usar
           } 
         },
       });
 
+      setLoading(false);
+
       if (authError) {
         Alert.alert("Erro no cadastro", authError.message);
-        setLoading(false);
         return;
       }
+
+      // Se o Auth for bem-sucedido, o Trigger já foi acionado ou será acionado.
+      Alert.alert(
+        "Sucesso!",
+        "Cadastro realizado! Verifique seu e-mail para confirmar a conta e ativar seu perfil."
+      );
+
+      // Limpa os campos após o sucesso
+      setEmail("");
+      setSenha("");
+      setConfirmar("");
+      setNome("");
       
-      const user = authData.user;
-
-      if (user) {
-        // 2. Se o Auth for bem-sucedido, insere os dados adicionais na TABELA 'usuario'
-        const { error: dbError } = await supabase
-          .from('usuario') 
-          .insert([
-            { 
-              // Usa o UUID do Auth como ID na tabela usuario (Corrigido no BD)
-              id: user.id, 
-              nome: nome,
-              email: email, 
-              // Define os campos específicos para um USUÁRIO PADRÃO (Doador):
-              tipopermissao: 'doador', // Usando o tipo string
-              usuario_tipo: 0, // Usando o tipo int4 (0 para doador)
-              // CEP, CNPJ, Telefone, Sexo ficam NULL, conforme definido na tabela
-            },
-          ]);
-
-        if (dbError) {
-          // Se o banco falhar, logamos o erro.
-          console.error("Erro ao salvar dados do doador na tabela 'usuario'. ID:", user.id, "Erro:", dbError.message);
-          
-          // O ideal é reverter o registro do Auth aqui (se for crítico)
-          
-          Alert.alert("Erro no Banco de Dados", "Seu usuário foi criado, mas os dados do perfil falharam ao salvar. Contate o suporte. (Erro: " + dbError.message + ")");
-          setLoading(false);
-          return;
-        }
-
-        // Sucesso em ambos os passos
-        Alert.alert(
-          "Sucesso!",
-          "Cadastro realizado! Verifique seu e-mail para confirmar a conta."
-        );
-
-        setEmail("");
-        setSenha("");
-        setConfirmar("");
-        setNome("");
-      }
-
-      setLoading(false);
+      // Opcional: Navegar para a tela de login
+      navigation.navigate('Login'); 
 
     } catch (e) {
-      const mensagem =
-        e instanceof Error ? e.message : "Erro inesperado durante o cadastro.";
-      Alert.alert("Erro inesperado", mensagem);
-    } finally {
       setLoading(false);
+      
+      let mensagem;
+      // Tratamento específico para o erro de rede (Failed to fetch)
+      if (e instanceof TypeError && e.message.includes('Failed to fetch')) {
+          mensagem = "Falha na conexão com o servidor. Verifique sua internet ou VPN.";
+      } else {
+          // Tratamento para outros erros inesperados
+          mensagem = e instanceof Error ? e.message : "Erro inesperado durante o cadastro.";
+      }
+
+      Alert.alert("Erro", mensagem);
     }
   };
 

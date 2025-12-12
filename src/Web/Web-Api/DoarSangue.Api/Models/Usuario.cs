@@ -1,6 +1,7 @@
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using System;
+using System.Text.Json.Serialization;
 
 namespace DoarSangue.Api.Models
 {
@@ -34,7 +35,5 @@ namespace DoarSangue.Api.Models
 
         [Column("fk_agendamento_id")]
         public double? AgendamentoId { get; set; }
-
-        public ICollection<UsuarioRestricao> Restricoes { get; set; }
     }
 }
