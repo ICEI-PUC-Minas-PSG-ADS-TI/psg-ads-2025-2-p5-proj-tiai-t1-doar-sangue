@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastroParceiros', component: CadastroParceirosComponent },
 
-  // ********* NOVA ROTA ADICIONADA AQUI *********
   {
     path: 'nova-campanha',
     loadComponent: () =>
@@ -23,6 +22,13 @@ const routes: Routes = [
     loadComponent: () =>
       import('./pages/instituicao/instituicao-dashboard.component')
         .then(m => m.InstituicaoDashboardComponent)
+  },
+
+  {
+    path: 'doador',
+    loadComponent: () =>
+      import('./pages/doador/doador.component')
+        .then(m => m.DoadorComponent)
   },
 
   { path: '**', redirectTo: 'login' }
