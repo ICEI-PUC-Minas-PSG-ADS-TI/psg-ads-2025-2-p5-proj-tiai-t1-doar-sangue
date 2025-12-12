@@ -1,0 +1,76 @@
+<div class="dashboard-container">
+
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="assets/logo.png" alt="logo">
+      <h2>Instituição</h2>
+    </div>
+
+    <nav>
+      <a routerLink="/instituicao" class="active">Painel</a>
+      <a routerLink="/campanhas">Campanhas</a>
+      <a routerLink="/agendamentos">Agendamentos</a>
+      <a routerLink="/configuracoes">Configurações</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="charts-row">
+
+      <div class="card chart-card">
+        <h3>Controle de Estoque</h3>
+        <canvas id="estoqueChart"></canvas>
+      </div>
+
+      <div class="card chart-card">
+        <h3>Distribuição de Tipos Sanguíneos</h3>
+        <canvas id="sangueChart"></canvas>
+      </div>
+
+    </div>
+
+    <h2 class="page-title">Minhas Campanhas</h2>
+
+    <button class="btn-main" routerLink="/nova-campanha">Nova Campanha</button>
+
+    <div class="card table-container">
+      
+      <table *ngIf="campanhas.length > 0; else semDados">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Data Início</th>
+            <th>Meta Doadores</th>
+            <th>Local</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let campanha of campanhas">
+            <td>{{ campanha.nome }}</td>
+
+            <td>
+              <span class="badge" [ngClass]="campanha.status?.toLowerCase()">
+                {{ campanha.status }}
+              </span>
+            </td>
+
+            <td>{{ campanha.dataInicio | date:'dd/MM/yyyy' }}</td>
+            
+            <td>{{ campanha.metaDoadores || 0 }}</td>
+            
+            <td>{{ campanha.cidade }} - {{ campanha.estado }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #semDados>
+        <p style="text-align: center; padding: 20px; color: #666;">
+          Nenhuma campanha cadastrada. Clique em "Nova Campanha" para criar a primeira!
+        </p>
+      </ng-template>
+
+    </div>
+
+  </main>
+</div>

@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UsuarioService {
+
+  private apiUrl = 'https://localhost:7013/api/usuario';
+
+  constructor(private http: HttpClient) { }
+
+  cadastrarUsuario(usuario: any): Observable<any> {
+    return this.http.post(this.apiUrl, usuario);
+  }
+
+  login(loginData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, loginData);
+  }
+
+  solicitarRedefinirSenha(email: string): Observable<any> {
+    console.log('📧 Service: Solicitando redefinição para:', email);
+    return this.http.post(`${this.apiUrl}/solicitar-redefinir-senha`, { email });
+  }
+}

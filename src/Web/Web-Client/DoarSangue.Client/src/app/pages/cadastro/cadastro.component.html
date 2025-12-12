@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro - Give Life</title>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS GLOBAL -->
+  <link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body>
+  <main>
+    <section class="registration-section">
+      <div class="container">
+
+        <!-- LADO ESQUERDO -->
+        <div class="left-section">
+          <img src="/Logo GiveLife.png" alt="Logo Give Life" class="logo">
+          <h2>Olá de Novo</h2>
+          <p>Para Continuar Conectado Faça seu Login e Veja Seu Perfil</p>
+
+          <a routerLink="/login" class="btn-login">Login</a>
+
+          <p>Quer ser um dos nossos parceiros?</p>
+          <a routerLink="/cadastroParceiros" class="btn-partner">Seja Parceiro</a>
+        </div>
+
+        <!-- FORMULÁRIO -->
+        <div class="registration-form">
+          <h2>Crie sua Conta</h2>
+
+          <form (ngSubmit)="cadastrar()" #form="ngForm" novalidate>
+
+            <!-- NOME -->
+            <label>Nome</label>
+            <input type="text"
+                   [(ngModel)]="usuario.nome"
+                   name="nome"
+                   placeholder="Digite seu nome"
+                   required
+                   minlength="3"
+                   #nome="ngModel">
+            <div class="error" *ngIf="nome.invalid && nome.touched">
+              O nome deve ter pelo menos 3 caracteres.
+            </div>
+
+            <!-- EMAIL -->
+            <label>E-mail</label>
+            <input type="email"
+                   [(ngModel)]="usuario.email"
+                   name="email"
+                   placeholder="Digite seu e-mail"
+                   required
+                   email
+                   #email="ngModel">
+            <div class="error" *ngIf="email.invalid && email.touched">
+              Digite um e-mail válido.
+            </div>
+
+            <!-- TELEFONE -->
+            <label>Telefone</label>
+            <input type="text"
+                   [(ngModel)]="usuario.telefone"
+                   name="telefone"
+                   placeholder="(DDD) 99999-9999"
+                   required
+                   pattern="^\(\d{2}\)\s\d{5}-\d{4}$"
+                   (input)="usuario.telefone = formatarTelefone(usuario.telefone)"
+                   maxlength="15"
+                   #telefone="ngModel">
+            <div class="error" *ngIf="telefone.invalid && telefone.touched">
+              Telefone deve estar no formato (DDD) 99999-9999.
+            </div>
+
+            <!-- TIPO SANGUÍNEO -->
+            <label>Tipo Sanguíneo</label>
+            <select [(ngModel)]="usuario.tipoSanguineo" name="tipoSanguineo" required>
+              <option value="" disabled selected>Selecione seu tipo sanguíneo</option>
+              <option *ngFor="let tipo of tiposSangue" [value]="tipo">{{ tipo }}</option>
+            </select>
+
+            <!-- SEXO -->
+            <label>Sexo</label>
+            <select [(ngModel)]="usuario.sexo" name="sexo" required>
+              <option value="" disabled selected>Selecione seu sexo</option>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+            </select>
+
+            <!-- SENHA -->
+            <label>Senha</label>
+            <div class="password-container">
+              <input [type]="mostrarSenha ? 'text' : 'password'"
+                     [(ngModel)]="usuario.senha"
+                     name="senha"
+                     placeholder="Crie uma senha"
+                     required
+                     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"
+                     #senha="ngModel">
+
+              <button type="button" class="toggle-visibility" (click)="mostrarSenha = !mostrarSenha">
+                <img *ngIf="!mostrarSenha" src="eye.svg" alt="Mostrar senha">
+                <img *ngIf="mostrarSenha" src="eye-off.svg" alt="Ocultar senha">
+              </button>
+            </div>
+            <div class="error" *ngIf="senha.invalid && senha.touched">
+              A senha deve ter no mínimo 8 caracteres, incluindo letra maiúscula, minúscula e número.
+            </div>
+
+            <!-- CONFIRMAR SENHA -->
+            <label>Confirme a Senha</label>
+            <div class="password-container">
+              <input [type]="mostrarConfirmarSenha ? 'text' : 'password'"
+                     [(ngModel)]="usuario.confirmarSenha"
+                     name="confirmarSenha"
+                     required
+                     #confirmarSenha="ngModel">
+
+              <button type="button" class="toggle-visibility" (click)="mostrarConfirmarSenha = !mostrarConfirmarSenha">
+                <img *ngIf="!mostrarConfirmarSenha" src="eye.svg" alt="Mostrar senha">
+                <img *ngIf="mostrarConfirmarSenha" src="eye-off.svg" alt="Ocultar senha">
+              </button>
+            </div>
+            <div class="error" *ngIf="usuario.senha !== usuario.confirmarSenha && confirmarSenha.touched">
+              As senhas não coincidem.
+            </div>
+
+            <button type="submit"
+                    class="btn-primary"
+                    [disabled]="form.invalid || usuario.senha !== usuario.confirmarSenha">
+              <span *ngIf="!carregando">Cadastrar</span>
+              <span *ngIf="carregando" class="spinner"></span>
+            </button>
+
+            <p>Já tem uma conta? <a routerLink="/login">Entre aqui</a></p>
+          </form>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>

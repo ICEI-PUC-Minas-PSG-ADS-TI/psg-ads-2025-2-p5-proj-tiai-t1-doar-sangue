@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Give Life</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="fade-in">
+  <header>
+    <div class="header-content">
+      <h1>Login - Give Life</h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="login-section">
+      <div class="container">
+        <!-- Seção Esquerda -->
+        <div class="left-section">
+          <img src="/Logo GiveLife.png" alt="Logo Give Life" class="logo">
+          <h2>Bem-vindo de Volta!</h2>
+          <p>Acesse sua conta para continuar ajudando a salvar vidas.</p>
+          <a routerLink="/cadastro" class="btn-register">Criar Conta</a>
+        </div>
+
+        <!-- Formulário de Login -->
+        <div class="login-form">
+          <h2>Login</h2>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="email">E-mail</label>
+            <input type="email"
+                   id="email"
+                   formControlName="email"
+                   placeholder="Digite seu e-mail"
+                   required>
+            <div class="error-message" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+              <span *ngIf="loginForm.get('email')?.errors?.['required']">E-mail é obrigatório</span>
+              <span *ngIf="loginForm.get('email')?.errors?.['email']">E-mail inválido</span>
+            </div>
+
+            <label for="senha">Senha</label>
+            <div class="password-container">
+              <input [type]="mostrarSenha ? 'text' : 'password'"
+                     id="senha"
+                     formControlName="senha"
+                     placeholder="Digite sua senha"
+                     required>
+              <button type="button" class="toggle-visibility" (click)="mostrarSenha = !mostrarSenha">
+                <img *ngIf="!mostrarSenha" src="eye.svg" alt="Mostrar senha">
+                <img *ngIf="mostrarSenha" src="eye-off.svg" alt="Ocultar senha">
+              </button>
+            </div>
+            <div class="error-message" *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched">
+              <span *ngIf="loginForm.get('senha')?.errors?.['required']">Senha é obrigatória</span>
+            </div>
+
+            <button type="submit" class="btn-primary" [disabled]="loginForm.invalid">Entrar</button>
+
+            <p *ngIf="errorMessage" style="color: red; margin-top: 10px;">{{ errorMessage }}</p>
+
+            <p>Esqueceu sua senha? <a href="#" (click)="abrirModalRecuperacao($event)">Recupere aqui</a></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" *ngIf="mostrarModalRecuperacao" (click)="fecharModalRecuperacao()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="fecharModalRecuperacao()">&times;</button>
+
+      <div class="modal-header">
+        <h2>Recuperar Senha</h2>
+        <p>Digite seu e-mail cadastrado para receber o link de recuperação</p>
+      </div>
+
+      <div class="modal-body">
+        <label for="emailRecuperacao">E-mail</label>
+        <input type="email"
+               id="emailRecuperacao"
+               [(ngModel)]="emailRecuperacao"
+               placeholder="seu@email.com"
+               (keyup.enter)="enviarRecuperacao()">
+
+        <div class="error-message" *ngIf="erroRecuperacao">
+          {{ erroRecuperacao }}
+        </div>
+
+        <div class="success-message" *ngIf="sucessoRecuperacao">
+          {{ sucessoRecuperacao }}
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" (click)="fecharModalRecuperacao()">Cancelar</button>
+        <button class="btn-primary" (click)="enviarRecuperacao()" [disabled]="enviandoRecuperacao">
+          {{ enviandoRecuperacao ? 'Enviando...' : 'Enviar Link' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Give Life - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>

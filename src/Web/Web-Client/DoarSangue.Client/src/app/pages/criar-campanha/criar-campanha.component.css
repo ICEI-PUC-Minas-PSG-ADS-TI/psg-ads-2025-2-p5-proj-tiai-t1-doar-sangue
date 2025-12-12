@@ -1,0 +1,170 @@
+/* --- REUTILIZAÇÃO DO LAYOUT DO DASHBOARD --- */
+.dashboard-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background: #f6f7f8;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden; /* Evita scroll duplo na página inteira */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 270px;
+  background: #004d45;
+  color: white;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* Sidebar não encolhe */
+}
+
+.sidebar .logo {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.sidebar .logo img {
+    max-width: 80px; /* Ajuste para imagem não quebrar */
+}
+
+.sidebar nav a {
+  display: block;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+  background: #009688;
+}
+
+/* Conteudo Principal */
+.content {
+  padding: 40px;
+  width: 100%;
+  overflow-y: auto; /* Permite rolar apenas o conteúdo se o form for grande */
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Header Flex para titulo e botao voltar */
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+/* Card Branco */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px; /* Mais padding para o formulário */
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.07);
+}
+
+/* --- ESTILOS ESPECÍFICOS DO FORMULÁRIO --- */
+
+.form-container {
+    max-width: 900px; /* Limita a largura para ficar mais bonito */
+}
+
+/* Grid System para o formulário */
+.form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    flex: 1; /* Ocupa espaço igual */
+    display: flex;
+    flex-direction: column;
+}
+
+.full-width {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Labels */
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #004d45;
+    margin-bottom: 8px;
+}
+
+/* Inputs e Textarea */
+input, select, textarea {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+    background: #fdfdfd;
+}
+
+input:focus, textarea:focus {
+    border-color: #00897b;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 137, 123, 0.1);
+}
+
+textarea {
+    resize: vertical; /* Permite redimensionar apenas altura */
+}
+
+/* Botões */
+.form-actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end; /* Alinha botão à direita */
+}
+
+.btn-main {
+  background: #00897b;
+  color: white;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-main:hover {
+  background: #006f62;
+}
+
+.btn-main:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #004d45;
+    color: #004d45;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    background: #e9f4f2;
+}
